@@ -8,8 +8,21 @@
      xmlns:swrl="http://www.w3.org/2003/11/swrl#">
     <owl:Ontology rdf:about="http://example.org/greek-mythology-test">
         <rdfs:label xml:lang="id">Ontologi Silsilah Dewa-Dewi Yunani</rdfs:label>
-        <rdfs:comment xml:lang="id">Dimodelkan dari bagan family tree mitologi Yunani. Hanya hasParent, hasPartner, dan hasSpouse yang didefinisikan eksplisit; sisanya disimpulkan reasoner (Pellet).</rdfs:comment>
+        <rdfs:comment xml:lang="id">Dimodelkan dari bagan family tree mitologi Yunani. Hanya hasParent, hasPartner, hasSpouse, dan hasGender yang didefinisikan eksplisit; sisanya disimpulkan reasoner (Pellet).</rdfs:comment>
     </owl:Ontology>
+
+
+    <!-- =========================================================== -->
+    <!-- OBJECT PROPERTIES                                           -->
+    <!-- =========================================================== -->
+
+    <!-- Untuk kebutuhan gender -->
+    <owl:ObjectProperty rdf:about="#hasGender">
+        <rdfs:label xml:lang="id">punya gender</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#MythicalBeing"/>
+        <rdfs:range rdf:resource="#Gender"/>
+    </owl:ObjectProperty>
 
     <!-- Untuk keperluan punya orang tua -->
     <owl:ObjectProperty rdf:about="#hasParent">
@@ -25,13 +38,13 @@
         <rdfs:label xml:lang="id">punya ayah</rdfs:label>
         <rdfs:subPropertyOf rdf:resource="#hasParent"/>
         <rdfs:domain rdf:resource="#MythicalBeing"/>
-        <rdfs:range rdf:resource="#Male"/>
+        <rdfs:range rdf:resource="#MaleBeing"/>
     </owl:ObjectProperty>
     <owl:ObjectProperty rdf:about="#hasMother">
         <rdfs:label xml:lang="id">punya ibu</rdfs:label>
         <rdfs:subPropertyOf rdf:resource="#hasParent"/>
         <rdfs:domain rdf:resource="#MythicalBeing"/>
-        <rdfs:range rdf:resource="#Female"/>
+        <rdfs:range rdf:resource="#FemaleBeing"/>
     </owl:ObjectProperty>
 
     <!-- Untuk keperluan punya anak -->
@@ -42,12 +55,12 @@
     <owl:ObjectProperty rdf:about="#hasSon">
         <rdfs:label xml:lang="id">punya anak laki-laki</rdfs:label>
         <rdfs:subPropertyOf rdf:resource="#hasChild"/>
-        <rdfs:range rdf:resource="#Male"/>
+        <rdfs:range rdf:resource="#MaleBeing"/>
     </owl:ObjectProperty>
     <owl:ObjectProperty rdf:about="#hasDaughter">
         <rdfs:label xml:lang="id">punya anak perempuan</rdfs:label>
         <rdfs:subPropertyOf rdf:resource="#hasChild"/>
-        <rdfs:range rdf:resource="#Female"/>
+        <rdfs:range rdf:resource="#FemaleBeing"/>
     </owl:ObjectProperty>
 
     <!-- ObjProp di atas Parent dan Child -->
@@ -84,13 +97,13 @@
         <owl:inverseOf rdf:resource="#hasWife"/>
         <rdfs:subPropertyOf rdf:resource="#hasSpouse"/>
         <rdfs:domain rdf:resource="#MythicalBeing"/>
-        <rdfs:range rdf:resource="#Male"/>
+        <rdfs:range rdf:resource="#MaleBeing"/>
     </owl:ObjectProperty>
     <owl:ObjectProperty rdf:about="#hasWife">
         <rdfs:label xml:lang="id">punya istri</rdfs:label>
         <rdfs:subPropertyOf rdf:resource="#hasSpouse"/>
         <rdfs:domain rdf:resource="#MythicalBeing"/>
-        <rdfs:range rdf:resource="#Female"/>
+        <rdfs:range rdf:resource="#FemaleBeing"/>
     </owl:ObjectProperty>
 
     <!-- Untuk kebutuhan saudara -->
@@ -104,15 +117,15 @@
         <rdfs:label xml:lang="id">punya saudara laki-laki</rdfs:label>
         <rdfs:subPropertyOf rdf:resource="#hasSibling"/>
         <rdfs:domain rdf:resource="#MythicalBeing"/>
-        <rdfs:range rdf:resource="#Male"/>
+        <rdfs:range rdf:resource="#MaleBeing"/>
     </owl:ObjectProperty>
     <owl:ObjectProperty rdf:about="#hasSister">
         <rdfs:label xml:lang="id">punya saudara perempuan</rdfs:label>
         <rdfs:subPropertyOf rdf:resource="#hasSibling"/>
         <rdfs:domain rdf:resource="#MythicalBeing"/>
-        <rdfs:range rdf:resource="#Female"/>
+        <rdfs:range rdf:resource="#FemaleBeing"/>
     </owl:ObjectProperty>
-    
+
     <!-- Untuk kebutuhan kakek/nenek -->
     <owl:ObjectProperty rdf:about="#hasGrandparent">
         <rdfs:label xml:lang="id">punya kakek/nenek</rdfs:label>
@@ -128,14 +141,22 @@
     <owl:ObjectProperty rdf:about="#hasGrandfather">
         <rdfs:label xml:lang="id">punya kakek</rdfs:label>
         <rdfs:subPropertyOf rdf:resource="#hasGrandparent"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="#hasParent"/>
+            <rdf:Description rdf:about="#hasFather"/>
+        </owl:propertyChainAxiom>
         <rdfs:domain rdf:resource="#MythicalBeing"/>
-        <rdfs:range rdf:resource="#Male"/>
+        <rdfs:range rdf:resource="#MaleBeing"/>
     </owl:ObjectProperty>
     <owl:ObjectProperty rdf:about="#hasGrandmother">
         <rdfs:label xml:lang="id">punya nenek</rdfs:label>
         <rdfs:subPropertyOf rdf:resource="#hasGrandparent"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="#hasParent"/>
+            <rdf:Description rdf:about="#hasMother"/>
+        </owl:propertyChainAxiom>
         <rdfs:domain rdf:resource="#MythicalBeing"/>
-        <rdfs:range rdf:resource="#Female"/>
+        <rdfs:range rdf:resource="#FemaleBeing"/>
     </owl:ObjectProperty>
 
     <!-- Untuk kebutuhan cucu -->
@@ -150,7 +171,7 @@
             <rdf:Description rdf:about="#hasChild"/>
             <rdf:Description rdf:about="#hasSon"/>
         </owl:propertyChainAxiom>
-        <rdfs:range rdf:resource="#Male"/>
+        <rdfs:range rdf:resource="#MaleBeing"/>
     </owl:ObjectProperty>
     <owl:ObjectProperty rdf:about="#hasGranddaughter">
         <rdfs:label xml:lang="id">punya cucu perempuan</rdfs:label>
@@ -159,7 +180,7 @@
             <rdf:Description rdf:about="#hasChild"/>
             <rdf:Description rdf:about="#hasDaughter"/>
         </owl:propertyChainAxiom>
-        <rdfs:range rdf:resource="#Female"/>
+        <rdfs:range rdf:resource="#FemaleBeing"/>
     </owl:ObjectProperty>
 
     <!-- Untuk kebutuhan paman/bibi -->
@@ -170,7 +191,7 @@
             <rdf:Description rdf:about="#hasBrother"/>
         </owl:propertyChainAxiom>
         <rdfs:domain rdf:resource="#MythicalBeing"/>
-        <rdfs:range rdf:resource="#Male"/>
+        <rdfs:range rdf:resource="#MaleBeing"/>
     </owl:ObjectProperty>
     <owl:ObjectProperty rdf:about="#hasAunt">
         <rdfs:label xml:lang="id">punya bibi</rdfs:label>
@@ -179,16 +200,7 @@
             <rdf:Description rdf:about="#hasSister"/>
         </owl:propertyChainAxiom>
         <rdfs:domain rdf:resource="#MythicalBeing"/>
-        <rdfs:range rdf:resource="#Female"/>
-    </owl:ObjectProperty>
-
-    <!-- Untuk kebutuhan saudara sepupu -->
-    <owl:ObjectProperty rdf:about="#hasCousin">
-        <rdfs:label xml:lang="id">punya sepupu</rdfs:label>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-        <rdfs:domain rdf:resource="#MythicalBeing"/>
-        <rdfs:range rdf:resource="#MythicalBeing"/>
+        <rdfs:range rdf:resource="#FemaleBeing"/>
     </owl:ObjectProperty>
 
     <!-- Untuk kebutuhan keponakan -->
@@ -199,7 +211,7 @@
             <rdf:Description rdf:about="#hasDaughter"/>
         </owl:propertyChainAxiom>
         <rdfs:domain rdf:resource="#MythicalBeing"/>
-        <rdfs:range rdf:resource="#Female"/>
+        <rdfs:range rdf:resource="#FemaleBeing"/>
     </owl:ObjectProperty>
     <owl:ObjectProperty rdf:about="#hasNephew">
         <rdfs:label xml:lang="id">punya keponakan laki-laki</rdfs:label>
@@ -208,7 +220,17 @@
             <rdf:Description rdf:about="#hasSon"/>
         </owl:propertyChainAxiom>
         <rdfs:domain rdf:resource="#MythicalBeing"/>
-        <rdfs:range rdf:resource="#Male"/>
+        <rdfs:range rdf:resource="#MaleBeing"/>
+    </owl:ObjectProperty>
+
+    <!-- Untuk kebutuhan saudara sepupu -->
+    <!-- Sengaja tanpa chain: chain parent-sibling-child membuat individu bisa menjadi sepupu dirinya sendiri karena incest dalam data. Diisi lewat SWRL. -->
+    <owl:ObjectProperty rdf:about="#hasCousin">
+        <rdfs:label xml:lang="id">punya sepupu</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="#MythicalBeing"/>
+        <rdfs:range rdf:resource="#MythicalBeing"/>
     </owl:ObjectProperty>
 
     <!-- Untuk kebutuhan mertua -->
@@ -229,7 +251,7 @@
             <rdf:Description rdf:about="#hasSpouse"/>
             <rdf:Description rdf:about="#hasFather"/>
         </owl:propertyChainAxiom>
-        <rdfs:range rdf:resource="#Male"/>
+        <rdfs:range rdf:resource="#MaleBeing"/>
     </owl:ObjectProperty>
     <owl:ObjectProperty rdf:about="#hasMotherInLaw">
         <rdfs:label xml:lang="id">punya ibu mertua</rdfs:label>
@@ -238,7 +260,7 @@
             <rdf:Description rdf:about="#hasSpouse"/>
             <rdf:Description rdf:about="#hasMother"/>
         </owl:propertyChainAxiom>
-        <rdfs:range rdf:resource="#Female"/>
+        <rdfs:range rdf:resource="#FemaleBeing"/>
     </owl:ObjectProperty>
 
     <!-- Untuk kebutuhan menantu -->
@@ -252,7 +274,7 @@
             <rdf:Description rdf:about="#hasChild"/>
             <rdf:Description rdf:about="#hasHusband"/>
         </owl:propertyChainAxiom>
-        <rdfs:range rdf:resource="#Male"/>
+        <rdfs:range rdf:resource="#MaleBeing"/>
     </owl:ObjectProperty>
     <owl:ObjectProperty rdf:about="#hasDaughterInLaw">
         <rdfs:label xml:lang="id">punya menantu perempuan</rdfs:label>
@@ -261,7 +283,7 @@
             <rdf:Description rdf:about="#hasChild"/>
             <rdf:Description rdf:about="#hasWife"/>
         </owl:propertyChainAxiom>
-        <rdfs:range rdf:resource="#Female"/>
+        <rdfs:range rdf:resource="#FemaleBeing"/>
     </owl:ObjectProperty>
 
     <!-- Untuk kebutuhan ipar -->
@@ -286,7 +308,7 @@
             <rdf:Description rdf:about="#hasSibling"/>
             <rdf:Description rdf:about="#hasHusband"/>
         </owl:propertyChainAxiom>
-        <rdfs:range rdf:resource="#Male"/>
+        <rdfs:range rdf:resource="#MaleBeing"/>
     </owl:ObjectProperty>
     <owl:ObjectProperty rdf:about="#hasSisterInLaw">
         <rdfs:label xml:lang="id">punya ipar perempuan</rdfs:label>
@@ -299,218 +321,200 @@
             <rdf:Description rdf:about="#hasSibling"/>
             <rdf:Description rdf:about="#hasWife"/>
         </owl:propertyChainAxiom>
-        <rdfs:range rdf:resource="#Female"/>
+        <rdfs:range rdf:resource="#FemaleBeing"/>
     </owl:ObjectProperty>
 
 
+    <!-- =========================================================== -->
+    <!-- CLASSES                                                     -->
+    <!-- =========================================================== -->
+
+    <!-- Kelas puncak -->
     <owl:Class rdf:about="#MythicalBeing">
         <rdfs:label xml:lang="id">Makhluk Mitologi</rdfs:label>
+        <owl:disjointWith rdf:resource="#Gender"/>
+    </owl:Class>
+
+    <!-- Male/Female/Genderless adalah gender, bukan jenis makhluk -->
+    <owl:Class rdf:about="#Gender">
+        <rdfs:label xml:lang="id">Gender</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Male"/>
+                    <rdf:Description rdf:about="#Female"/>
+                    <rdf:Description rdf:about="#Genderless"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
     </owl:Class>
     <owl:Class rdf:about="#Male">
         <rdfs:label xml:lang="id">Laki-laki</rdfs:label>
-        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
-        <owl:disjointWith rdf:resource="#Female"/>
-        <owl:disjointWith rdf:resource="#DivineGroup"/>
+        <rdfs:subClassOf rdf:resource="#Gender"/>
     </owl:Class>
     <owl:Class rdf:about="#Female">
         <rdfs:label xml:lang="id">Perempuan</rdfs:label>
-        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
-        <owl:disjointWith rdf:resource="#DivineGroup"/>
+        <rdfs:subClassOf rdf:resource="#Gender"/>
     </owl:Class>
+    <owl:Class rdf:about="#Genderless">
+        <rdfs:label xml:lang="id">Tanpa Gender</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Gender"/>
+    </owl:Class>
+    <owl:AllDisjointClasses>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="#Male"/>
+            <rdf:Description rdf:about="#Female"/>
+            <rdf:Description rdf:about="#Genderless"/>
+        </owl:members>
+    </owl:AllDisjointClasses>
+
+    <!-- Makhluk bergender: diturunkan dari nilai gender -->
+    <owl:Class rdf:about="#MaleBeing">
+        <rdfs:label xml:lang="id">Makhluk Laki-laki</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#MythicalBeing"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGender"/>
+                        <owl:someValuesFrom rdf:resource="#Male"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:about="#FemaleBeing">
+        <rdfs:label xml:lang="id">Makhluk Perempuan</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#MythicalBeing"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGender"/>
+                        <owl:someValuesFrom rdf:resource="#Female"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:about="#GenderlessBeing">
+        <rdfs:label xml:lang="id">Makhluk Tanpa Gender</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#MythicalBeing"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGender"/>
+                        <owl:someValuesFrom rdf:resource="#Genderless"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+
+    <!-- Kelompok: satu kotak di bagan yang mewakili banyak makhluk tanpa anggota bernama -->
     <owl:Class rdf:about="#DivineGroup">
         <rdfs:label xml:lang="id">Kelompok Ilahi</rdfs:label>
         <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
+        <owl:disjointWith rdf:resource="#MaleBeing"/>
+        <owl:disjointWith rdf:resource="#FemaleBeing"/>
     </owl:Class>
+
+    <!-- Jenis makhluk -->
+    <owl:Class rdf:about="#Deity">
+        <rdfs:label xml:lang="id">Dewa/Dewi</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
+        <owl:disjointWith rdf:resource="#Mortal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Mortal">
+        <rdfs:label xml:lang="id">Manusia Fana</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Monster">
+        <rdfs:label xml:lang="id">Monster</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
+    </owl:Class>
+
+    <!-- Generasi dewa -->
     <owl:Class rdf:about="#PrimordialDeity">
         <rdfs:label xml:lang="id">Dewa Primordial</rdfs:label>
-        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
-        <owl:disjointWith rdf:resource="#Titan"/>
-        <owl:disjointWith rdf:resource="#Olympian"/>
+        <rdfs:subClassOf rdf:resource="#Deity"/>
     </owl:Class>
     <owl:Class rdf:about="#Titan">
         <rdfs:label xml:lang="id">Titan</rdfs:label>
-        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
-        <owl:disjointWith rdf:resource="#Olympian"/>
+        <rdfs:subClassOf rdf:resource="#Deity"/>
+    </owl:Class>
+    <owl:Class rdf:about="#FirstGenerationTitan">
+        <rdfs:label xml:lang="id">Titan Generasi Pertama</rdfs:label>
+        <rdfs:comment xml:lang="id">Dua belas Titan anak Uranus dan Gaia (kotak hijau pada bagan).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="#Titan"/>
     </owl:Class>
     <owl:Class rdf:about="#Olympian">
         <rdfs:label xml:lang="id">Olympian</rdfs:label>
-        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
+        <rdfs:subClassOf rdf:resource="#Deity"/>
     </owl:Class>
-    <owl:Class rdf:about="#Parent">
-        <rdfs:label xml:lang="id">Orang Tua</rdfs:label>
-        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
+    <owl:AllDisjointClasses>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="#PrimordialDeity"/>
+            <rdf:Description rdf:about="#Titan"/>
+            <rdf:Description rdf:about="#Olympian"/>
+        </owl:members>
+    </owl:AllDisjointClasses>
+
+    <!-- Keanggotaan kelompok yang anggotanya digambar di bagan -->
+    <owl:Class rdf:about="#Oceanid">
+        <rdfs:label xml:lang="id">Oceanid</rdfs:label>
+        <rdfs:comment xml:lang="id">Anggota kelompok Oceanids pada bagan (Inachus, Melia, Clymene, Pleione).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="#Deity"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Pleiad">
+        <rdfs:label xml:lang="id">Pleiad</rdfs:label>
+        <rdfs:comment xml:lang="id">Anggota kelompok Pleiades pada bagan (Maia, Dryope).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="#Deity"/>
+    </owl:Class>
+
+    <!-- Defined class: diklasifikasikan otomatis oleh reasoner -->
+    <owl:Class rdf:about="#God">
+        <rdfs:label xml:lang="id">Dewa</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Deity"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGender"/>
+                        <owl:someValuesFrom rdf:resource="#Male"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:about="#Goddess">
+        <rdfs:label xml:lang="id">Dewi</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Deity"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGender"/>
+                        <owl:someValuesFrom rdf:resource="#Female"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:about="#Demigod">
+        <rdfs:label xml:lang="id">Setengah Dewa</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="#MythicalBeing"/>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="#hasChild"/>
-                        <owl:someValuesFrom rdf:resource="#MythicalBeing"/>
+                        <owl:onProperty rdf:resource="#hasParent"/>
+                        <owl:someValuesFrom rdf:resource="#Deity"/>
                     </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-    </owl:Class>
-    <owl:Class rdf:about="#Father">
-        <rdfs:label xml:lang="id">Ayah</rdfs:label>
-        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="#Male"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="#hasChild"/>
-                        <owl:someValuesFrom rdf:resource="#MythicalBeing"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-    </owl:Class>
-    <owl:Class rdf:about="#Mother">
-        <rdfs:label xml:lang="id">Ibu</rdfs:label>
-        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="#Female"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="#hasChild"/>
-                        <owl:someValuesFrom rdf:resource="#MythicalBeing"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-    </owl:Class>
-    <owl:Class rdf:about="#Son">
-        <rdfs:label xml:lang="id">Anak Laki-laki</rdfs:label>
-        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="#Male"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="#hasParent"/>
-                        <owl:someValuesFrom rdf:resource="#MythicalBeing"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-    </owl:Class>
-    <owl:Class rdf:about="#Daughter">
-        <rdfs:label xml:lang="id">Anak Perempuan</rdfs:label>
-        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="#Female"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="#hasParent"/>
-                        <owl:someValuesFrom rdf:resource="#MythicalBeing"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-    </owl:Class>
-    <owl:Class rdf:about="#Brother">
-        <rdfs:label xml:lang="id">Saudara Laki-laki</rdfs:label>
-        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="#Male"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="#hasSibling"/>
-                        <owl:someValuesFrom rdf:resource="#MythicalBeing"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-    </owl:Class>
-    <owl:Class rdf:about="#Sister">
-        <rdfs:label xml:lang="id">Saudara Perempuan</rdfs:label>
-        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="#Female"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="#hasSibling"/>
-                        <owl:someValuesFrom rdf:resource="#MythicalBeing"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-    </owl:Class>
-    <owl:Class rdf:about="#Grandparent">
-        <rdfs:label xml:lang="id">Kakek/Nenek</rdfs:label>
-        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="#MythicalBeing"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="#hasChild"/>
-                        <owl:someValuesFrom rdf:resource="#Parent"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-    </owl:Class>
-    <owl:Class rdf:about="#Grandfather">
-        <rdfs:label xml:lang="id">Kakek</rdfs:label>
-        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="#Male"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="#hasChild"/>
-                        <owl:someValuesFrom rdf:resource="#Parent"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-    </owl:Class>
-    <owl:Class rdf:about="#Grandmother">
-        <rdfs:label xml:lang="id">Nenek</rdfs:label>
-        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="#Female"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="#hasChild"/>
-                        <owl:someValuesFrom rdf:resource="#Parent"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-    </owl:Class>
-    <owl:Class rdf:about="#Uncle">
-        <rdfs:label xml:lang="id">Paman</rdfs:label>
-        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="#Male"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="#hasNieceOrNephew"/>
-                        <owl:someValuesFrom rdf:resource="#MythicalBeing"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-    </owl:Class>
-    <owl:Class rdf:about="#Aunt">
-        <rdfs:label xml:lang="id">Bibi</rdfs:label>
-        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="#Female"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="#hasNieceOrNephew"/>
-                        <owl:someValuesFrom rdf:resource="#MythicalBeing"/>
+                        <owl:someValuesFrom rdf:resource="#Mortal"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -518,7 +522,6 @@
     </owl:Class>
     <owl:Class rdf:about="#ChildOfTitan">
         <rdfs:label xml:lang="id">Anak dari Titan</rdfs:label>
-        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
@@ -533,7 +536,6 @@
     </owl:Class>
     <owl:Class rdf:about="#ChildOfZeus">
         <rdfs:label xml:lang="id">Anak Zeus</rdfs:label>
-        <rdfs:subClassOf rdf:resource="#MythicalBeing"/>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
@@ -546,461 +548,539 @@
             </owl:Class>
         </owl:equivalentClass>
     </owl:Class>
+
+    <!-- =========================================================== -->
+    <!-- INDIVIDUALS                                                 -->
+    <!-- =========================================================== -->
+
+    <!-- Nilai gender: ditunjuk lewat hasGender -->
+    <owl:NamedIndividual rdf:about="#MaleValue">
+        <rdf:type rdf:resource="#Male"/>
+        <rdfs:label xml:lang="id">laki-laki</rdfs:label>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#FemaleValue">
+        <rdf:type rdf:resource="#Female"/>
+        <rdfs:label xml:lang="id">perempuan</rdfs:label>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#GenderlessValue">
+        <rdf:type rdf:resource="#Genderless"/>
+        <rdfs:label xml:lang="id">tanpa gender</rdfs:label>
+    </owl:NamedIndividual>
+
+    <!-- Generasi pertama: anak Chaos -->
     <owl:NamedIndividual rdf:about="#Chaos">
-        <rdf:type rdf:resource="#PrimordialDeity"/>
         <rdfs:label>Chaos (The Void)</rdfs:label>
+        <rdf:type rdf:resource="#PrimordialDeity"/>
+        <hasGender rdf:resource="#GenderlessValue"/>
+        <rdfs:comment xml:lang="id">Bentuk netral dalam teks Yunani, dimodelkan tanpa gender.</rdfs:comment>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Gaia">
-        <rdf:type rdf:resource="#Female"/>
-        <rdf:type rdf:resource="#PrimordialDeity"/>
-        <hasPartner rdf:resource="#Tartarus"/>
-        <hasPartner rdf:resource="#Uranus"/>
         <rdfs:label>Gaia (The Earth)</rdfs:label>
+        <rdf:type rdf:resource="#PrimordialDeity"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Chaos"/>
+        <hasSpouse rdf:resource="#Uranus"/>
+        <hasPartner rdf:resource="#Tartarus"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Tartarus">
-        <rdf:type rdf:resource="#Male"/>
-        <rdf:type rdf:resource="#PrimordialDeity"/>
         <rdfs:label>Tartarus (The Abyss)</rdfs:label>
+        <rdf:type rdf:resource="#PrimordialDeity"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Chaos"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Eros_Primordial">
-        <rdf:type rdf:resource="#Male"/>
-        <rdf:type rdf:resource="#PrimordialDeity"/>
         <rdfs:label>Eros (Desire, primordial)</rdfs:label>
-        <rdfs:comment xml:lang="id">Eros primordial. Pada bagan ditandai [a]: ada versi lain, yaitu Eros anak Aphrodite dan Ares (lihat Eros_Son).</rdfs:comment>
+        <rdf:type rdf:resource="#PrimordialDeity"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Chaos"/>
+        <rdfs:comment xml:lang="id">Catatan [1] pada bagan: versi lain Eros adalah anak Aphrodite dan Ares (lihat Eros_Son).</rdfs:comment>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Erebus">
-        <rdf:type rdf:resource="#Male"/>
+        <rdfs:label>Erebus (Darkness)</rdfs:label>
         <rdf:type rdf:resource="#PrimordialDeity"/>
+        <hasGender rdf:resource="#MaleValue"/>
         <hasParent rdf:resource="#Chaos"/>
         <hasPartner rdf:resource="#Nyx"/>
-        <rdfs:label>Erebus (Darkness)</rdfs:label>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Nyx">
-        <rdf:type rdf:resource="#Female"/>
-        <rdf:type rdf:resource="#PrimordialDeity"/>
-        <hasParent rdf:resource="#Chaos"/>
         <rdfs:label>Nyx (The Night)</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Aether">
-        <rdf:type rdf:resource="#Male"/>
         <rdf:type rdf:resource="#PrimordialDeity"/>
-        <hasParent rdf:resource="#Erebus"/>
-        <hasParent rdf:resource="#Nyx"/>
-        <rdfs:label>Aether (Heaven)</rdfs:label>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Chaos"/>
     </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Hemera">
-        <rdf:type rdf:resource="#Female"/>
-        <rdf:type rdf:resource="#PrimordialDeity"/>
-        <hasParent rdf:resource="#Erebus"/>
-        <hasParent rdf:resource="#Nyx"/>
-        <rdfs:label>Hemera (The Day)</rdfs:label>
-    </owl:NamedIndividual>
+
+    <!-- Anak Gaia -->
     <owl:NamedIndividual rdf:about="#Uranus">
-        <rdf:type rdf:resource="#Male"/>
-        <rdf:type rdf:resource="#PrimordialDeity"/>
-        <hasParent rdf:resource="#Gaia"/>
         <rdfs:label>Uranus (The Sky)</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Pontus">
-        <rdf:type rdf:resource="#Male"/>
         <rdf:type rdf:resource="#PrimordialDeity"/>
+        <hasGender rdf:resource="#MaleValue"/>
         <hasParent rdf:resource="#Gaia"/>
-        <rdfs:label>Pontus (The Sea)</rdfs:label>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Ourea">
+        <rdfs:label>the Ourea (Mountains)</rdfs:label>
         <rdf:type rdf:resource="#DivineGroup"/>
         <rdf:type rdf:resource="#PrimordialDeity"/>
         <hasParent rdf:resource="#Gaia"/>
-        <rdfs:label>the Ourea (Mountains)</rdfs:label>
     </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Pontus">
+        <rdfs:label>Pontus (The Sea)</rdfs:label>
+        <rdf:type rdf:resource="#PrimordialDeity"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Gaia"/>
+    </owl:NamedIndividual>
+
+    <!-- Anak Gaia dan Tartarus -->
     <owl:NamedIndividual rdf:about="#Typhon">
-        <rdf:type rdf:resource="#Male"/>
+        <rdfs:label>Typhon</rdfs:label>
+        <rdf:type rdf:resource="#Monster"/>
+        <hasGender rdf:resource="#MaleValue"/>
         <hasParent rdf:resource="#Gaia"/>
         <hasParent rdf:resource="#Tartarus"/>
-        <rdfs:label>Typhon</rdfs:label>
     </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Echidna">
-        <rdf:type rdf:resource="#Female"/>
-        <hasParent rdf:resource="#Uranus"/>
-        <hasParent rdf:resource="#Gaia"/>
-        <rdfs:label>Echidna</rdfs:label>
-        <rdfs:comment xml:lang="id">Pada bagan, Echidna berada di baris anak Uranus dan Gaia; sumber mitologi lain menyebut orang tua yang berbeda.</rdfs:comment>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Moros">
-        <rdf:type rdf:resource="#Male"/>
+
+    <!-- Anak Erebus dan Nyx -->
+    <owl:NamedIndividual rdf:about="#Aether">
+        <rdfs:label>Aether (Heaven)</rdfs:label>
+        <rdf:type rdf:resource="#PrimordialDeity"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Erebus"/>
         <hasParent rdf:resource="#Nyx"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Hemera">
+        <rdfs:label>Hemera (The Day)</rdfs:label>
+        <rdf:type rdf:resource="#PrimordialDeity"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Erebus"/>
+        <hasParent rdf:resource="#Nyx"/>
+    </owl:NamedIndividual>
+
+    <!-- Anak Nyx (tanpa pasangan) -->
+    <owl:NamedIndividual rdf:about="#Moros">
         <rdfs:label>Moros</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Nyx"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Nemesis">
-        <rdf:type rdf:resource="#Female"/>
-        <hasParent rdf:resource="#Nyx"/>
         <rdfs:label>Nemesis</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Nyx"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Momus">
-        <rdf:type rdf:resource="#Male"/>
-        <hasParent rdf:resource="#Nyx"/>
         <rdfs:label>Momus</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Nyx"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Philotes">
-        <rdf:type rdf:resource="#Female"/>
-        <hasParent rdf:resource="#Nyx"/>
         <rdfs:label>Philotes</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Nyx"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Geras">
-        <rdf:type rdf:resource="#Male"/>
-        <hasParent rdf:resource="#Nyx"/>
         <rdfs:label>Geras</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Nyx"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Thanatos">
-        <rdf:type rdf:resource="#Male"/>
-        <hasParent rdf:resource="#Nyx"/>
         <rdfs:label>Thanatos</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Nyx"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Hypnos">
-        <rdf:type rdf:resource="#Male"/>
-        <hasParent rdf:resource="#Nyx"/>
         <rdfs:label>Hypnos</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Nyx"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Eris">
-        <rdf:type rdf:resource="#Female"/>
-        <hasParent rdf:resource="#Nyx"/>
         <rdfs:label>Eris</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Nyx"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Apate">
-        <rdf:type rdf:resource="#Female"/>
-        <hasParent rdf:resource="#Nyx"/>
         <rdfs:label>Apate</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Nyx"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Oizys">
-        <rdf:type rdf:resource="#Female"/>
-        <hasParent rdf:resource="#Nyx"/>
         <rdfs:label>Oizys</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Charon">
-        <rdf:type rdf:resource="#Male"/>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#FemaleValue"/>
         <hasParent rdf:resource="#Nyx"/>
-        <rdfs:label>Charon</rdfs:label>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Oneiroi">
-        <rdf:type rdf:resource="#DivineGroup"/>
-        <hasParent rdf:resource="#Nyx"/>
         <rdfs:label>the Oneiroi</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Hesperides">
         <rdf:type rdf:resource="#DivineGroup"/>
         <hasParent rdf:resource="#Nyx"/>
-        <rdfs:label>the Hesperides</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Keres">
-        <rdf:type rdf:resource="#DivineGroup"/>
-        <hasParent rdf:resource="#Nyx"/>
-        <rdfs:label>the Keres</rdfs:label>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Moirae">
+        <rdfs:label>the Moirae</rdfs:label>
         <rdf:type rdf:resource="#DivineGroup"/>
         <hasParent rdf:resource="#Nyx"/>
-        <rdfs:label>the Moirae</rdfs:label>
+        <rdfs:comment xml:lang="id">Pada bagan digabung dalam satu kotak 'Moirae &amp; Keres'.</rdfs:comment>
     </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Keres">
+        <rdfs:label>the Keres</rdfs:label>
+        <rdf:type rdf:resource="#DivineGroup"/>
+        <hasParent rdf:resource="#Nyx"/>
+        <rdfs:comment xml:lang="id">Pada bagan digabung dalam satu kotak 'Moirae &amp; Keres'.</rdfs:comment>
+    </owl:NamedIndividual>
+
+    <!-- Anak Uranus (tanpa pasangan) -->
     <owl:NamedIndividual rdf:about="#Erinyes">
+        <rdfs:label>the Erinyes</rdfs:label>
         <rdf:type rdf:resource="#DivineGroup"/>
         <hasParent rdf:resource="#Uranus"/>
-        <hasParent rdf:resource="#Gaia"/>
-        <rdfs:label>the Erinyes</rdfs:label>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Gigantes">
-        <rdf:type rdf:resource="#DivineGroup"/>
-        <hasParent rdf:resource="#Uranus"/>
-        <hasParent rdf:resource="#Gaia"/>
         <rdfs:label>the Gigantes</rdfs:label>
+        <rdf:type rdf:resource="#DivineGroup"/>
+        <rdf:type rdf:resource="#Monster"/>
+        <hasParent rdf:resource="#Uranus"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Meliae">
-        <rdf:type rdf:resource="#DivineGroup"/>
-        <hasParent rdf:resource="#Uranus"/>
-        <hasParent rdf:resource="#Gaia"/>
         <rdfs:label>the Meliae</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Hecatonchires">
         <rdf:type rdf:resource="#DivineGroup"/>
         <hasParent rdf:resource="#Uranus"/>
-        <hasParent rdf:resource="#Gaia"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Aphrodite_Uranus">
+        <rdfs:label>Aphrodite (lahir dari Uranus)</rdfs:label>
+        <rdf:type rdf:resource="#Olympian"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Uranus"/>
+        <rdfs:comment xml:lang="id">Catatan [2] pada bagan: versi Hesiod, Aphrodite lahir dari Uranus. Versi lain (anak Zeus dan Dione) adalah individu Aphrodite.</rdfs:comment>
+    </owl:NamedIndividual>
+
+    <!-- Anak Uranus dan Gaia -->
+    <owl:NamedIndividual rdf:about="#Hecatonchires">
         <rdfs:label>the Hecatonchires</rdfs:label>
+        <rdf:type rdf:resource="#DivineGroup"/>
+        <rdf:type rdf:resource="#Monster"/>
+        <hasParent rdf:resource="#Uranus"/>
+        <hasParent rdf:resource="#Gaia"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Cyclopes">
-        <rdf:type rdf:resource="#DivineGroup"/>
-        <hasParent rdf:resource="#Uranus"/>
-        <hasParent rdf:resource="#Gaia"/>
         <rdfs:label>the Cyclopes</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Aphrodite">
-        <rdf:type rdf:resource="#Female"/>
-        <rdf:type rdf:resource="#Olympian"/>
-        <hasParent rdf:resource="#Uranus"/>
-        <hasPartner rdf:resource="#Ares"/>
-        <rdfs:label>Aphrodite</rdfs:label>
-        <rdfs:comment xml:lang="id">Pada bagan ditandai [b]: lahir dari Uranus; versi lain menyebut anak Zeus dan Dione. Di sini diwakili satu individu.</rdfs:comment>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Oceanus">
-        <rdf:type rdf:resource="#Male"/>
-        <rdf:type rdf:resource="#Titan"/>
+        <rdf:type rdf:resource="#DivineGroup"/>
+        <rdf:type rdf:resource="#Monster"/>
         <hasParent rdf:resource="#Uranus"/>
         <hasParent rdf:resource="#Gaia"/>
-        <hasPartner rdf:resource="#Tethys"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Echidna">
+        <rdfs:label>Echidna</rdfs:label>
+        <rdf:type rdf:resource="#Monster"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Uranus"/>
+        <hasParent rdf:resource="#Gaia"/>
+        <rdfs:comment xml:lang="id">Mengikuti bagan; sumber mitologi lain menyebut orang tua yang berbeda.</rdfs:comment>
+    </owl:NamedIndividual>
+
+    <!-- Dua belas Titan (kotak hijau): anggota kelompok Titans, anak Uranus dan Gaia -->
+    <owl:NamedIndividual rdf:about="#Oceanus">
         <rdfs:label>Oceanus</rdfs:label>
+        <rdf:type rdf:resource="#FirstGenerationTitan"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Uranus"/>
+        <hasParent rdf:resource="#Gaia"/>
+        <hasSpouse rdf:resource="#Tethys"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Tethys">
-        <rdf:type rdf:resource="#Female"/>
-        <rdf:type rdf:resource="#Titan"/>
+        <rdfs:label>Tethys</rdfs:label>
+        <rdf:type rdf:resource="#FirstGenerationTitan"/>
+        <hasGender rdf:resource="#FemaleValue"/>
         <hasParent rdf:resource="#Uranus"/>
         <hasParent rdf:resource="#Gaia"/>
-        <rdfs:label>Tethys</rdfs:label>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Hyperion">
-        <rdf:type rdf:resource="#Male"/>
-        <rdf:type rdf:resource="#Titan"/>
+        <rdfs:label>Hyperion</rdfs:label>
+        <rdf:type rdf:resource="#FirstGenerationTitan"/>
+        <hasGender rdf:resource="#MaleValue"/>
         <hasParent rdf:resource="#Uranus"/>
         <hasParent rdf:resource="#Gaia"/>
-        <hasPartner rdf:resource="#Theia"/>
-        <rdfs:label>Hyperion</rdfs:label>
+        <hasSpouse rdf:resource="#Theia"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Theia">
-        <rdf:type rdf:resource="#Female"/>
-        <rdf:type rdf:resource="#Titan"/>
+        <rdfs:label>Theia</rdfs:label>
+        <rdf:type rdf:resource="#FirstGenerationTitan"/>
+        <hasGender rdf:resource="#FemaleValue"/>
         <hasParent rdf:resource="#Uranus"/>
         <hasParent rdf:resource="#Gaia"/>
-        <rdfs:label>Theia</rdfs:label>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Coeus">
-        <rdf:type rdf:resource="#Male"/>
-        <rdf:type rdf:resource="#Titan"/>
+        <rdfs:label>Coeus</rdfs:label>
+        <rdf:type rdf:resource="#FirstGenerationTitan"/>
+        <hasGender rdf:resource="#MaleValue"/>
         <hasParent rdf:resource="#Uranus"/>
         <hasParent rdf:resource="#Gaia"/>
-        <hasPartner rdf:resource="#Phoebe"/>
-        <rdfs:label>Coeus</rdfs:label>
+        <hasSpouse rdf:resource="#Phoebe"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Phoebe">
-        <rdf:type rdf:resource="#Female"/>
-        <rdf:type rdf:resource="#Titan"/>
+        <rdfs:label>Phoebe</rdfs:label>
+        <rdf:type rdf:resource="#FirstGenerationTitan"/>
+        <hasGender rdf:resource="#FemaleValue"/>
         <hasParent rdf:resource="#Uranus"/>
         <hasParent rdf:resource="#Gaia"/>
-        <rdfs:label>Phoebe</rdfs:label>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Cronus">
-        <rdf:type rdf:resource="#Male"/>
-        <rdf:type rdf:resource="#Titan"/>
+        <rdfs:label>Cronus</rdfs:label>
+        <rdf:type rdf:resource="#FirstGenerationTitan"/>
+        <hasGender rdf:resource="#MaleValue"/>
         <hasParent rdf:resource="#Uranus"/>
         <hasParent rdf:resource="#Gaia"/>
-        <hasPartner rdf:resource="#Rhea"/>
-        <rdfs:label>Cronus</rdfs:label>
+        <hasSpouse rdf:resource="#Rhea"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Rhea">
-        <rdf:type rdf:resource="#Female"/>
-        <rdf:type rdf:resource="#Titan"/>
+        <rdfs:label>Rhea</rdfs:label>
+        <rdf:type rdf:resource="#FirstGenerationTitan"/>
+        <hasGender rdf:resource="#FemaleValue"/>
         <hasParent rdf:resource="#Uranus"/>
         <hasParent rdf:resource="#Gaia"/>
-        <rdfs:label>Rhea</rdfs:label>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Themis">
-        <rdf:type rdf:resource="#Female"/>
-        <rdf:type rdf:resource="#Titan"/>
+        <rdfs:label>Themis</rdfs:label>
+        <rdf:type rdf:resource="#FirstGenerationTitan"/>
+        <hasGender rdf:resource="#FemaleValue"/>
         <hasParent rdf:resource="#Uranus"/>
         <hasParent rdf:resource="#Gaia"/>
-        <rdfs:label>Themis</rdfs:label>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Mnemosyne">
-        <rdf:type rdf:resource="#Female"/>
-        <rdf:type rdf:resource="#Titan"/>
+        <rdfs:label>Mnemosyne</rdfs:label>
+        <rdf:type rdf:resource="#FirstGenerationTitan"/>
+        <hasGender rdf:resource="#FemaleValue"/>
         <hasParent rdf:resource="#Uranus"/>
         <hasParent rdf:resource="#Gaia"/>
-        <rdfs:label>Mnemosyne</rdfs:label>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Crius">
-        <rdf:type rdf:resource="#Male"/>
-        <rdf:type rdf:resource="#Titan"/>
+        <rdfs:label>Crius</rdfs:label>
+        <rdf:type rdf:resource="#FirstGenerationTitan"/>
+        <hasGender rdf:resource="#MaleValue"/>
         <hasParent rdf:resource="#Uranus"/>
         <hasParent rdf:resource="#Gaia"/>
-        <rdfs:label>Crius</rdfs:label>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Iapetus">
-        <rdf:type rdf:resource="#Male"/>
-        <rdf:type rdf:resource="#Titan"/>
+        <rdfs:label>Iapetus</rdfs:label>
+        <rdf:type rdf:resource="#FirstGenerationTitan"/>
+        <hasGender rdf:resource="#MaleValue"/>
         <hasParent rdf:resource="#Uranus"/>
         <hasParent rdf:resource="#Gaia"/>
-        <rdfs:label>Iapetus</rdfs:label>
     </owl:NamedIndividual>
+
+    <!-- Anak Oceanus dan Tethys -->
+    <owl:NamedIndividual rdf:about="#Oceanids">
+        <rdfs:label>the Oceanids</rdfs:label>
+        <rdf:type rdf:resource="#DivineGroup"/>
+        <hasParent rdf:resource="#Oceanus"/>
+        <hasParent rdf:resource="#Tethys"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Inachus">
+        <rdfs:label>Inachus</rdfs:label>
+        <rdf:type rdf:resource="#Oceanid"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Oceanus"/>
+        <hasParent rdf:resource="#Tethys"/>
+        <hasSpouse rdf:resource="#Melia"/>
+        <rdfs:comment xml:lang="id">Anggota kelompok Oceanids pada bagan.</rdfs:comment>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Melia">
+        <rdfs:label>Melia</rdfs:label>
+        <rdf:type rdf:resource="#Oceanid"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Oceanus"/>
+        <hasParent rdf:resource="#Tethys"/>
+        <rdfs:comment xml:lang="id">Anggota kelompok Oceanids pada bagan.</rdfs:comment>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Clymene">
+        <rdfs:label>Clymene</rdfs:label>
+        <rdf:type rdf:resource="#Oceanid"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Oceanus"/>
+        <hasParent rdf:resource="#Tethys"/>
+        <rdfs:comment xml:lang="id">Anggota kelompok Oceanids pada bagan.</rdfs:comment>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Pleione">
+        <rdfs:label>Pleione</rdfs:label>
+        <rdf:type rdf:resource="#Oceanid"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Oceanus"/>
+        <hasParent rdf:resource="#Tethys"/>
+        <rdfs:comment xml:lang="id">Anggota kelompok Oceanids pada bagan.</rdfs:comment>
+    </owl:NamedIndividual>
+
+    <!-- Anak Hyperion dan Theia -->
     <owl:NamedIndividual rdf:about="#Helios">
-        <rdf:type rdf:resource="#Male"/>
+        <rdfs:label>Helios</rdfs:label>
         <rdf:type rdf:resource="#Titan"/>
+        <hasGender rdf:resource="#MaleValue"/>
         <hasParent rdf:resource="#Hyperion"/>
         <hasParent rdf:resource="#Theia"/>
         <hasPartner rdf:resource="#Clymene"/>
-        <rdfs:label>Helios</rdfs:label>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Eos">
-        <rdf:type rdf:resource="#Female"/>
+        <rdfs:label>Eos</rdfs:label>
         <rdf:type rdf:resource="#Titan"/>
+        <hasGender rdf:resource="#FemaleValue"/>
         <hasParent rdf:resource="#Hyperion"/>
         <hasParent rdf:resource="#Theia"/>
-        <rdfs:label>Eos</rdfs:label>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Selene">
-        <rdf:type rdf:resource="#Female"/>
+        <rdfs:label>Selene</rdfs:label>
         <rdf:type rdf:resource="#Titan"/>
+        <hasGender rdf:resource="#FemaleValue"/>
         <hasParent rdf:resource="#Hyperion"/>
         <hasParent rdf:resource="#Theia"/>
-        <rdfs:label>Selene</rdfs:label>
     </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Asteria">
-        <rdf:type rdf:resource="#Female"/>
-        <rdf:type rdf:resource="#Titan"/>
-        <hasParent rdf:resource="#Coeus"/>
-        <hasParent rdf:resource="#Phoebe"/>
-        <rdfs:label>Asteria</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Leto">
-        <rdf:type rdf:resource="#Female"/>
-        <rdf:type rdf:resource="#Titan"/>
-        <hasParent rdf:resource="#Coeus"/>
-        <hasParent rdf:resource="#Phoebe"/>
-        <rdfs:label>Leto</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Prometheus">
-        <rdf:type rdf:resource="#Male"/>
-        <rdf:type rdf:resource="#Titan"/>
-        <hasParent rdf:resource="#Iapetus"/>
-        <rdfs:label>Prometheus</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Epimetheus">
-        <rdf:type rdf:resource="#Male"/>
-        <rdf:type rdf:resource="#Titan"/>
-        <hasParent rdf:resource="#Iapetus"/>
-        <rdfs:label>Epimetheus</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Atlas">
-        <rdf:type rdf:resource="#Male"/>
-        <rdf:type rdf:resource="#Titan"/>
-        <hasParent rdf:resource="#Iapetus"/>
-        <hasPartner rdf:resource="#Pleione"/>
-        <rdfs:label>Atlas</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Dione">
-        <rdf:type rdf:resource="#Female"/>
-        <rdf:type rdf:resource="#Titan"/>
-        <rdfs:label>Dione</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Oceanids">
-        <rdf:type rdf:resource="#DivineGroup"/>
-        <hasParent rdf:resource="#Oceanus"/>
-        <hasParent rdf:resource="#Tethys"/>
-        <rdfs:label>the Oceanids</rdfs:label>
-    </owl:NamedIndividual>
+
+    <!-- Anak Helios dan Clymene -->
     <owl:NamedIndividual rdf:about="#Heliades">
+        <rdfs:label>the Heliades</rdfs:label>
         <rdf:type rdf:resource="#DivineGroup"/>
         <hasParent rdf:resource="#Helios"/>
         <hasParent rdf:resource="#Clymene"/>
-        <rdfs:label>the Heliades</rdfs:label>
     </owl:NamedIndividual>
+
+    <!-- Anak Coeus dan Phoebe -->
+    <owl:NamedIndividual rdf:about="#Asteria">
+        <rdfs:label>Asteria</rdfs:label>
+        <rdf:type rdf:resource="#Titan"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Coeus"/>
+        <hasParent rdf:resource="#Phoebe"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Leto">
+        <rdfs:label>Leto</rdfs:label>
+        <rdf:type rdf:resource="#Titan"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Coeus"/>
+        <hasParent rdf:resource="#Phoebe"/>
+    </owl:NamedIndividual>
+
+    <!-- Anak Iapetus (tanpa pasangan) -->
+    <owl:NamedIndividual rdf:about="#Prometheus">
+        <rdfs:label>Prometheus</rdfs:label>
+        <rdf:type rdf:resource="#Titan"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Iapetus"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Epimetheus">
+        <rdfs:label>Epimetheus</rdfs:label>
+        <rdf:type rdf:resource="#Titan"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Iapetus"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Atlas">
+        <rdfs:label>Atlas</rdfs:label>
+        <rdf:type rdf:resource="#Titan"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Iapetus"/>
+        <hasSpouse rdf:resource="#Pleione"/>
+    </owl:NamedIndividual>
+
+    <!-- Anak Epimetheus (tanpa pasangan) -->
+    <owl:NamedIndividual rdf:about="#Dione">
+        <rdfs:label>Dione</rdfs:label>
+        <rdf:type rdf:resource="#Titan"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Epimetheus"/>
+        <rdfs:comment xml:lang="id">Mengikuti bagan; sumber lain menyebut Dione anak Uranus dan Gaia, atau salah satu Oceanid.</rdfs:comment>
+    </owl:NamedIndividual>
+
+    <!-- Anak Atlas dan Pleione -->
     <owl:NamedIndividual rdf:about="#Hyades">
+        <rdfs:label>the Hyades</rdfs:label>
         <rdf:type rdf:resource="#DivineGroup"/>
         <hasParent rdf:resource="#Atlas"/>
         <hasParent rdf:resource="#Pleione"/>
-        <rdfs:label>the Hyades</rdfs:label>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Hesperides">
+        <rdfs:label>the Hesperides</rdfs:label>
+        <rdf:type rdf:resource="#DivineGroup"/>
+        <hasParent rdf:resource="#Atlas"/>
+        <hasParent rdf:resource="#Pleione"/>
+        <rdfs:comment xml:lang="id">Mengikuti bagan; versi Hesiod menyebut Hesperides anak Nyx.</rdfs:comment>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Pleiades">
+        <rdfs:label>the Pleiades</rdfs:label>
         <rdf:type rdf:resource="#DivineGroup"/>
         <hasParent rdf:resource="#Atlas"/>
         <hasParent rdf:resource="#Pleione"/>
-        <rdfs:label>the Pleiades</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Muses">
-        <rdf:type rdf:resource="#DivineGroup"/>
-        <hasParent rdf:resource="#Zeus"/>
-        <hasParent rdf:resource="#Mnemosyne"/>
-        <rdfs:label>the Muses</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Inachus">
-        <rdf:type rdf:resource="#Male"/>
-        <hasParent rdf:resource="#Oceanus"/>
-        <hasParent rdf:resource="#Tethys"/>
-        <hasPartner rdf:resource="#Melia"/>
-        <rdfs:label>Inachus</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Melia">
-        <rdf:type rdf:resource="#Female"/>
-        <hasParent rdf:resource="#Oceanus"/>
-        <hasParent rdf:resource="#Tethys"/>
-        <rdfs:label>Melia</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Clymene">
-        <rdf:type rdf:resource="#Female"/>
-        <hasParent rdf:resource="#Oceanus"/>
-        <hasParent rdf:resource="#Tethys"/>
-        <rdfs:label>Clymene</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Pleione">
-        <rdf:type rdf:resource="#Female"/>
-        <hasParent rdf:resource="#Oceanus"/>
-        <hasParent rdf:resource="#Tethys"/>
-        <rdfs:label>Pleione</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Amphitrite">
-        <rdf:type rdf:resource="#Female"/>
-        <hasParent rdf:resource="#Oceanus"/>
-        <hasParent rdf:resource="#Tethys"/>
-        <rdfs:label>Amphitrite</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Io">
-        <rdf:type rdf:resource="#Female"/>
-        <hasParent rdf:resource="#Inachus"/>
-        <hasParent rdf:resource="#Melia"/>
-        <rdfs:label>Io</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Epaphus">
-        <rdf:type rdf:resource="#Male"/>
-        <hasParent rdf:resource="#Zeus"/>
-        <hasParent rdf:resource="#Io"/>
-        <rdfs:label>Epaphus</rdfs:label>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Maia">
-        <rdf:type rdf:resource="#Female"/>
+        <rdfs:label>Maia</rdfs:label>
+        <rdf:type rdf:resource="#Pleiad"/>
+        <hasGender rdf:resource="#FemaleValue"/>
         <hasParent rdf:resource="#Atlas"/>
         <hasParent rdf:resource="#Pleione"/>
-        <rdfs:label>Maia</rdfs:label>
-        <rdfs:comment xml:lang="id">Pada bagan Maia berada di bawah the Pleiades; di sini dimodelkan sebagai anak Atlas dan Pleione.</rdfs:comment>
+        <rdfs:comment xml:lang="id">Anggota kelompok Pleiades pada bagan, sehingga dimodelkan sebagai anak Atlas dan Pleione.</rdfs:comment>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Dryope">
+        <rdfs:label>Dryope</rdfs:label>
+        <rdf:type rdf:resource="#Pleiad"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Atlas"/>
+        <hasParent rdf:resource="#Pleione"/>
+        <rdfs:comment xml:lang="id">Anggota kelompok Pleiades pada bagan, sehingga dimodelkan sebagai anak Atlas dan Pleione.</rdfs:comment>
+    </owl:NamedIndividual>
+
+    <!-- Anak Inachus dan Melia -->
+    <owl:NamedIndividual rdf:about="#Io">
+        <rdfs:label>Io</rdfs:label>
+        <rdf:type rdf:resource="#Mortal"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Inachus"/>
+        <hasParent rdf:resource="#Melia"/>
+    </owl:NamedIndividual>
+
+    <!-- Anak Cronus dan Rhea -->
+    <owl:NamedIndividual rdf:about="#Hestia">
+        <rdfs:label>Hestia</rdfs:label>
+        <rdf:type rdf:resource="#Olympian"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Cronus"/>
+        <hasParent rdf:resource="#Rhea"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Demeter">
-        <rdf:type rdf:resource="#Female"/>
-        <rdf:type rdf:resource="#Olympian"/>
-        <hasParent rdf:resource="#Cronus"/>
-        <hasParent rdf:resource="#Rhea"/>
         <rdfs:label>Demeter</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Hestia">
-        <rdf:type rdf:resource="#Female"/>
         <rdf:type rdf:resource="#Olympian"/>
+        <hasGender rdf:resource="#FemaleValue"/>
         <hasParent rdf:resource="#Cronus"/>
         <hasParent rdf:resource="#Rhea"/>
-        <rdfs:label>Hestia</rdfs:label>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Hera">
-        <rdf:type rdf:resource="#Female"/>
+        <rdfs:label>Hera</rdfs:label>
         <rdf:type rdf:resource="#Olympian"/>
+        <hasGender rdf:resource="#FemaleValue"/>
         <hasParent rdf:resource="#Cronus"/>
         <hasParent rdf:resource="#Rhea"/>
-        <rdfs:label>Hera</rdfs:label>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Hades">
+        <rdfs:label>Hades</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Cronus"/>
+        <hasParent rdf:resource="#Rhea"/>
+        <rdfs:comment xml:lang="id">Tidak dimasukkan ke Olympian karena berkuasa di dunia bawah.</rdfs:comment>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Poseidon">
-        <rdf:type rdf:resource="#Male"/>
+        <rdfs:label>Poseidon</rdfs:label>
         <rdf:type rdf:resource="#Olympian"/>
+        <hasGender rdf:resource="#MaleValue"/>
         <hasParent rdf:resource="#Cronus"/>
         <hasParent rdf:resource="#Rhea"/>
-        <rdfs:label>Poseidon</rdfs:label>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Zeus">
-        <rdf:type rdf:resource="#Male"/>
+        <rdfs:label>Zeus</rdfs:label>
         <rdf:type rdf:resource="#Olympian"/>
+        <hasGender rdf:resource="#MaleValue"/>
         <hasParent rdf:resource="#Cronus"/>
         <hasParent rdf:resource="#Rhea"/>
-        <hasPartner rdf:resource="#Hera"/>
+        <hasSpouse rdf:resource="#Hera"/>
         <hasPartner rdf:resource="#Leto"/>
         <hasPartner rdf:resource="#Demeter"/>
         <hasPartner rdf:resource="#Mnemosyne"/>
@@ -1009,181 +1089,238 @@
         <hasPartner rdf:resource="#Alcmene"/>
         <hasPartner rdf:resource="#Io"/>
         <hasPartner rdf:resource="#Dione"/>
-        <rdfs:label>Zeus</rdfs:label>
     </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Athena">
-        <rdf:type rdf:resource="#Female"/>
-        <rdf:type rdf:resource="#Olympian"/>
-        <hasParent rdf:resource="#Zeus"/>
-        <rdfs:label>Athena</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Apollo">
-        <rdf:type rdf:resource="#Male"/>
-        <rdf:type rdf:resource="#Olympian"/>
-        <hasParent rdf:resource="#Zeus"/>
-        <hasParent rdf:resource="#Leto"/>
-        <rdfs:label>Apollo</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Artemis">
-        <rdf:type rdf:resource="#Female"/>
-        <rdf:type rdf:resource="#Olympian"/>
-        <hasParent rdf:resource="#Zeus"/>
-        <hasParent rdf:resource="#Leto"/>
-        <rdfs:label>Artemis</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Hephaestus">
-        <rdf:type rdf:resource="#Male"/>
-        <rdf:type rdf:resource="#Olympian"/>
-        <hasParent rdf:resource="#Hera"/>
-        <rdfs:label>Hephaestus</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Ares">
-        <rdf:type rdf:resource="#Male"/>
-        <rdf:type rdf:resource="#Olympian"/>
-        <hasParent rdf:resource="#Zeus"/>
-        <hasParent rdf:resource="#Hera"/>
-        <rdfs:label>Ares</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Hermes">
-        <rdf:type rdf:resource="#Male"/>
-        <rdf:type rdf:resource="#Olympian"/>
-        <hasParent rdf:resource="#Zeus"/>
-        <hasParent rdf:resource="#Maia"/>
-        <hasPartner rdf:resource="#Penelope"/>
-        <hasPartner rdf:resource="#Aphrodite"/>
-        <rdfs:label>Hermes</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Dionysus">
-        <rdf:type rdf:resource="#Male"/>
-        <rdf:type rdf:resource="#Olympian"/>
-        <hasParent rdf:resource="#Zeus"/>
-        <hasParent rdf:resource="#Semele"/>
-        <rdfs:label>Dionysus</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Hades">
-        <rdf:type rdf:resource="#Male"/>
-        <hasParent rdf:resource="#Cronus"/>
-        <hasParent rdf:resource="#Rhea"/>
-        <rdfs:label>Hades</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Persephone">
-        <rdf:type rdf:resource="#Female"/>
-        <hasParent rdf:resource="#Zeus"/>
-        <hasParent rdf:resource="#Demeter"/>
-        <rdfs:label>Persephone</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Hebe">
-        <rdf:type rdf:resource="#Female"/>
-        <hasParent rdf:resource="#Zeus"/>
-        <hasParent rdf:resource="#Hera"/>
-        <rdfs:label>Hebe</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Enyo">
-        <rdf:type rdf:resource="#Female"/>
-        <hasParent rdf:resource="#Zeus"/>
-        <hasParent rdf:resource="#Hera"/>
-        <rdfs:label>Enyo</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Eileithyia">
-        <rdf:type rdf:resource="#Female"/>
-        <hasParent rdf:resource="#Zeus"/>
-        <hasParent rdf:resource="#Hera"/>
-        <rdfs:label>Eileithyia</rdfs:label>
+
+    <!-- Manusia fana pasangan Zeus -->
+    <owl:NamedIndividual rdf:about="#Alcmene">
+        <rdfs:label>Alcmene</rdfs:label>
+        <rdf:type rdf:resource="#Mortal"/>
+        <hasGender rdf:resource="#FemaleValue"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Semele">
-        <rdf:type rdf:resource="#Female"/>
         <rdfs:label>Semele</rdfs:label>
+        <rdf:type rdf:resource="#Mortal"/>
+        <hasGender rdf:resource="#FemaleValue"/>
     </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Alcmene">
-        <rdf:type rdf:resource="#Female"/>
-        <rdfs:label>Alcmene</rdfs:label>
+
+    <!-- Anak Zeus -->
+    <owl:NamedIndividual rdf:about="#Athena">
+        <rdfs:label>Athena</rdfs:label>
+        <rdf:type rdf:resource="#Olympian"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Zeus"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Muses">
+        <rdfs:label>the Muses</rdfs:label>
+        <rdf:type rdf:resource="#DivineGroup"/>
+        <hasParent rdf:resource="#Zeus"/>
+        <hasParent rdf:resource="#Mnemosyne"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Apollo">
+        <rdfs:label>Apollo</rdfs:label>
+        <rdf:type rdf:resource="#Olympian"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Zeus"/>
+        <hasParent rdf:resource="#Leto"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Artemis">
+        <rdfs:label>Artemis</rdfs:label>
+        <rdf:type rdf:resource="#Olympian"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Zeus"/>
+        <hasParent rdf:resource="#Leto"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Persephone">
+        <rdfs:label>Persephone</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Zeus"/>
+        <hasParent rdf:resource="#Demeter"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Hermes">
+        <rdfs:label>Hermes</rdfs:label>
+        <rdf:type rdf:resource="#Olympian"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Zeus"/>
+        <hasParent rdf:resource="#Maia"/>
+        <hasPartner rdf:resource="#Dryope"/>
+        <hasPartner rdf:resource="#Aphrodite"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Hebe">
+        <rdfs:label>Hebe</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Zeus"/>
+        <hasParent rdf:resource="#Hera"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Hephaestus">
+        <rdfs:label>Hephaestus</rdfs:label>
+        <rdf:type rdf:resource="#Olympian"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Zeus"/>
+        <hasParent rdf:resource="#Hera"/>
+        <rdfs:comment xml:lang="id">Mengikuti bagan; versi Hesiod menyebut Hephaestus anak Hera saja.</rdfs:comment>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Ares">
+        <rdfs:label>Ares</rdfs:label>
+        <rdf:type rdf:resource="#Olympian"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Zeus"/>
+        <hasParent rdf:resource="#Hera"/>
+        <hasPartner rdf:resource="#Aphrodite"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Enyo">
+        <rdfs:label>Enyo</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Zeus"/>
+        <hasParent rdf:resource="#Hera"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Eileithyia">
+        <rdfs:label>Eileithyia</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Zeus"/>
+        <hasParent rdf:resource="#Hera"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Aphrodite">
+        <rdfs:label>Aphrodite</rdfs:label>
+        <rdf:type rdf:resource="#Olympian"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Zeus"/>
+        <hasParent rdf:resource="#Dione"/>
+        <rdfs:comment xml:lang="id">Catatan [2] pada bagan: versi anak Zeus dan Dione. Versi lahir dari Uranus adalah Aphrodite_Uranus.</rdfs:comment>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Epaphus">
+        <rdfs:label>Epaphus</rdfs:label>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Zeus"/>
+        <hasParent rdf:resource="#Io"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Heracles">
-        <rdf:type rdf:resource="#Male"/>
+        <rdfs:label>Heracles</rdfs:label>
+        <hasGender rdf:resource="#MaleValue"/>
         <hasParent rdf:resource="#Zeus"/>
         <hasParent rdf:resource="#Alcmene"/>
-        <rdfs:label>Heracles</rdfs:label>
     </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Penelope">
-        <rdf:type rdf:resource="#Female"/>
-        <rdfs:label>Penelope</rdfs:label>
+    <owl:NamedIndividual rdf:about="#Dionysus">
+        <rdfs:label>Dionysus</rdfs:label>
+        <rdf:type rdf:resource="#Olympian"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Zeus"/>
+        <hasParent rdf:resource="#Semele"/>
     </owl:NamedIndividual>
+
+    <!-- Anak Hermes dan Dryope -->
     <owl:NamedIndividual rdf:about="#Pan">
-        <rdf:type rdf:resource="#Male"/>
-        <hasParent rdf:resource="#Hermes"/>
-        <hasParent rdf:resource="#Penelope"/>
         <rdfs:label>Pan</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Hermes"/>
+        <hasParent rdf:resource="#Dryope"/>
+    </owl:NamedIndividual>
+
+    <!-- Anak Hermes dan Aphrodite -->
+    <owl:NamedIndividual rdf:about="#Tyche">
+        <rdfs:label>Tyche</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Hermes"/>
+        <hasParent rdf:resource="#Aphrodite"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Rhode">
-        <rdf:type rdf:resource="#Female"/>
+        <rdfs:label>Rhode</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#FemaleValue"/>
         <hasParent rdf:resource="#Hermes"/>
         <hasParent rdf:resource="#Aphrodite"/>
-        <rdfs:label>Rhode</rdfs:label>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Peitho">
-        <rdf:type rdf:resource="#Female"/>
+        <rdfs:label>Peitho</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#FemaleValue"/>
         <hasParent rdf:resource="#Hermes"/>
         <hasParent rdf:resource="#Aphrodite"/>
-        <rdfs:label>Peitho</rdfs:label>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Eunomia">
+        <rdfs:label>Eunomia</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Hermes"/>
+        <hasParent rdf:resource="#Aphrodite"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Hermaphroditus">
-        <rdf:type rdf:resource="#Male"/>
+        <rdfs:label>Hermaphroditus</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#MaleValue"/>
         <hasParent rdf:resource="#Hermes"/>
         <hasParent rdf:resource="#Aphrodite"/>
-        <rdfs:label>Hermaphroditus</rdfs:label>
+        <rdfs:comment xml:lang="id">Dimodelkan laki-laki sesuai kelahirannya; dalam mitos kemudian menyatu dengan Salmacis.</rdfs:comment>
+    </owl:NamedIndividual>
+
+    <!-- Anak Ares dan Aphrodite -->
+    <owl:NamedIndividual rdf:about="#Eros_Son">
+        <rdfs:label>Eros (anak Aphrodite)</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Ares"/>
+        <hasParent rdf:resource="#Aphrodite"/>
+        <rdfs:comment xml:lang="id">Catatan [1] pada bagan: versi Eros anak Aphrodite dan Ares.</rdfs:comment>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Harmonia">
-        <rdf:type rdf:resource="#Female"/>
-        <hasParent rdf:resource="#Aphrodite"/>
-        <hasParent rdf:resource="#Ares"/>
         <rdfs:label>Harmonia</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#FemaleValue"/>
+        <hasParent rdf:resource="#Ares"/>
+        <hasParent rdf:resource="#Aphrodite"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Deimos">
-        <rdf:type rdf:resource="#Male"/>
-        <hasParent rdf:resource="#Aphrodite"/>
-        <hasParent rdf:resource="#Ares"/>
         <rdfs:label>Deimos</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Ares"/>
+        <hasParent rdf:resource="#Aphrodite"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Phobos">
-        <rdf:type rdf:resource="#Male"/>
-        <hasParent rdf:resource="#Aphrodite"/>
-        <hasParent rdf:resource="#Ares"/>
         <rdfs:label>Phobos</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Ares"/>
+        <hasParent rdf:resource="#Aphrodite"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Anteros">
-        <rdf:type rdf:resource="#Male"/>
-        <hasParent rdf:resource="#Aphrodite"/>
-        <hasParent rdf:resource="#Ares"/>
         <rdfs:label>Anteros</rdfs:label>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#MaleValue"/>
+        <hasParent rdf:resource="#Ares"/>
+        <hasParent rdf:resource="#Aphrodite"/>
     </owl:NamedIndividual>
     <owl:NamedIndividual rdf:about="#Himeros">
-        <rdf:type rdf:resource="#Male"/>
-        <hasParent rdf:resource="#Aphrodite"/>
-        <hasParent rdf:resource="#Ares"/>
         <rdfs:label>Himeros</rdfs:label>
-    </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="#Eros_Son">
-        <rdf:type rdf:resource="#Male"/>
-        <hasParent rdf:resource="#Aphrodite"/>
+        <rdf:type rdf:resource="#Deity"/>
+        <hasGender rdf:resource="#MaleValue"/>
         <hasParent rdf:resource="#Ares"/>
-        <rdfs:label>Eros (anak Aphrodite)</rdfs:label>
-        <rdfs:comment xml:lang="id">Eros versi kedua pada bagan [a], anak Aphrodite dan Ares.</rdfs:comment>
+        <hasParent rdf:resource="#Aphrodite"/>
     </owl:NamedIndividual>
+
+    <!-- Semua individu dinyatakan berbeda satu sama lain -->
     <owl:AllDifferent>
         <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="#MaleValue"/>
+            <rdf:Description rdf:about="#FemaleValue"/>
+            <rdf:Description rdf:about="#GenderlessValue"/>
             <rdf:Description rdf:about="#Chaos"/>
             <rdf:Description rdf:about="#Gaia"/>
             <rdf:Description rdf:about="#Tartarus"/>
             <rdf:Description rdf:about="#Eros_Primordial"/>
             <rdf:Description rdf:about="#Erebus"/>
             <rdf:Description rdf:about="#Nyx"/>
+            <rdf:Description rdf:about="#Uranus"/>
+            <rdf:Description rdf:about="#Ourea"/>
+            <rdf:Description rdf:about="#Pontus"/>
+            <rdf:Description rdf:about="#Typhon"/>
             <rdf:Description rdf:about="#Aether"/>
             <rdf:Description rdf:about="#Hemera"/>
-            <rdf:Description rdf:about="#Uranus"/>
-            <rdf:Description rdf:about="#Pontus"/>
-            <rdf:Description rdf:about="#Ourea"/>
-            <rdf:Description rdf:about="#Typhon"/>
-            <rdf:Description rdf:about="#Echidna"/>
             <rdf:Description rdf:about="#Moros"/>
             <rdf:Description rdf:about="#Nemesis"/>
             <rdf:Description rdf:about="#Momus"/>
@@ -1194,17 +1331,16 @@
             <rdf:Description rdf:about="#Eris"/>
             <rdf:Description rdf:about="#Apate"/>
             <rdf:Description rdf:about="#Oizys"/>
-            <rdf:Description rdf:about="#Charon"/>
             <rdf:Description rdf:about="#Oneiroi"/>
-            <rdf:Description rdf:about="#Hesperides"/>
-            <rdf:Description rdf:about="#Keres"/>
             <rdf:Description rdf:about="#Moirae"/>
+            <rdf:Description rdf:about="#Keres"/>
             <rdf:Description rdf:about="#Erinyes"/>
             <rdf:Description rdf:about="#Gigantes"/>
             <rdf:Description rdf:about="#Meliae"/>
+            <rdf:Description rdf:about="#Aphrodite_Uranus"/>
             <rdf:Description rdf:about="#Hecatonchires"/>
             <rdf:Description rdf:about="#Cyclopes"/>
-            <rdf:Description rdf:about="#Aphrodite"/>
+            <rdf:Description rdf:about="#Echidna"/>
             <rdf:Description rdf:about="#Oceanus"/>
             <rdf:Description rdf:about="#Tethys"/>
             <rdf:Description rdf:about="#Hyperion"/>
@@ -1217,67 +1353,63 @@
             <rdf:Description rdf:about="#Mnemosyne"/>
             <rdf:Description rdf:about="#Crius"/>
             <rdf:Description rdf:about="#Iapetus"/>
+            <rdf:Description rdf:about="#Oceanids"/>
+            <rdf:Description rdf:about="#Inachus"/>
+            <rdf:Description rdf:about="#Melia"/>
+            <rdf:Description rdf:about="#Clymene"/>
+            <rdf:Description rdf:about="#Pleione"/>
             <rdf:Description rdf:about="#Helios"/>
             <rdf:Description rdf:about="#Eos"/>
             <rdf:Description rdf:about="#Selene"/>
+            <rdf:Description rdf:about="#Heliades"/>
             <rdf:Description rdf:about="#Asteria"/>
             <rdf:Description rdf:about="#Leto"/>
             <rdf:Description rdf:about="#Prometheus"/>
             <rdf:Description rdf:about="#Epimetheus"/>
             <rdf:Description rdf:about="#Atlas"/>
             <rdf:Description rdf:about="#Dione"/>
-            <rdf:Description rdf:about="#Oceanids"/>
-            <rdf:Description rdf:about="#Heliades"/>
             <rdf:Description rdf:about="#Hyades"/>
+            <rdf:Description rdf:about="#Hesperides"/>
             <rdf:Description rdf:about="#Pleiades"/>
-            <rdf:Description rdf:about="#Muses"/>
-            <rdf:Description rdf:about="#Inachus"/>
-            <rdf:Description rdf:about="#Melia"/>
-            <rdf:Description rdf:about="#Clymene"/>
-            <rdf:Description rdf:about="#Pleione"/>
-            <rdf:Description rdf:about="#Amphitrite"/>
-            <rdf:Description rdf:about="#Io"/>
-            <rdf:Description rdf:about="#Epaphus"/>
             <rdf:Description rdf:about="#Maia"/>
-            <rdf:Description rdf:about="#Demeter"/>
+            <rdf:Description rdf:about="#Dryope"/>
+            <rdf:Description rdf:about="#Io"/>
             <rdf:Description rdf:about="#Hestia"/>
+            <rdf:Description rdf:about="#Demeter"/>
             <rdf:Description rdf:about="#Hera"/>
+            <rdf:Description rdf:about="#Hades"/>
             <rdf:Description rdf:about="#Poseidon"/>
             <rdf:Description rdf:about="#Zeus"/>
+            <rdf:Description rdf:about="#Alcmene"/>
+            <rdf:Description rdf:about="#Semele"/>
             <rdf:Description rdf:about="#Athena"/>
+            <rdf:Description rdf:about="#Muses"/>
             <rdf:Description rdf:about="#Apollo"/>
             <rdf:Description rdf:about="#Artemis"/>
+            <rdf:Description rdf:about="#Persephone"/>
+            <rdf:Description rdf:about="#Hermes"/>
+            <rdf:Description rdf:about="#Hebe"/>
             <rdf:Description rdf:about="#Hephaestus"/>
             <rdf:Description rdf:about="#Ares"/>
-            <rdf:Description rdf:about="#Hermes"/>
-            <rdf:Description rdf:about="#Dionysus"/>
-            <rdf:Description rdf:about="#Hades"/>
-            <rdf:Description rdf:about="#Persephone"/>
-            <rdf:Description rdf:about="#Hebe"/>
             <rdf:Description rdf:about="#Enyo"/>
             <rdf:Description rdf:about="#Eileithyia"/>
-            <rdf:Description rdf:about="#Semele"/>
-            <rdf:Description rdf:about="#Alcmene"/>
+            <rdf:Description rdf:about="#Aphrodite"/>
+            <rdf:Description rdf:about="#Epaphus"/>
             <rdf:Description rdf:about="#Heracles"/>
-            <rdf:Description rdf:about="#Penelope"/>
+            <rdf:Description rdf:about="#Dionysus"/>
             <rdf:Description rdf:about="#Pan"/>
+            <rdf:Description rdf:about="#Tyche"/>
             <rdf:Description rdf:about="#Rhode"/>
             <rdf:Description rdf:about="#Peitho"/>
+            <rdf:Description rdf:about="#Eunomia"/>
             <rdf:Description rdf:about="#Hermaphroditus"/>
+            <rdf:Description rdf:about="#Eros_Son"/>
             <rdf:Description rdf:about="#Harmonia"/>
             <rdf:Description rdf:about="#Deimos"/>
             <rdf:Description rdf:about="#Phobos"/>
             <rdf:Description rdf:about="#Anteros"/>
             <rdf:Description rdf:about="#Himeros"/>
-            <rdf:Description rdf:about="#Eros_Son"/>
         </owl:distinctMembers>
     </owl:AllDifferent>
-    <swrl:Imp>
-        <rdfs:label>Saudara: dua individu berbeda dengan orang tua yang sama</rdfs:label>
-        <swrl:body><swrl:AtomList><rdf:first><swrl:IndividualPropertyAtom><swrl:propertyPredicate rdf:resource="#hasParent"/><swrl:argument1 rdf:resource="urn:swrl#x"/><swrl:argument2 rdf:resource="urn:swrl#p"/></swrl:IndividualPropertyAtom></rdf:first><rdf:rest><swrl:AtomList><rdf:first><swrl:IndividualPropertyAtom><swrl:propertyPredicate rdf:resource="#hasParent"/><swrl:argument1 rdf:resource="urn:swrl#y"/><swrl:argument2 rdf:resource="urn:swrl#p"/></swrl:IndividualPropertyAtom></rdf:first><rdf:rest><swrl:AtomList><rdf:first><swrl:DifferentIndividualsAtom><swrl:argument1 rdf:resource="urn:swrl#x"/><swrl:argument2 rdf:resource="urn:swrl#y"/></swrl:DifferentIndividualsAtom></rdf:first><rdf:rest><rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/></rdf:rest></swrl:AtomList></rdf:rest></swrl:AtomList></rdf:rest></swrl:AtomList></swrl:body>
-        <swrl:head><swrl:AtomList><rdf:first><swrl:IndividualPropertyAtom><swrl:propertyPredicate rdf:resource="#hasSibling"/><swrl:argument1 rdf:resource="urn:swrl#x"/><swrl:argument2 rdf:resource="urn:swrl#y"/></swrl:IndividualPropertyAtom></rdf:first><rdf:rest><rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/></rdf:rest></swrl:AtomList></swrl:head>
-    </swrl:Imp>
-    <swrl:Variable rdf:about="urn:swrl#x"/>
-    <swrl:Variable rdf:about="urn:swrl#y"/>
-    <swrl:Variable rdf:about="urn:swrl#p"/>
+
 </rdf:RDF>
