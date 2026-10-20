@@ -1,0 +1,3974 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://example.org/greek-mythology-ontology"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://example.org/greek-mythology-ontology">
+    <Prefix name="" IRI="http://example.org/greek-mythology-ontology#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="swrl" IRI="http://www.w3.org/2003/11/swrl#"/>
+    <Prefix name="greek-mythology-ontology" IRI="http://example.org/greek-mythology-ontology#"/>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal xml:lang="id">Dimodelkan dari bagan family tree mitologi Yunani. Hanya hasParent, hasPartner, hasSpouse, dan hasGender yang didefinisikan eksplisit; sisanya disimpulkan reasoner (Pellet).</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <Literal xml:lang="id">Ontologi Silsilah Dewa-Dewi Yunani</Literal>
+    </Annotation>
+    <Declaration>
+        <Class IRI="#ChildOfTitan"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ChildOfZeus"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Deity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Demigod"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DivineGroup"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Female"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FemaleBeing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FirstGenerationTitan"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Gender"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Genderless"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GenderlessBeing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#God"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Goddess"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Male"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MaleBeing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Monster"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mortal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MythicalBeing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Oceanid"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Olympian"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pleiad"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PrimordialDeity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Titan"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasAncestor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasAunt"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasBrother"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasBrotherInLaw"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasChild"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasChildInLaw"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasCousin"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasDaughter"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasDaughterInLaw"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasDescendant"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasFather"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasFatherInLaw"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasGender"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasGrandchild"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasGranddaughter"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasGrandfather"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasGrandmother"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasGrandparent"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasGrandson"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasHusband"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasMother"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasMotherInLaw"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasNephew"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasNiece"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasParent"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasParentInLaw"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasPartner"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSibling"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSiblingInLaw"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSister"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSisterInLaw"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSon"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSonInLaw"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSpouse"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasUncle"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasWife"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasDomain"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Aether"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Alcmene"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Anteros"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Apate"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Aphrodite"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Aphrodite_Uranus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Apollo"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ares"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Artemis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Asteria"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Athena"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Atlas"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Chaos"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Clymene"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Coeus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Crius"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cronus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cyclopes"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Deimos"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Demeter"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Dione"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Dionysus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Dryope"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Echidna"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Eileithyia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Enyo"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Eos"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Epaphus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Epimetheus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Erebus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Erinyes"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Eris"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Eros_Primordial"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Eros_Son"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Eunomia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Gaia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GenderlessValue"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Geras"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Gigantes"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hades"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Harmonia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hebe"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hecatonchires"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Heliades"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Helios"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hemera"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hephaestus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hera"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Heracles"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hermaphroditus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hermes"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hesperides"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hestia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Himeros"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hyades"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hyperion"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hypnos"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Iapetus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Inachus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Io"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Keres"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Leto"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Maia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MaleValue"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Melia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Meliae"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Mnemosyne"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Moirae"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Momus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Moros"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Muses"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Nemesis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Nyx"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Oceanids"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Oceanus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Oizys"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Oneiroi"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ourea"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Pan"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Peitho"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Persephone"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Philotes"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Phobos"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Phoebe"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Pleiades"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Pleione"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Pontus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Poseidon"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Prometheus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Rhea"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Rhode"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Selene"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Semele"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Tartarus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Tethys"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Thanatos"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Theia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Themis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Tyche"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Typhon"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Uranus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Zeus"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#ChildOfTitan"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#MythicalBeing"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasParent"/>
+                <Class IRI="#Titan"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ChildOfZeus"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#MythicalBeing"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="#hasParent"/>
+                <NamedIndividual IRI="#Zeus"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Demigod"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#MythicalBeing"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasParent"/>
+                <Class IRI="#Deity"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasParent"/>
+                <Class IRI="#Mortal"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#FemaleBeing"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#MythicalBeing"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasGender"/>
+                <Class IRI="#Female"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Gender"/>
+        <ObjectUnionOf>
+            <Class IRI="#Female"/>
+            <Class IRI="#Genderless"/>
+            <Class IRI="#Male"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#GenderlessBeing"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#MythicalBeing"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasGender"/>
+                <Class IRI="#Genderless"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#God"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Deity"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasGender"/>
+                <Class IRI="#Male"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Goddess"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Deity"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasGender"/>
+                <Class IRI="#Female"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#MaleBeing"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#MythicalBeing"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasGender"/>
+                <Class IRI="#Male"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#Deity"/>
+        <Class IRI="#MythicalBeing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DivineGroup"/>
+        <Class IRI="#MythicalBeing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Female"/>
+        <Class IRI="#Gender"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FirstGenerationTitan"/>
+        <Class IRI="#Titan"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Genderless"/>
+        <Class IRI="#Gender"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Male"/>
+        <Class IRI="#Gender"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monster"/>
+        <Class IRI="#MythicalBeing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mortal"/>
+        <Class IRI="#MythicalBeing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Oceanid"/>
+        <Class IRI="#Deity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Olympian"/>
+        <Class IRI="#Deity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pleiad"/>
+        <Class IRI="#Deity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PrimordialDeity"/>
+        <Class IRI="#Deity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Titan"/>
+        <Class IRI="#Deity"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Deity"/>
+        <Class IRI="#Mortal"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#DivineGroup"/>
+        <Class IRI="#FemaleBeing"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#DivineGroup"/>
+        <Class IRI="#MaleBeing"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Female"/>
+        <Class IRI="#Genderless"/>
+        <Class IRI="#Male"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Gender"/>
+        <Class IRI="#MythicalBeing"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Olympian"/>
+        <Class IRI="#PrimordialDeity"/>
+        <Class IRI="#Titan"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#PrimordialDeity"/>
+        <NamedIndividual IRI="#Aether"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Mortal"/>
+        <NamedIndividual IRI="#Alcmene"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Anteros"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Apate"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Olympian"/>
+        <NamedIndividual IRI="#Aphrodite"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Olympian"/>
+        <NamedIndividual IRI="#Aphrodite_Uranus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Olympian"/>
+        <NamedIndividual IRI="#Apollo"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Olympian"/>
+        <NamedIndividual IRI="#Ares"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Olympian"/>
+        <NamedIndividual IRI="#Artemis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Titan"/>
+        <NamedIndividual IRI="#Asteria"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Olympian"/>
+        <NamedIndividual IRI="#Athena"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Titan"/>
+        <NamedIndividual IRI="#Atlas"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PrimordialDeity"/>
+        <NamedIndividual IRI="#Chaos"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Oceanid"/>
+        <NamedIndividual IRI="#Clymene"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FirstGenerationTitan"/>
+        <NamedIndividual IRI="#Coeus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FirstGenerationTitan"/>
+        <NamedIndividual IRI="#Crius"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FirstGenerationTitan"/>
+        <NamedIndividual IRI="#Cronus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DivineGroup"/>
+        <NamedIndividual IRI="#Cyclopes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Monster"/>
+        <NamedIndividual IRI="#Cyclopes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Deimos"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Olympian"/>
+        <NamedIndividual IRI="#Demeter"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Titan"/>
+        <NamedIndividual IRI="#Dione"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Olympian"/>
+        <NamedIndividual IRI="#Dionysus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Pleiad"/>
+        <NamedIndividual IRI="#Dryope"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Monster"/>
+        <NamedIndividual IRI="#Echidna"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Eileithyia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Enyo"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Titan"/>
+        <NamedIndividual IRI="#Eos"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Titan"/>
+        <NamedIndividual IRI="#Epimetheus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PrimordialDeity"/>
+        <NamedIndividual IRI="#Erebus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DivineGroup"/>
+        <NamedIndividual IRI="#Erinyes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Eris"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PrimordialDeity"/>
+        <NamedIndividual IRI="#Eros_Primordial"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Eros_Son"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Eunomia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Female"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PrimordialDeity"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genderless"/>
+        <NamedIndividual IRI="#GenderlessValue"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Geras"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DivineGroup"/>
+        <NamedIndividual IRI="#Gigantes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Monster"/>
+        <NamedIndividual IRI="#Gigantes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Hades"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Harmonia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Hebe"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DivineGroup"/>
+        <NamedIndividual IRI="#Hecatonchires"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Monster"/>
+        <NamedIndividual IRI="#Hecatonchires"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DivineGroup"/>
+        <NamedIndividual IRI="#Heliades"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Titan"/>
+        <NamedIndividual IRI="#Helios"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PrimordialDeity"/>
+        <NamedIndividual IRI="#Hemera"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Olympian"/>
+        <NamedIndividual IRI="#Hephaestus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Olympian"/>
+        <NamedIndividual IRI="#Hera"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Hermaphroditus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Olympian"/>
+        <NamedIndividual IRI="#Hermes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DivineGroup"/>
+        <NamedIndividual IRI="#Hesperides"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Olympian"/>
+        <NamedIndividual IRI="#Hestia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Himeros"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DivineGroup"/>
+        <NamedIndividual IRI="#Hyades"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FirstGenerationTitan"/>
+        <NamedIndividual IRI="#Hyperion"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Hypnos"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FirstGenerationTitan"/>
+        <NamedIndividual IRI="#Iapetus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Oceanid"/>
+        <NamedIndividual IRI="#Inachus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Mortal"/>
+        <NamedIndividual IRI="#Io"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DivineGroup"/>
+        <NamedIndividual IRI="#Keres"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Titan"/>
+        <NamedIndividual IRI="#Leto"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Pleiad"/>
+        <NamedIndividual IRI="#Maia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Male"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Oceanid"/>
+        <NamedIndividual IRI="#Melia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DivineGroup"/>
+        <NamedIndividual IRI="#Meliae"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FirstGenerationTitan"/>
+        <NamedIndividual IRI="#Mnemosyne"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DivineGroup"/>
+        <NamedIndividual IRI="#Moirae"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Momus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Moros"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DivineGroup"/>
+        <NamedIndividual IRI="#Muses"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Nemesis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PrimordialDeity"/>
+        <NamedIndividual IRI="#Nyx"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DivineGroup"/>
+        <NamedIndividual IRI="#Oceanids"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FirstGenerationTitan"/>
+        <NamedIndividual IRI="#Oceanus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Oizys"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DivineGroup"/>
+        <NamedIndividual IRI="#Oneiroi"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DivineGroup"/>
+        <NamedIndividual IRI="#Ourea"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PrimordialDeity"/>
+        <NamedIndividual IRI="#Ourea"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Pan"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Peitho"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Persephone"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Philotes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Phobos"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FirstGenerationTitan"/>
+        <NamedIndividual IRI="#Phoebe"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DivineGroup"/>
+        <NamedIndividual IRI="#Pleiades"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Oceanid"/>
+        <NamedIndividual IRI="#Pleione"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PrimordialDeity"/>
+        <NamedIndividual IRI="#Pontus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Olympian"/>
+        <NamedIndividual IRI="#Poseidon"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Titan"/>
+        <NamedIndividual IRI="#Prometheus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FirstGenerationTitan"/>
+        <NamedIndividual IRI="#Rhea"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Rhode"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Titan"/>
+        <NamedIndividual IRI="#Selene"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Mortal"/>
+        <NamedIndividual IRI="#Semele"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PrimordialDeity"/>
+        <NamedIndividual IRI="#Tartarus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FirstGenerationTitan"/>
+        <NamedIndividual IRI="#Tethys"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Thanatos"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FirstGenerationTitan"/>
+        <NamedIndividual IRI="#Theia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FirstGenerationTitan"/>
+        <NamedIndividual IRI="#Themis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Deity"/>
+        <NamedIndividual IRI="#Tyche"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Monster"/>
+        <NamedIndividual IRI="#Typhon"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PrimordialDeity"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Olympian"/>
+        <NamedIndividual IRI="#Zeus"/>
+    </ClassAssertion>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#Aether"/>
+        <NamedIndividual IRI="#Alcmene"/>
+        <NamedIndividual IRI="#Anteros"/>
+        <NamedIndividual IRI="#Apate"/>
+        <NamedIndividual IRI="#Aphrodite"/>
+        <NamedIndividual IRI="#Aphrodite_Uranus"/>
+        <NamedIndividual IRI="#Apollo"/>
+        <NamedIndividual IRI="#Ares"/>
+        <NamedIndividual IRI="#Artemis"/>
+        <NamedIndividual IRI="#Asteria"/>
+        <NamedIndividual IRI="#Athena"/>
+        <NamedIndividual IRI="#Atlas"/>
+        <NamedIndividual IRI="#Chaos"/>
+        <NamedIndividual IRI="#Clymene"/>
+        <NamedIndividual IRI="#Coeus"/>
+        <NamedIndividual IRI="#Crius"/>
+        <NamedIndividual IRI="#Cronus"/>
+        <NamedIndividual IRI="#Cyclopes"/>
+        <NamedIndividual IRI="#Deimos"/>
+        <NamedIndividual IRI="#Demeter"/>
+        <NamedIndividual IRI="#Dione"/>
+        <NamedIndividual IRI="#Dionysus"/>
+        <NamedIndividual IRI="#Dryope"/>
+        <NamedIndividual IRI="#Echidna"/>
+        <NamedIndividual IRI="#Eileithyia"/>
+        <NamedIndividual IRI="#Enyo"/>
+        <NamedIndividual IRI="#Eos"/>
+        <NamedIndividual IRI="#Epaphus"/>
+        <NamedIndividual IRI="#Epimetheus"/>
+        <NamedIndividual IRI="#Erebus"/>
+        <NamedIndividual IRI="#Erinyes"/>
+        <NamedIndividual IRI="#Eris"/>
+        <NamedIndividual IRI="#Eros_Primordial"/>
+        <NamedIndividual IRI="#Eros_Son"/>
+        <NamedIndividual IRI="#Eunomia"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+        <NamedIndividual IRI="#Gaia"/>
+        <NamedIndividual IRI="#GenderlessValue"/>
+        <NamedIndividual IRI="#Geras"/>
+        <NamedIndividual IRI="#Gigantes"/>
+        <NamedIndividual IRI="#Hades"/>
+        <NamedIndividual IRI="#Harmonia"/>
+        <NamedIndividual IRI="#Hebe"/>
+        <NamedIndividual IRI="#Hecatonchires"/>
+        <NamedIndividual IRI="#Heliades"/>
+        <NamedIndividual IRI="#Helios"/>
+        <NamedIndividual IRI="#Hemera"/>
+        <NamedIndividual IRI="#Hephaestus"/>
+        <NamedIndividual IRI="#Hera"/>
+        <NamedIndividual IRI="#Heracles"/>
+        <NamedIndividual IRI="#Hermaphroditus"/>
+        <NamedIndividual IRI="#Hermes"/>
+        <NamedIndividual IRI="#Hesperides"/>
+        <NamedIndividual IRI="#Hestia"/>
+        <NamedIndividual IRI="#Himeros"/>
+        <NamedIndividual IRI="#Hyades"/>
+        <NamedIndividual IRI="#Hyperion"/>
+        <NamedIndividual IRI="#Hypnos"/>
+        <NamedIndividual IRI="#Iapetus"/>
+        <NamedIndividual IRI="#Inachus"/>
+        <NamedIndividual IRI="#Io"/>
+        <NamedIndividual IRI="#Keres"/>
+        <NamedIndividual IRI="#Leto"/>
+        <NamedIndividual IRI="#Maia"/>
+        <NamedIndividual IRI="#MaleValue"/>
+        <NamedIndividual IRI="#Melia"/>
+        <NamedIndividual IRI="#Meliae"/>
+        <NamedIndividual IRI="#Mnemosyne"/>
+        <NamedIndividual IRI="#Moirae"/>
+        <NamedIndividual IRI="#Momus"/>
+        <NamedIndividual IRI="#Moros"/>
+        <NamedIndividual IRI="#Muses"/>
+        <NamedIndividual IRI="#Nemesis"/>
+        <NamedIndividual IRI="#Nyx"/>
+        <NamedIndividual IRI="#Oceanids"/>
+        <NamedIndividual IRI="#Oceanus"/>
+        <NamedIndividual IRI="#Oizys"/>
+        <NamedIndividual IRI="#Oneiroi"/>
+        <NamedIndividual IRI="#Ourea"/>
+        <NamedIndividual IRI="#Pan"/>
+        <NamedIndividual IRI="#Peitho"/>
+        <NamedIndividual IRI="#Persephone"/>
+        <NamedIndividual IRI="#Philotes"/>
+        <NamedIndividual IRI="#Phobos"/>
+        <NamedIndividual IRI="#Phoebe"/>
+        <NamedIndividual IRI="#Pleiades"/>
+        <NamedIndividual IRI="#Pleione"/>
+        <NamedIndividual IRI="#Pontus"/>
+        <NamedIndividual IRI="#Poseidon"/>
+        <NamedIndividual IRI="#Prometheus"/>
+        <NamedIndividual IRI="#Rhea"/>
+        <NamedIndividual IRI="#Rhode"/>
+        <NamedIndividual IRI="#Selene"/>
+        <NamedIndividual IRI="#Semele"/>
+        <NamedIndividual IRI="#Tartarus"/>
+        <NamedIndividual IRI="#Tethys"/>
+        <NamedIndividual IRI="#Thanatos"/>
+        <NamedIndividual IRI="#Theia"/>
+        <NamedIndividual IRI="#Themis"/>
+        <NamedIndividual IRI="#Tyche"/>
+        <NamedIndividual IRI="#Typhon"/>
+        <NamedIndividual IRI="#Uranus"/>
+        <NamedIndividual IRI="#Zeus"/>
+    </DifferentIndividuals>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Aether"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Aether"/>
+        <NamedIndividual IRI="#Erebus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Aether"/>
+        <NamedIndividual IRI="#Nyx"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Alcmene"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Anteros"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Anteros"/>
+        <NamedIndividual IRI="#Aphrodite"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Anteros"/>
+        <NamedIndividual IRI="#Ares"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Apate"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Apate"/>
+        <NamedIndividual IRI="#Nyx"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Aphrodite"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Aphrodite"/>
+        <NamedIndividual IRI="#Dione"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Aphrodite"/>
+        <NamedIndividual IRI="#Zeus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Aphrodite_Uranus"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Aphrodite_Uranus"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Apollo"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Apollo"/>
+        <NamedIndividual IRI="#Leto"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Apollo"/>
+        <NamedIndividual IRI="#Zeus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Ares"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Ares"/>
+        <NamedIndividual IRI="#Hera"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Ares"/>
+        <NamedIndividual IRI="#Zeus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPartner"/>
+        <NamedIndividual IRI="#Ares"/>
+        <NamedIndividual IRI="#Aphrodite"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Artemis"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Artemis"/>
+        <NamedIndividual IRI="#Leto"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Artemis"/>
+        <NamedIndividual IRI="#Zeus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Asteria"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Asteria"/>
+        <NamedIndividual IRI="#Coeus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Asteria"/>
+        <NamedIndividual IRI="#Phoebe"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Athena"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Athena"/>
+        <NamedIndividual IRI="#Zeus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Atlas"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Atlas"/>
+        <NamedIndividual IRI="#Iapetus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpouse"/>
+        <NamedIndividual IRI="#Atlas"/>
+        <NamedIndividual IRI="#Pleione"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Chaos"/>
+        <NamedIndividual IRI="#GenderlessValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Clymene"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Clymene"/>
+        <NamedIndividual IRI="#Oceanus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Clymene"/>
+        <NamedIndividual IRI="#Tethys"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Coeus"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Coeus"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Coeus"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpouse"/>
+        <NamedIndividual IRI="#Coeus"/>
+        <NamedIndividual IRI="#Phoebe"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Crius"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Crius"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Crius"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Cronus"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Cronus"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Cronus"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpouse"/>
+        <NamedIndividual IRI="#Cronus"/>
+        <NamedIndividual IRI="#Rhea"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Cyclopes"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Cyclopes"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Deimos"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Deimos"/>
+        <NamedIndividual IRI="#Aphrodite"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Deimos"/>
+        <NamedIndividual IRI="#Ares"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Demeter"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Demeter"/>
+        <NamedIndividual IRI="#Cronus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Demeter"/>
+        <NamedIndividual IRI="#Rhea"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Dione"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Dione"/>
+        <NamedIndividual IRI="#Epimetheus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Dionysus"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Dionysus"/>
+        <NamedIndividual IRI="#Semele"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Dionysus"/>
+        <NamedIndividual IRI="#Zeus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Dryope"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Dryope"/>
+        <NamedIndividual IRI="#Atlas"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Dryope"/>
+        <NamedIndividual IRI="#Pleione"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Echidna"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Echidna"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Echidna"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Eileithyia"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Eileithyia"/>
+        <NamedIndividual IRI="#Hera"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Eileithyia"/>
+        <NamedIndividual IRI="#Zeus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Enyo"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Enyo"/>
+        <NamedIndividual IRI="#Hera"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Enyo"/>
+        <NamedIndividual IRI="#Zeus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Eos"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Eos"/>
+        <NamedIndividual IRI="#Hyperion"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Eos"/>
+        <NamedIndividual IRI="#Theia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Epaphus"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Epaphus"/>
+        <NamedIndividual IRI="#Io"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Epaphus"/>
+        <NamedIndividual IRI="#Zeus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Epimetheus"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Epimetheus"/>
+        <NamedIndividual IRI="#Iapetus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Erebus"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Erebus"/>
+        <NamedIndividual IRI="#Chaos"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPartner"/>
+        <NamedIndividual IRI="#Erebus"/>
+        <NamedIndividual IRI="#Nyx"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Erinyes"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Eris"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Eris"/>
+        <NamedIndividual IRI="#Nyx"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Eros_Primordial"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Eros_Primordial"/>
+        <NamedIndividual IRI="#Chaos"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Eros_Son"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Eros_Son"/>
+        <NamedIndividual IRI="#Aphrodite"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Eros_Son"/>
+        <NamedIndividual IRI="#Ares"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Eunomia"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Eunomia"/>
+        <NamedIndividual IRI="#Aphrodite"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Eunomia"/>
+        <NamedIndividual IRI="#Hermes"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Gaia"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Gaia"/>
+        <NamedIndividual IRI="#Chaos"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPartner"/>
+        <NamedIndividual IRI="#Gaia"/>
+        <NamedIndividual IRI="#Tartarus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpouse"/>
+        <NamedIndividual IRI="#Gaia"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Geras"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Geras"/>
+        <NamedIndividual IRI="#Nyx"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Gigantes"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Hades"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hades"/>
+        <NamedIndividual IRI="#Cronus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hades"/>
+        <NamedIndividual IRI="#Rhea"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Harmonia"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Harmonia"/>
+        <NamedIndividual IRI="#Aphrodite"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Harmonia"/>
+        <NamedIndividual IRI="#Ares"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Hebe"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hebe"/>
+        <NamedIndividual IRI="#Hera"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hebe"/>
+        <NamedIndividual IRI="#Zeus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hecatonchires"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hecatonchires"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Heliades"/>
+        <NamedIndividual IRI="#Clymene"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Heliades"/>
+        <NamedIndividual IRI="#Helios"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Helios"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Helios"/>
+        <NamedIndividual IRI="#Hyperion"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Helios"/>
+        <NamedIndividual IRI="#Theia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPartner"/>
+        <NamedIndividual IRI="#Helios"/>
+        <NamedIndividual IRI="#Clymene"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Hemera"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hemera"/>
+        <NamedIndividual IRI="#Erebus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hemera"/>
+        <NamedIndividual IRI="#Nyx"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Hephaestus"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hephaestus"/>
+        <NamedIndividual IRI="#Hera"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hephaestus"/>
+        <NamedIndividual IRI="#Zeus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Hera"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hera"/>
+        <NamedIndividual IRI="#Cronus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hera"/>
+        <NamedIndividual IRI="#Rhea"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Heracles"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Heracles"/>
+        <NamedIndividual IRI="#Alcmene"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Heracles"/>
+        <NamedIndividual IRI="#Zeus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Hermaphroditus"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hermaphroditus"/>
+        <NamedIndividual IRI="#Aphrodite"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hermaphroditus"/>
+        <NamedIndividual IRI="#Hermes"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Hermes"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hermes"/>
+        <NamedIndividual IRI="#Maia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hermes"/>
+        <NamedIndividual IRI="#Zeus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPartner"/>
+        <NamedIndividual IRI="#Hermes"/>
+        <NamedIndividual IRI="#Aphrodite"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPartner"/>
+        <NamedIndividual IRI="#Hermes"/>
+        <NamedIndividual IRI="#Dryope"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hesperides"/>
+        <NamedIndividual IRI="#Atlas"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hesperides"/>
+        <NamedIndividual IRI="#Pleione"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Hestia"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hestia"/>
+        <NamedIndividual IRI="#Cronus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hestia"/>
+        <NamedIndividual IRI="#Rhea"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Himeros"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Himeros"/>
+        <NamedIndividual IRI="#Aphrodite"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Himeros"/>
+        <NamedIndividual IRI="#Ares"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hyades"/>
+        <NamedIndividual IRI="#Atlas"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hyades"/>
+        <NamedIndividual IRI="#Pleione"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Hyperion"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hyperion"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hyperion"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpouse"/>
+        <NamedIndividual IRI="#Hyperion"/>
+        <NamedIndividual IRI="#Theia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Hypnos"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Hypnos"/>
+        <NamedIndividual IRI="#Nyx"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Iapetus"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Iapetus"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Iapetus"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Inachus"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Inachus"/>
+        <NamedIndividual IRI="#Oceanus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Inachus"/>
+        <NamedIndividual IRI="#Tethys"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpouse"/>
+        <NamedIndividual IRI="#Inachus"/>
+        <NamedIndividual IRI="#Melia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Io"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Io"/>
+        <NamedIndividual IRI="#Inachus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Io"/>
+        <NamedIndividual IRI="#Melia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Keres"/>
+        <NamedIndividual IRI="#Nyx"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Leto"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Leto"/>
+        <NamedIndividual IRI="#Coeus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Leto"/>
+        <NamedIndividual IRI="#Phoebe"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Maia"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Maia"/>
+        <NamedIndividual IRI="#Atlas"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Maia"/>
+        <NamedIndividual IRI="#Pleione"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Melia"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Melia"/>
+        <NamedIndividual IRI="#Oceanus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Melia"/>
+        <NamedIndividual IRI="#Tethys"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Meliae"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Mnemosyne"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Mnemosyne"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Mnemosyne"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Moirae"/>
+        <NamedIndividual IRI="#Nyx"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Momus"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Momus"/>
+        <NamedIndividual IRI="#Nyx"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Moros"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Moros"/>
+        <NamedIndividual IRI="#Nyx"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Muses"/>
+        <NamedIndividual IRI="#Mnemosyne"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Muses"/>
+        <NamedIndividual IRI="#Zeus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Nemesis"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Nemesis"/>
+        <NamedIndividual IRI="#Nyx"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Nyx"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Nyx"/>
+        <NamedIndividual IRI="#Chaos"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Oceanids"/>
+        <NamedIndividual IRI="#Oceanus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Oceanids"/>
+        <NamedIndividual IRI="#Tethys"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Oceanus"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Oceanus"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Oceanus"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpouse"/>
+        <NamedIndividual IRI="#Oceanus"/>
+        <NamedIndividual IRI="#Tethys"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Oizys"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Oizys"/>
+        <NamedIndividual IRI="#Nyx"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Oneiroi"/>
+        <NamedIndividual IRI="#Nyx"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Ourea"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Pan"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Pan"/>
+        <NamedIndividual IRI="#Dryope"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Pan"/>
+        <NamedIndividual IRI="#Hermes"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Peitho"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Peitho"/>
+        <NamedIndividual IRI="#Aphrodite"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Peitho"/>
+        <NamedIndividual IRI="#Hermes"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Persephone"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Persephone"/>
+        <NamedIndividual IRI="#Demeter"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Persephone"/>
+        <NamedIndividual IRI="#Zeus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Philotes"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Philotes"/>
+        <NamedIndividual IRI="#Nyx"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Phobos"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Phobos"/>
+        <NamedIndividual IRI="#Aphrodite"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Phobos"/>
+        <NamedIndividual IRI="#Ares"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Phoebe"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Phoebe"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Phoebe"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Pleiades"/>
+        <NamedIndividual IRI="#Atlas"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Pleiades"/>
+        <NamedIndividual IRI="#Pleione"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Pleione"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Pleione"/>
+        <NamedIndividual IRI="#Oceanus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Pleione"/>
+        <NamedIndividual IRI="#Tethys"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Pontus"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Pontus"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Poseidon"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Poseidon"/>
+        <NamedIndividual IRI="#Cronus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Poseidon"/>
+        <NamedIndividual IRI="#Rhea"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Prometheus"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Prometheus"/>
+        <NamedIndividual IRI="#Iapetus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Rhea"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Rhea"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Rhea"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Rhode"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Rhode"/>
+        <NamedIndividual IRI="#Aphrodite"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Rhode"/>
+        <NamedIndividual IRI="#Hermes"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Selene"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Selene"/>
+        <NamedIndividual IRI="#Hyperion"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Selene"/>
+        <NamedIndividual IRI="#Theia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Semele"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Tartarus"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Tartarus"/>
+        <NamedIndividual IRI="#Chaos"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Tethys"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Tethys"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Tethys"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Thanatos"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Thanatos"/>
+        <NamedIndividual IRI="#Nyx"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Theia"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Theia"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Theia"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Themis"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Themis"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Themis"/>
+        <NamedIndividual IRI="#Uranus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Tyche"/>
+        <NamedIndividual IRI="#FemaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Tyche"/>
+        <NamedIndividual IRI="#Aphrodite"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Tyche"/>
+        <NamedIndividual IRI="#Hermes"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Typhon"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Typhon"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Typhon"/>
+        <NamedIndividual IRI="#Tartarus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Uranus"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Uranus"/>
+        <NamedIndividual IRI="#Gaia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGender"/>
+        <NamedIndividual IRI="#Zeus"/>
+        <NamedIndividual IRI="#MaleValue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Zeus"/>
+        <NamedIndividual IRI="#Cronus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasParent"/>
+        <NamedIndividual IRI="#Zeus"/>
+        <NamedIndividual IRI="#Rhea"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPartner"/>
+        <NamedIndividual IRI="#Zeus"/>
+        <NamedIndividual IRI="#Alcmene"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPartner"/>
+        <NamedIndividual IRI="#Zeus"/>
+        <NamedIndividual IRI="#Demeter"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPartner"/>
+        <NamedIndividual IRI="#Zeus"/>
+        <NamedIndividual IRI="#Dione"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPartner"/>
+        <NamedIndividual IRI="#Zeus"/>
+        <NamedIndividual IRI="#Io"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPartner"/>
+        <NamedIndividual IRI="#Zeus"/>
+        <NamedIndividual IRI="#Leto"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPartner"/>
+        <NamedIndividual IRI="#Zeus"/>
+        <NamedIndividual IRI="#Maia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPartner"/>
+        <NamedIndividual IRI="#Zeus"/>
+        <NamedIndividual IRI="#Mnemosyne"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPartner"/>
+        <NamedIndividual IRI="#Zeus"/>
+        <NamedIndividual IRI="#Semele"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpouse"/>
+        <NamedIndividual IRI="#Zeus"/>
+        <NamedIndividual IRI="#Hera"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Aether"/>
+        <Literal>Heaven</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Apate"/>
+        <Literal>Deceit</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Chaos"/>
+        <Literal>The Void</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Erebus"/>
+        <Literal>Darkness</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Eris"/>
+        <Literal>Strife</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Eros_Primordial"/>
+        <Literal>Desire</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Gaia"/>
+        <Literal>The Earth</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Geras"/>
+        <Literal>Aging</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Hemera"/>
+        <Literal>The Day</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Hypnos"/>
+        <Literal>Sleep</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Momus"/>
+        <Literal>Blame</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Moros"/>
+        <Literal>Doom</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Nemesis"/>
+        <Literal>Retribution</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Nyx"/>
+        <Literal>The Night</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Oizys"/>
+        <Literal>Distress</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Oneiroi"/>
+        <Literal>Dreams</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Ourea"/>
+        <Literal>Mountains</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Philotes"/>
+        <Literal>Affection</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Pontus"/>
+        <Literal>The Sea</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Tartarus"/>
+        <Literal>The Abyss</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Thanatos"/>
+        <Literal>Death</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Typhon"/>
+        <Literal>The Storms</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDomain"/>
+        <NamedIndividual IRI="#Uranus"/>
+        <Literal>The Sky</Literal>
+    </DataPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasBrother"/>
+        <ObjectProperty IRI="#hasSibling"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasBrotherInLaw"/>
+        <ObjectProperty IRI="#hasSiblingInLaw"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasChild"/>
+        <ObjectProperty IRI="#hasDescendant"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasDaughter"/>
+        <ObjectProperty IRI="#hasChild"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasDaughterInLaw"/>
+        <ObjectProperty IRI="#hasChildInLaw"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasFather"/>
+        <ObjectProperty IRI="#hasParent"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasFatherInLaw"/>
+        <ObjectProperty IRI="#hasParentInLaw"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasGrandchild"/>
+        <ObjectProperty IRI="#hasDescendant"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasGranddaughter"/>
+        <ObjectProperty IRI="#hasGrandchild"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasGrandfather"/>
+        <ObjectProperty IRI="#hasGrandparent"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasGrandmother"/>
+        <ObjectProperty IRI="#hasGrandparent"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasGrandparent"/>
+        <ObjectProperty IRI="#hasAncestor"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasGrandson"/>
+        <ObjectProperty IRI="#hasGrandchild"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasHusband"/>
+        <ObjectProperty IRI="#hasSpouse"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasMother"/>
+        <ObjectProperty IRI="#hasParent"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasMotherInLaw"/>
+        <ObjectProperty IRI="#hasParentInLaw"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasParent"/>
+        <ObjectProperty IRI="#hasAncestor"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasSister"/>
+        <ObjectProperty IRI="#hasSibling"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasSisterInLaw"/>
+        <ObjectProperty IRI="#hasSiblingInLaw"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasSon"/>
+        <ObjectProperty IRI="#hasChild"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasSonInLaw"/>
+        <ObjectProperty IRI="#hasChildInLaw"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasSpouse"/>
+        <ObjectProperty IRI="#hasPartner"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasWife"/>
+        <ObjectProperty IRI="#hasSpouse"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasAncestor"/>
+        <ObjectProperty IRI="#hasDescendant"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasChild"/>
+        <ObjectProperty IRI="#hasParent"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasChildInLaw"/>
+        <ObjectProperty IRI="#hasParentInLaw"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasGrandchild"/>
+        <ObjectProperty IRI="#hasGrandparent"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasHusband"/>
+        <ObjectProperty IRI="#hasWife"/>
+    </InverseObjectProperties>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasGender"/>
+    </FunctionalObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#hasCousin"/>
+    </SymmetricObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#hasPartner"/>
+    </SymmetricObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#hasSibling"/>
+    </SymmetricObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#hasSiblingInLaw"/>
+    </SymmetricObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#hasSpouse"/>
+    </SymmetricObjectProperty>
+    <AsymmetricObjectProperty>
+        <ObjectProperty IRI="#hasParent"/>
+    </AsymmetricObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#hasAncestor"/>
+    </TransitiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#hasCousin"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#hasParent"/>
+    </IrreflexiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasAncestor"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasAunt"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasBrother"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasCousin"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasDescendant"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasFather"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasGender"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasGrandfather"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasGrandmother"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasGrandparent"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasHusband"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasMother"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasNephew"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasNiece"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasParent"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasParentInLaw"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasPartner"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasSibling"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasSiblingInLaw"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasSister"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasSpouse"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasUncle"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasWife"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasAncestor"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasAunt"/>
+        <Class IRI="#FemaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasBrother"/>
+        <Class IRI="#MaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasBrotherInLaw"/>
+        <Class IRI="#MaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCousin"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDaughter"/>
+        <Class IRI="#FemaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDaughterInLaw"/>
+        <Class IRI="#FemaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDescendant"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasFather"/>
+        <Class IRI="#MaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasFatherInLaw"/>
+        <Class IRI="#MaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasGender"/>
+        <Class IRI="#Gender"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasGranddaughter"/>
+        <Class IRI="#FemaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasGrandfather"/>
+        <Class IRI="#MaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasGrandmother"/>
+        <Class IRI="#FemaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasGrandparent"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasGrandson"/>
+        <Class IRI="#MaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasHusband"/>
+        <Class IRI="#MaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasMother"/>
+        <Class IRI="#FemaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasMotherInLaw"/>
+        <Class IRI="#FemaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasNephew"/>
+        <Class IRI="#MaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasNiece"/>
+        <Class IRI="#FemaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasParent"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasParentInLaw"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasPartner"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasSibling"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasSiblingInLaw"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasSister"/>
+        <Class IRI="#FemaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasSisterInLaw"/>
+        <Class IRI="#FemaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasSon"/>
+        <Class IRI="#MaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasSonInLaw"/>
+        <Class IRI="#MaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasSpouse"/>
+        <Class IRI="#MythicalBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasUncle"/>
+        <Class IRI="#MaleBeing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasWife"/>
+        <Class IRI="#FemaleBeing"/>
+    </ObjectPropertyRange>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasChild"/>
+            <ObjectProperty IRI="#hasDaughter"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasGranddaughter"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasChild"/>
+            <ObjectProperty IRI="#hasHusband"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasSonInLaw"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasChild"/>
+            <ObjectProperty IRI="#hasSon"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasGrandson"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasChild"/>
+            <ObjectProperty IRI="#hasWife"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasDaughterInLaw"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasParent"/>
+            <ObjectProperty IRI="#hasBrother"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasUncle"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasParent"/>
+            <ObjectProperty IRI="#hasFather"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasGrandfather"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasParent"/>
+            <ObjectProperty IRI="#hasMother"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasGrandmother"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasParent"/>
+            <ObjectProperty IRI="#hasParent"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasGrandparent"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasParent"/>
+            <ObjectProperty IRI="#hasSister"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasAunt"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasSibling"/>
+            <ObjectProperty IRI="#hasDaughter"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasNiece"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasSibling"/>
+            <ObjectProperty IRI="#hasHusband"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasBrotherInLaw"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasSibling"/>
+            <ObjectProperty IRI="#hasSon"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasNephew"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasSibling"/>
+            <ObjectProperty IRI="#hasWife"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasSisterInLaw"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasSpouse"/>
+            <ObjectProperty IRI="#hasBrother"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasBrotherInLaw"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasSpouse"/>
+            <ObjectProperty IRI="#hasFather"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasFatherInLaw"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasSpouse"/>
+            <ObjectProperty IRI="#hasMother"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasMotherInLaw"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasSpouse"/>
+            <ObjectProperty IRI="#hasParent"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasParentInLaw"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasSpouse"/>
+            <ObjectProperty IRI="#hasSibling"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasSiblingInLaw"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasSpouse"/>
+            <ObjectProperty IRI="#hasSister"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasSisterInLaw"/>
+    </SubObjectPropertyOf>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasDomain"/>
+        <Class IRI="#MythicalBeing"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasDomain"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>Rule4</Literal>
+        </Annotation>
+        <Body>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasChild"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+            <ClassAtom>
+                <Class IRI="#FemaleBeing"/>
+                <Variable IRI="#y"/>
+            </ClassAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasDaughter"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>Rule2</Literal>
+        </Annotation>
+        <Body>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasParent"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+            <ClassAtom>
+                <Class IRI="#FemaleBeing"/>
+                <Variable IRI="#y"/>
+            </ClassAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasMother"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>Rule7</Literal>
+        </Annotation>
+        <Body>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasSibling"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+            <ClassAtom>
+                <Class IRI="#FemaleBeing"/>
+                <Variable IRI="#y"/>
+            </ClassAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasSister"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>Rule9</Literal>
+        </Annotation>
+        <Body>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasSpouse"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+            <ClassAtom>
+                <Class IRI="#FemaleBeing"/>
+                <Variable IRI="#y"/>
+            </ClassAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasWife"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>Rule3</Literal>
+        </Annotation>
+        <Body>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasChild"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+            <ClassAtom>
+                <Class IRI="#MaleBeing"/>
+                <Variable IRI="#y"/>
+            </ClassAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasSon"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>Rule1</Literal>
+        </Annotation>
+        <Body>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasParent"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+            <ClassAtom>
+                <Class IRI="#MaleBeing"/>
+                <Variable IRI="#y"/>
+            </ClassAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasFather"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>Rule6</Literal>
+        </Annotation>
+        <Body>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasSibling"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+            <ClassAtom>
+                <Class IRI="#MaleBeing"/>
+                <Variable IRI="#y"/>
+            </ClassAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasBrother"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>Rule8</Literal>
+        </Annotation>
+        <Body>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasSpouse"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+            <ClassAtom>
+                <Class IRI="#MaleBeing"/>
+                <Variable IRI="#y"/>
+            </ClassAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasHusband"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>Rule10</Literal>
+        </Annotation>
+        <Body>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasParent"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#a"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasSibling"/>
+                <Variable IRI="#a"/>
+                <Variable IRI="#b"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasChild"/>
+                <Variable IRI="#b"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+            <DifferentIndividualsAtom>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </DifferentIndividualsAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasCousin"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>Rule5</Literal>
+        </Annotation>
+        <Body>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasParent"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#p"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasParent"/>
+                <Variable IRI="#y"/>
+                <Variable IRI="#p"/>
+            </ObjectPropertyAtom>
+            <DifferentIndividualsAtom>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </DifferentIndividualsAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasSibling"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Aphrodite</IRI>
+        <Literal xml:lang="id">Catatan [2] pada bagan: versi anak Zeus dan Dione. Versi lahir dari Uranus adalah Aphrodite_Uranus.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Aphrodite</IRI>
+        <Literal xml:lang="id">Aphrodite (anak Zeus dan Dione)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Aphrodite_Uranus</IRI>
+        <Literal xml:lang="id">Catatan [2] pada bagan: versi Hesiod, Aphrodite lahir dari Uranus. Versi lain (anak Zeus dan Dione) adalah individu Aphrodite.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Aphrodite_Uranus</IRI>
+        <Literal xml:lang="id">Aphrodite (lahir dari Uranus)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Chaos</IRI>
+        <Literal xml:lang="id">Bentuk netral dalam teks Yunani, dimodelkan tanpa gender.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ChildOfTitan</IRI>
+        <Literal xml:lang="id">Anak dari Titan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ChildOfZeus</IRI>
+        <Literal xml:lang="id">Anak Zeus</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Clymene</IRI>
+        <Literal xml:lang="id">Anggota kelompok Oceanids pada bagan.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Deity</IRI>
+        <Literal xml:lang="id">Dewa/Dewi</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Demigod</IRI>
+        <Literal xml:lang="id">Setengah Dewa</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Dione</IRI>
+        <Literal xml:lang="id">Mengikuti bagan; sumber lain menyebut Dione anak Uranus dan Gaia, atau salah satu Oceanid.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#DivineGroup</IRI>
+        <Literal xml:lang="id">Kelompok Ilahi</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Dryope</IRI>
+        <Literal xml:lang="id">Anggota kelompok Pleiades pada bagan, sehingga dimodelkan sebagai anak Atlas dan Pleione.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Echidna</IRI>
+        <Literal xml:lang="id">Mengikuti bagan; sumber mitologi lain menyebut orang tua yang berbeda.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Eros_Primordial</IRI>
+        <Literal xml:lang="id">Catatan [1] pada bagan: versi lain Eros adalah anak Aphrodite dan Ares (lihat Eros_Son).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Eros_Primordial</IRI>
+        <Literal xml:lang="id">Eros (primordial)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Eros_Son</IRI>
+        <Literal xml:lang="id">Catatan [1] pada bagan: versi Eros anak Aphrodite dan Ares.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Eros_Son</IRI>
+        <Literal xml:lang="id">Eros (anak Aphrodite dan Ares)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Female</IRI>
+        <Literal xml:lang="id">Perempuan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#FemaleBeing</IRI>
+        <Literal xml:lang="id">Makhluk Perempuan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#FemaleValue</IRI>
+        <Literal xml:lang="id">perempuan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#FirstGenerationTitan</IRI>
+        <Literal xml:lang="id">Dua belas Titan anak Uranus dan Gaia (kotak hijau pada bagan).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#FirstGenerationTitan</IRI>
+        <Literal xml:lang="id">Titan Generasi Pertama</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Gender</IRI>
+        <Literal xml:lang="id">Gender</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Genderless</IRI>
+        <Literal xml:lang="id">Tanpa Gender</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#GenderlessBeing</IRI>
+        <Literal xml:lang="id">Makhluk Tanpa Gender</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#GenderlessValue</IRI>
+        <Literal xml:lang="id">tanpa gender</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#God</IRI>
+        <Literal xml:lang="id">Dewa</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Goddess</IRI>
+        <Literal xml:lang="id">Dewi</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Hades</IRI>
+        <Literal xml:lang="id">Tidak dimasukkan ke Olympian karena berkuasa di dunia bawah.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Hephaestus</IRI>
+        <Literal xml:lang="id">Mengikuti bagan; versi Hesiod menyebut Hephaestus anak Hera saja.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Hermaphroditus</IRI>
+        <Literal xml:lang="id">Dimodelkan laki-laki sesuai kelahirannya; dalam mitos kemudian menyatu dengan Salmacis.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Hesperides</IRI>
+        <Literal xml:lang="id">Mengikuti bagan; versi Hesiod menyebut Hesperides anak Nyx.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Inachus</IRI>
+        <Literal xml:lang="id">Anggota kelompok Oceanids pada bagan.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Keres</IRI>
+        <Literal xml:lang="id">Pada bagan digabung dalam satu kotak &apos;Moirae &amp; Keres&apos;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Maia</IRI>
+        <Literal xml:lang="id">Anggota kelompok Pleiades pada bagan, sehingga dimodelkan sebagai anak Atlas dan Pleione.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Male</IRI>
+        <Literal xml:lang="id">Laki-laki</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#MaleBeing</IRI>
+        <Literal xml:lang="id">Makhluk Laki-laki</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#MaleValue</IRI>
+        <Literal xml:lang="id">laki-laki</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Melia</IRI>
+        <Literal xml:lang="id">Anggota kelompok Oceanids pada bagan.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Moirae</IRI>
+        <Literal xml:lang="id">Pada bagan digabung dalam satu kotak &apos;Moirae &amp; Keres&apos;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Monster</IRI>
+        <Literal xml:lang="id">Monster</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Mortal</IRI>
+        <Literal xml:lang="id">Manusia Fana</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#MythicalBeing</IRI>
+        <Literal xml:lang="id">Makhluk Mitologi</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Oceanid</IRI>
+        <Literal xml:lang="id">Anggota kelompok Oceanids pada bagan (Inachus, Melia, Clymene, Pleione).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Oceanid</IRI>
+        <Literal xml:lang="id">Oceanid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Olympian</IRI>
+        <Literal xml:lang="id">Olympian</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Pleiad</IRI>
+        <Literal xml:lang="id">Anggota kelompok Pleiades pada bagan (Maia, Dryope).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Pleiad</IRI>
+        <Literal xml:lang="id">Pleiad</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Pleione</IRI>
+        <Literal xml:lang="id">Anggota kelompok Oceanids pada bagan.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#PrimordialDeity</IRI>
+        <Literal xml:lang="id">Dewa Primordial</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Titan</IRI>
+        <Literal xml:lang="id">Titan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasAncestor</IRI>
+        <Literal xml:lang="id">punya leluhur</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasAunt</IRI>
+        <Literal xml:lang="id">punya bibi</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasBrother</IRI>
+        <Literal xml:lang="id">punya saudara laki-laki</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasBrotherInLaw</IRI>
+        <Literal xml:lang="id">punya ipar laki-laki</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasChild</IRI>
+        <Literal xml:lang="id">punya anak</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasChildInLaw</IRI>
+        <Literal xml:lang="id">punya menantu</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasCousin</IRI>
+        <Literal xml:lang="id">punya sepupu</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasDaughter</IRI>
+        <Literal xml:lang="id">punya anak perempuan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasDaughterInLaw</IRI>
+        <Literal xml:lang="id">punya menantu perempuan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasDescendant</IRI>
+        <Literal xml:lang="id">punya keturunan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasDomain</IRI>
+        <Literal xml:lang="id">punya ranah/personifikasi</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasFather</IRI>
+        <Literal xml:lang="id">punya ayah</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasFatherInLaw</IRI>
+        <Literal xml:lang="id">punya ayah mertua</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasGender</IRI>
+        <Literal xml:lang="id">punya gender</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasGrandchild</IRI>
+        <Literal xml:lang="id">punya cucu</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasGranddaughter</IRI>
+        <Literal xml:lang="id">punya cucu perempuan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasGrandfather</IRI>
+        <Literal xml:lang="id">punya kakek</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasGrandmother</IRI>
+        <Literal xml:lang="id">punya nenek</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasGrandparent</IRI>
+        <Literal xml:lang="id">punya kakek/nenek</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasGrandson</IRI>
+        <Literal xml:lang="id">punya cucu laki-laki</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasHusband</IRI>
+        <Literal xml:lang="id">punya suami</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasMother</IRI>
+        <Literal xml:lang="id">punya ibu</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasMotherInLaw</IRI>
+        <Literal xml:lang="id">punya ibu mertua</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasNephew</IRI>
+        <Literal xml:lang="id">punya keponakan laki-laki</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasNiece</IRI>
+        <Literal xml:lang="id">punya keponakan perempuan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasParent</IRI>
+        <Literal xml:lang="id">punya orang tua</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasParentInLaw</IRI>
+        <Literal xml:lang="id">punya mertua</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasPartner</IRI>
+        <Literal xml:lang="id">punya pasangan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasSibling</IRI>
+        <Literal xml:lang="id">punya saudara</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasSiblingInLaw</IRI>
+        <Literal xml:lang="id">punya ipar</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasSister</IRI>
+        <Literal xml:lang="id">punya saudara perempuan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasSisterInLaw</IRI>
+        <Literal xml:lang="id">punya ipar perempuan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasSon</IRI>
+        <Literal xml:lang="id">punya anak laki-laki</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasSonInLaw</IRI>
+        <Literal xml:lang="id">punya menantu laki-laki</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasSpouse</IRI>
+        <Literal xml:lang="id">punya pasangan sah/pernikahan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasUncle</IRI>
+        <Literal xml:lang="id">punya paman</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasWife</IRI>
+        <Literal xml:lang="id">punya istri</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

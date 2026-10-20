@@ -1,0 +1,2662 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.org/greek-mythology-ontology#"
+     xml:base="http://example.org/greek-mythology-ontology"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:greek-mythology-ontology="http://example.org/greek-mythology-ontology#">
+    <owl:Ontology rdf:about="http://example.org/greek-mythology-ontology">
+        <rdfs:comment xml:lang="id">Dimodelkan dari bagan family tree mitologi Yunani. Hanya hasParent, hasPartner, hasSpouse, dan hasGender yang didefinisikan eksplisit; sisanya disimpulkan reasoner (Pellet).</rdfs:comment>
+        <rdfs:label xml:lang="id">Ontologi Silsilah Dewa-Dewi Yunani</rdfs:label>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasAncestor -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasAncestor">
+        <owl:inverseOf rdf:resource="http://example.org/greek-mythology-ontology#hasDescendant"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:label xml:lang="id">punya leluhur</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasAunt -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasAunt">
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#FemaleBeing"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasParent"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasSister"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="id">punya bibi</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasBrother -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasBrother">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasSibling"/>
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MaleBeing"/>
+        <rdfs:label xml:lang="id">punya saudara laki-laki</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasBrotherInLaw -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasBrotherInLaw">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasSiblingInLaw"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MaleBeing"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasSibling"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasHusband"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasSpouse"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasBrother"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="id">punya ipar laki-laki</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasChild -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasChild">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasDescendant"/>
+        <owl:inverseOf rdf:resource="http://example.org/greek-mythology-ontology#hasParent"/>
+        <rdfs:label xml:lang="id">punya anak</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasChildInLaw -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasChildInLaw">
+        <owl:inverseOf rdf:resource="http://example.org/greek-mythology-ontology#hasParentInLaw"/>
+        <rdfs:label xml:lang="id">punya menantu</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasCousin -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasCousin">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:label xml:lang="id">punya sepupu</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasDaughter -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasDaughter">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasChild"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#FemaleBeing"/>
+        <rdfs:label xml:lang="id">punya anak perempuan</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasDaughterInLaw -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasDaughterInLaw">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasChildInLaw"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#FemaleBeing"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasChild"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasWife"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="id">punya menantu perempuan</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasDescendant -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasDescendant">
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:label xml:lang="id">punya keturunan</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasFather -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasFather">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasParent"/>
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MaleBeing"/>
+        <rdfs:label xml:lang="id">punya ayah</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasFatherInLaw -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasFatherInLaw">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasParentInLaw"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MaleBeing"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasSpouse"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasFather"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="id">punya ayah mertua</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasGender -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasGender">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#Gender"/>
+        <rdfs:label xml:lang="id">punya gender</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasGrandchild -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasGrandchild">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasDescendant"/>
+        <owl:inverseOf rdf:resource="http://example.org/greek-mythology-ontology#hasGrandparent"/>
+        <rdfs:label xml:lang="id">punya cucu</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasGranddaughter -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasGranddaughter">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasGrandchild"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#FemaleBeing"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasChild"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasDaughter"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="id">punya cucu perempuan</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasGrandfather -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasGrandfather">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasGrandparent"/>
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MaleBeing"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasParent"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasFather"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="id">punya kakek</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasGrandmother -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasGrandmother">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasGrandparent"/>
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#FemaleBeing"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasParent"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasMother"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="id">punya nenek</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasGrandparent -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasGrandparent">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasAncestor"/>
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasParent"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasParent"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="id">punya kakek/nenek</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasGrandson -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasGrandson">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasGrandchild"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MaleBeing"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasChild"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasSon"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="id">punya cucu laki-laki</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasHusband -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasHusband">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasSpouse"/>
+        <owl:inverseOf rdf:resource="http://example.org/greek-mythology-ontology#hasWife"/>
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MaleBeing"/>
+        <rdfs:label xml:lang="id">punya suami</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasMother -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasMother">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasParent"/>
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#FemaleBeing"/>
+        <rdfs:label xml:lang="id">punya ibu</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasMotherInLaw -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasMotherInLaw">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasParentInLaw"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#FemaleBeing"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasSpouse"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasMother"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="id">punya ibu mertua</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasNephew -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasNephew">
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MaleBeing"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasSibling"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasSon"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="id">punya keponakan laki-laki</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasNiece -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasNiece">
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#FemaleBeing"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasSibling"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasDaughter"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="id">punya keponakan perempuan</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasParent -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasParent">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasAncestor"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:label xml:lang="id">punya orang tua</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasParentInLaw -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasParentInLaw">
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasSpouse"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasParent"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="id">punya mertua</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasPartner -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasPartner">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:label xml:lang="id">punya pasangan</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasSibling -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasSibling">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:label xml:lang="id">punya saudara</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasSiblingInLaw -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasSiblingInLaw">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasSpouse"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasSibling"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="id">punya ipar</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasSister -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasSister">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasSibling"/>
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#FemaleBeing"/>
+        <rdfs:label xml:lang="id">punya saudara perempuan</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasSisterInLaw -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasSisterInLaw">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasSiblingInLaw"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#FemaleBeing"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasSibling"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasWife"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasSpouse"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasSister"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="id">punya ipar perempuan</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasSon -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasSon">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasChild"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MaleBeing"/>
+        <rdfs:label xml:lang="id">punya anak laki-laki</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasSonInLaw -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasSonInLaw">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasChildInLaw"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MaleBeing"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasChild"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasHusband"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="id">punya menantu laki-laki</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasSpouse -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasSpouse">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasPartner"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:label xml:lang="id">punya pasangan sah/pernikahan</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasUncle -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasUncle">
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#MaleBeing"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasParent"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#hasBrother"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="id">punya paman</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasWife -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/greek-mythology-ontology#hasWife">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/greek-mythology-ontology#hasSpouse"/>
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://example.org/greek-mythology-ontology#FemaleBeing"/>
+        <rdfs:label xml:lang="id">punya istri</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#hasDomain -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/greek-mythology-ontology#hasDomain">
+        <rdfs:domain rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="id">punya ranah/personifikasi</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#ChildOfTitan -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#ChildOfTitan">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://example.org/greek-mythology-ontology#hasParent"/>
+                        <owl:someValuesFrom rdf:resource="http://example.org/greek-mythology-ontology#Titan"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label xml:lang="id">Anak dari Titan</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#ChildOfZeus -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#ChildOfZeus">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://example.org/greek-mythology-ontology#hasParent"/>
+                        <owl:hasValue rdf:resource="http://example.org/greek-mythology-ontology#Zeus"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label xml:lang="id">Anak Zeus</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Deity -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#Deity">
+        <rdfs:subClassOf rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <owl:disjointWith rdf:resource="http://example.org/greek-mythology-ontology#Mortal"/>
+        <rdfs:label xml:lang="id">Dewa/Dewi</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Demigod -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#Demigod">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://example.org/greek-mythology-ontology#hasParent"/>
+                        <owl:someValuesFrom rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://example.org/greek-mythology-ontology#hasParent"/>
+                        <owl:someValuesFrom rdf:resource="http://example.org/greek-mythology-ontology#Mortal"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label xml:lang="id">Setengah Dewa</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#DivineGroup -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#DivineGroup">
+        <rdfs:subClassOf rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <owl:disjointWith rdf:resource="http://example.org/greek-mythology-ontology#FemaleBeing"/>
+        <owl:disjointWith rdf:resource="http://example.org/greek-mythology-ontology#MaleBeing"/>
+        <rdfs:label xml:lang="id">Kelompok Ilahi</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Female -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#Female">
+        <rdfs:subClassOf rdf:resource="http://example.org/greek-mythology-ontology#Gender"/>
+        <rdfs:label xml:lang="id">Perempuan</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#FemaleBeing -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#FemaleBeing">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://example.org/greek-mythology-ontology#hasGender"/>
+                        <owl:someValuesFrom rdf:resource="http://example.org/greek-mythology-ontology#Female"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label xml:lang="id">Makhluk Perempuan</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#FirstGenerationTitan -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#FirstGenerationTitan">
+        <rdfs:subClassOf rdf:resource="http://example.org/greek-mythology-ontology#Titan"/>
+        <rdfs:comment xml:lang="id">Dua belas Titan anak Uranus dan Gaia (kotak hijau pada bagan).</rdfs:comment>
+        <rdfs:label xml:lang="id">Titan Generasi Pertama</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Gender -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#Gender">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Female"/>
+                    <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Genderless"/>
+                    <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Male"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:label xml:lang="id">Gender</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Genderless -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#Genderless">
+        <rdfs:subClassOf rdf:resource="http://example.org/greek-mythology-ontology#Gender"/>
+        <rdfs:label xml:lang="id">Tanpa Gender</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#GenderlessBeing -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#GenderlessBeing">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://example.org/greek-mythology-ontology#hasGender"/>
+                        <owl:someValuesFrom rdf:resource="http://example.org/greek-mythology-ontology#Genderless"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label xml:lang="id">Makhluk Tanpa Gender</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#God -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#God">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Deity"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://example.org/greek-mythology-ontology#hasGender"/>
+                        <owl:someValuesFrom rdf:resource="http://example.org/greek-mythology-ontology#Male"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label xml:lang="id">Dewa</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Goddess -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#Goddess">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Deity"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://example.org/greek-mythology-ontology#hasGender"/>
+                        <owl:someValuesFrom rdf:resource="http://example.org/greek-mythology-ontology#Female"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label xml:lang="id">Dewi</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Male -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#Male">
+        <rdfs:subClassOf rdf:resource="http://example.org/greek-mythology-ontology#Gender"/>
+        <rdfs:label xml:lang="id">Laki-laki</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#MaleBeing -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#MaleBeing">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://example.org/greek-mythology-ontology#hasGender"/>
+                        <owl:someValuesFrom rdf:resource="http://example.org/greek-mythology-ontology#Male"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label xml:lang="id">Makhluk Laki-laki</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Monster -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#Monster">
+        <rdfs:subClassOf rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:label xml:lang="id">Monster</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Mortal -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#Mortal">
+        <rdfs:subClassOf rdf:resource="http://example.org/greek-mythology-ontology#MythicalBeing"/>
+        <rdfs:label xml:lang="id">Manusia Fana</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#MythicalBeing -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#MythicalBeing">
+        <rdfs:label xml:lang="id">Makhluk Mitologi</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Oceanid -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#Oceanid">
+        <rdfs:subClassOf rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <rdfs:comment xml:lang="id">Anggota kelompok Oceanids pada bagan (Inachus, Melia, Clymene, Pleione).</rdfs:comment>
+        <rdfs:label xml:lang="id">Oceanid</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Olympian -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#Olympian">
+        <rdfs:subClassOf rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <rdfs:label xml:lang="id">Olympian</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Pleiad -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#Pleiad">
+        <rdfs:subClassOf rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <rdfs:comment xml:lang="id">Anggota kelompok Pleiades pada bagan (Maia, Dryope).</rdfs:comment>
+        <rdfs:label xml:lang="id">Pleiad</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#PrimordialDeity -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#PrimordialDeity">
+        <rdfs:subClassOf rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <rdfs:label xml:lang="id">Dewa Primordial</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Titan -->
+
+    <owl:Class rdf:about="http://example.org/greek-mythology-ontology#Titan">
+        <rdfs:subClassOf rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <rdfs:label xml:lang="id">Titan</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Aether -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Aether">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#PrimordialDeity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Erebus"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Nyx"/>
+        <hasDomain>Heaven</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Alcmene -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Alcmene">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Mortal"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Anteros -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Anteros">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Aphrodite"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Ares"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Apate -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Apate">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Nyx"/>
+        <hasDomain>Deceit</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Aphrodite -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Aphrodite">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Olympian"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Dione"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Zeus"/>
+        <rdfs:comment xml:lang="id">Catatan [2] pada bagan: versi anak Zeus dan Dione. Versi lahir dari Uranus adalah Aphrodite_Uranus.</rdfs:comment>
+        <rdfs:label xml:lang="id">Aphrodite (anak Zeus dan Dione)</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Aphrodite_Uranus -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Aphrodite_Uranus">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Olympian"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+        <rdfs:comment xml:lang="id">Catatan [2] pada bagan: versi Hesiod, Aphrodite lahir dari Uranus. Versi lain (anak Zeus dan Dione) adalah individu Aphrodite.</rdfs:comment>
+        <rdfs:label xml:lang="id">Aphrodite (lahir dari Uranus)</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Apollo -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Apollo">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Olympian"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Leto"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Zeus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Ares -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Ares">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Olympian"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Hera"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Zeus"/>
+        <hasPartner rdf:resource="http://example.org/greek-mythology-ontology#Aphrodite"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Artemis -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Artemis">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Olympian"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Leto"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Zeus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Asteria -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Asteria">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Titan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Coeus"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Phoebe"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Athena -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Athena">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Olympian"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Zeus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Atlas -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Atlas">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Titan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Iapetus"/>
+        <hasSpouse rdf:resource="http://example.org/greek-mythology-ontology#Pleione"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Chaos -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Chaos">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#PrimordialDeity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#GenderlessValue"/>
+        <hasDomain>The Void</hasDomain>
+        <rdfs:comment xml:lang="id">Bentuk netral dalam teks Yunani, dimodelkan tanpa gender.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Clymene -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Clymene">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Oceanid"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Oceanus"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Tethys"/>
+        <rdfs:comment xml:lang="id">Anggota kelompok Oceanids pada bagan.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Coeus -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Coeus">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#FirstGenerationTitan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Gaia"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+        <hasSpouse rdf:resource="http://example.org/greek-mythology-ontology#Phoebe"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Crius -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Crius">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#FirstGenerationTitan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Gaia"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Cronus -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Cronus">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#FirstGenerationTitan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Gaia"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+        <hasSpouse rdf:resource="http://example.org/greek-mythology-ontology#Rhea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Cyclopes -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Cyclopes">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#DivineGroup"/>
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Monster"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Gaia"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Deimos -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Deimos">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Aphrodite"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Ares"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Demeter -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Demeter">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Olympian"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Cronus"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Rhea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Dione -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Dione">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Titan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Epimetheus"/>
+        <rdfs:comment xml:lang="id">Mengikuti bagan; sumber lain menyebut Dione anak Uranus dan Gaia, atau salah satu Oceanid.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Dionysus -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Dionysus">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Olympian"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Semele"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Zeus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Dryope -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Dryope">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Pleiad"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Atlas"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Pleione"/>
+        <rdfs:comment xml:lang="id">Anggota kelompok Pleiades pada bagan, sehingga dimodelkan sebagai anak Atlas dan Pleione.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Echidna -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Echidna">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Monster"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Gaia"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+        <rdfs:comment xml:lang="id">Mengikuti bagan; sumber mitologi lain menyebut orang tua yang berbeda.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Eileithyia -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Eileithyia">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Hera"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Zeus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Enyo -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Enyo">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Hera"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Zeus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Eos -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Eos">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Titan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Hyperion"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Theia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Epaphus -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Epaphus">
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Io"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Zeus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Epimetheus -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Epimetheus">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Titan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Iapetus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Erebus -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Erebus">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#PrimordialDeity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Chaos"/>
+        <hasPartner rdf:resource="http://example.org/greek-mythology-ontology#Nyx"/>
+        <hasDomain>Darkness</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Erinyes -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Erinyes">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#DivineGroup"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Eris -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Eris">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Nyx"/>
+        <hasDomain>Strife</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Eros_Primordial -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Eros_Primordial">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#PrimordialDeity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Chaos"/>
+        <hasDomain>Desire</hasDomain>
+        <rdfs:comment xml:lang="id">Catatan [1] pada bagan: versi lain Eros adalah anak Aphrodite dan Ares (lihat Eros_Son).</rdfs:comment>
+        <rdfs:label xml:lang="id">Eros (primordial)</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Eros_Son -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Eros_Son">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Aphrodite"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Ares"/>
+        <rdfs:comment xml:lang="id">Catatan [1] pada bagan: versi Eros anak Aphrodite dan Ares.</rdfs:comment>
+        <rdfs:label xml:lang="id">Eros (anak Aphrodite dan Ares)</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Eunomia -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Eunomia">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Aphrodite"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Hermes"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#FemaleValue -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#FemaleValue">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Female"/>
+        <rdfs:label xml:lang="id">perempuan</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Gaia -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Gaia">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#PrimordialDeity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Chaos"/>
+        <hasPartner rdf:resource="http://example.org/greek-mythology-ontology#Tartarus"/>
+        <hasSpouse rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+        <hasDomain>The Earth</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#GenderlessValue -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#GenderlessValue">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Genderless"/>
+        <rdfs:label xml:lang="id">tanpa gender</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Geras -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Geras">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Nyx"/>
+        <hasDomain>Aging</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Gigantes -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Gigantes">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#DivineGroup"/>
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Monster"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Hades -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Hades">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Cronus"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Rhea"/>
+        <rdfs:comment xml:lang="id">Tidak dimasukkan ke Olympian karena berkuasa di dunia bawah.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Harmonia -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Harmonia">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Aphrodite"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Ares"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Hebe -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Hebe">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Hera"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Zeus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Hecatonchires -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Hecatonchires">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#DivineGroup"/>
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Monster"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Gaia"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Heliades -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Heliades">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#DivineGroup"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Clymene"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Helios"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Helios -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Helios">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Titan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Hyperion"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Theia"/>
+        <hasPartner rdf:resource="http://example.org/greek-mythology-ontology#Clymene"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Hemera -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Hemera">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#PrimordialDeity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Erebus"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Nyx"/>
+        <hasDomain>The Day</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Hephaestus -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Hephaestus">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Olympian"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Hera"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Zeus"/>
+        <rdfs:comment xml:lang="id">Mengikuti bagan; versi Hesiod menyebut Hephaestus anak Hera saja.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Hera -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Hera">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Olympian"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Cronus"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Rhea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Heracles -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Heracles">
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Alcmene"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Zeus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Hermaphroditus -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Hermaphroditus">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Aphrodite"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Hermes"/>
+        <rdfs:comment xml:lang="id">Dimodelkan laki-laki sesuai kelahirannya; dalam mitos kemudian menyatu dengan Salmacis.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Hermes -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Hermes">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Olympian"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Maia"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Zeus"/>
+        <hasPartner rdf:resource="http://example.org/greek-mythology-ontology#Aphrodite"/>
+        <hasPartner rdf:resource="http://example.org/greek-mythology-ontology#Dryope"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Hesperides -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Hesperides">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#DivineGroup"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Atlas"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Pleione"/>
+        <rdfs:comment xml:lang="id">Mengikuti bagan; versi Hesiod menyebut Hesperides anak Nyx.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Hestia -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Hestia">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Olympian"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Cronus"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Rhea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Himeros -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Himeros">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Aphrodite"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Ares"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Hyades -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Hyades">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#DivineGroup"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Atlas"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Pleione"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Hyperion -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Hyperion">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#FirstGenerationTitan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Gaia"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+        <hasSpouse rdf:resource="http://example.org/greek-mythology-ontology#Theia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Hypnos -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Hypnos">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Nyx"/>
+        <hasDomain>Sleep</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Iapetus -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Iapetus">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#FirstGenerationTitan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Gaia"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Inachus -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Inachus">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Oceanid"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Oceanus"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Tethys"/>
+        <hasSpouse rdf:resource="http://example.org/greek-mythology-ontology#Melia"/>
+        <rdfs:comment xml:lang="id">Anggota kelompok Oceanids pada bagan.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Io -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Io">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Mortal"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Inachus"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Melia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Keres -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Keres">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#DivineGroup"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Nyx"/>
+        <rdfs:comment xml:lang="id">Pada bagan digabung dalam satu kotak &apos;Moirae &amp; Keres&apos;.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Leto -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Leto">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Titan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Coeus"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Phoebe"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Maia -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Maia">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Pleiad"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Atlas"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Pleione"/>
+        <rdfs:comment xml:lang="id">Anggota kelompok Pleiades pada bagan, sehingga dimodelkan sebagai anak Atlas dan Pleione.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#MaleValue -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#MaleValue">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Male"/>
+        <rdfs:label xml:lang="id">laki-laki</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Melia -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Melia">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Oceanid"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Oceanus"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Tethys"/>
+        <rdfs:comment xml:lang="id">Anggota kelompok Oceanids pada bagan.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Meliae -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Meliae">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#DivineGroup"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Mnemosyne -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Mnemosyne">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#FirstGenerationTitan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Gaia"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Moirae -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Moirae">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#DivineGroup"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Nyx"/>
+        <rdfs:comment xml:lang="id">Pada bagan digabung dalam satu kotak &apos;Moirae &amp; Keres&apos;.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Momus -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Momus">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Nyx"/>
+        <hasDomain>Blame</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Moros -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Moros">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Nyx"/>
+        <hasDomain>Doom</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Muses -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Muses">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#DivineGroup"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Mnemosyne"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Zeus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Nemesis -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Nemesis">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Nyx"/>
+        <hasDomain>Retribution</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Nyx -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Nyx">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#PrimordialDeity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Chaos"/>
+        <hasDomain>The Night</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Oceanids -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Oceanids">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#DivineGroup"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Oceanus"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Tethys"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Oceanus -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Oceanus">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#FirstGenerationTitan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Gaia"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+        <hasSpouse rdf:resource="http://example.org/greek-mythology-ontology#Tethys"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Oizys -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Oizys">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Nyx"/>
+        <hasDomain>Distress</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Oneiroi -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Oneiroi">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#DivineGroup"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Nyx"/>
+        <hasDomain>Dreams</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Ourea -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Ourea">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#DivineGroup"/>
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#PrimordialDeity"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Gaia"/>
+        <hasDomain>Mountains</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Pan -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Pan">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Dryope"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Hermes"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Peitho -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Peitho">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Aphrodite"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Hermes"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Persephone -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Persephone">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Demeter"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Zeus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Philotes -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Philotes">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Nyx"/>
+        <hasDomain>Affection</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Phobos -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Phobos">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Aphrodite"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Ares"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Phoebe -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Phoebe">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#FirstGenerationTitan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Gaia"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Pleiades -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Pleiades">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#DivineGroup"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Atlas"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Pleione"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Pleione -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Pleione">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Oceanid"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Oceanus"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Tethys"/>
+        <rdfs:comment xml:lang="id">Anggota kelompok Oceanids pada bagan.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Pontus -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Pontus">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#PrimordialDeity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Gaia"/>
+        <hasDomain>The Sea</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Poseidon -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Poseidon">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Olympian"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Cronus"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Rhea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Prometheus -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Prometheus">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Titan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Iapetus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Rhea -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Rhea">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#FirstGenerationTitan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Gaia"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Rhode -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Rhode">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Aphrodite"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Hermes"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Selene -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Selene">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Titan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Hyperion"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Theia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Semele -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Semele">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Mortal"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Tartarus -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Tartarus">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#PrimordialDeity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Chaos"/>
+        <hasDomain>The Abyss</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Tethys -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Tethys">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#FirstGenerationTitan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Gaia"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Thanatos -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Thanatos">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Nyx"/>
+        <hasDomain>Death</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Theia -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Theia">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#FirstGenerationTitan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Gaia"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Themis -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Themis">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#FirstGenerationTitan"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Gaia"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Uranus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Tyche -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Tyche">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Deity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#FemaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Aphrodite"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Hermes"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Typhon -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Typhon">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Monster"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Gaia"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Tartarus"/>
+        <hasDomain>The Storms</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Uranus -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Uranus">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#PrimordialDeity"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Gaia"/>
+        <hasDomain>The Sky</hasDomain>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/greek-mythology-ontology#Zeus -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/greek-mythology-ontology#Zeus">
+        <rdf:type rdf:resource="http://example.org/greek-mythology-ontology#Olympian"/>
+        <hasGender rdf:resource="http://example.org/greek-mythology-ontology#MaleValue"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Cronus"/>
+        <hasParent rdf:resource="http://example.org/greek-mythology-ontology#Rhea"/>
+        <hasPartner rdf:resource="http://example.org/greek-mythology-ontology#Alcmene"/>
+        <hasPartner rdf:resource="http://example.org/greek-mythology-ontology#Demeter"/>
+        <hasPartner rdf:resource="http://example.org/greek-mythology-ontology#Dione"/>
+        <hasPartner rdf:resource="http://example.org/greek-mythology-ontology#Io"/>
+        <hasPartner rdf:resource="http://example.org/greek-mythology-ontology#Leto"/>
+        <hasPartner rdf:resource="http://example.org/greek-mythology-ontology#Maia"/>
+        <hasPartner rdf:resource="http://example.org/greek-mythology-ontology#Mnemosyne"/>
+        <hasPartner rdf:resource="http://example.org/greek-mythology-ontology#Semele"/>
+        <hasSpouse rdf:resource="http://example.org/greek-mythology-ontology#Hera"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Female"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Genderless"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Male"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Olympian"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#PrimordialDeity"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Titan"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Aether"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Alcmene"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Anteros"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Apate"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Aphrodite"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Aphrodite_Uranus"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Apollo"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Ares"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Artemis"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Asteria"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Athena"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Atlas"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Chaos"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Clymene"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Coeus"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Crius"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Cronus"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Cyclopes"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Deimos"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Demeter"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Dione"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Dionysus"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Dryope"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Echidna"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Eileithyia"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Enyo"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Eos"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Epaphus"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Epimetheus"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Erebus"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Erinyes"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Eris"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Eros_Primordial"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Eros_Son"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Eunomia"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#FemaleValue"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Gaia"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#GenderlessValue"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Geras"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Gigantes"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Hades"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Harmonia"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Hebe"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Hecatonchires"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Heliades"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Helios"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Hemera"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Hephaestus"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Hera"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Heracles"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Hermaphroditus"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Hermes"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Hesperides"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Hestia"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Himeros"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Hyades"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Hyperion"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Hypnos"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Iapetus"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Inachus"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Io"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Keres"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Leto"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Maia"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#MaleValue"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Melia"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Meliae"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Mnemosyne"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Moirae"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Momus"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Moros"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Muses"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Nemesis"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Nyx"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Oceanids"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Oceanus"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Oizys"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Oneiroi"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Ourea"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Pan"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Peitho"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Persephone"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Philotes"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Phobos"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Phoebe"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Pleiades"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Pleione"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Pontus"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Poseidon"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Prometheus"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Rhea"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Rhode"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Selene"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Semele"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Tartarus"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Tethys"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Thanatos"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Theia"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Themis"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Tyche"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Typhon"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Uranus"/>
+            <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#Zeus"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#x">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#y">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#a">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#b">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.org/greek-mythology-ontology#p">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>Rule4</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasChild"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://example.org/greek-mythology-ontology#FemaleBeing"/>
+                                <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasDaughter"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>Rule2</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasParent"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://example.org/greek-mythology-ontology#FemaleBeing"/>
+                                <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasMother"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>Rule7</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasSibling"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://example.org/greek-mythology-ontology#FemaleBeing"/>
+                                <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasSister"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>Rule9</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasSpouse"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://example.org/greek-mythology-ontology#FemaleBeing"/>
+                                <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasWife"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>Rule3</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasChild"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://example.org/greek-mythology-ontology#MaleBeing"/>
+                                <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasSon"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>Rule1</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasParent"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://example.org/greek-mythology-ontology#MaleBeing"/>
+                                <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasFather"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>Rule6</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasSibling"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://example.org/greek-mythology-ontology#MaleBeing"/>
+                                <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasBrother"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>Rule8</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasSpouse"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://example.org/greek-mythology-ontology#MaleBeing"/>
+                                <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasHusband"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>Rule10</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasParent"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#a"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasSibling"/>
+                                <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#a"/>
+                                <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#b"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasChild"/>
+                                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#b"/>
+                                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DifferentIndividualsAtom"/>
+                                                <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                                                <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasCousin"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>Rule5</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasParent"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#p"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasParent"/>
+                                <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                                <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#p"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DifferentIndividualsAtom"/>
+                                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://example.org/greek-mythology-ontology#hasSibling"/>
+                        <swrl:argument1 rdf:resource="http://example.org/greek-mythology-ontology#x"/>
+                        <swrl:argument2 rdf:resource="http://example.org/greek-mythology-ontology#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

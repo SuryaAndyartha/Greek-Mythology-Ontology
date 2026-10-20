@@ -1,0 +1,1866 @@
+@prefix : <http://example.org/greek-mythology-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix greek-mythology-ontology: <http://example.org/greek-mythology-ontology#> .
+@base <http://example.org/greek-mythology-ontology#> .
+
+<http://example.org/greek-mythology-ontology> rdf:type owl:Ontology ;
+                                               rdfs:comment "Dimodelkan dari bagan family tree mitologi Yunani. Hanya hasParent, hasPartner, hasSpouse, dan hasGender yang didefinisikan eksplisit; sisanya disimpulkan reasoner (Pellet)."@id ;
+                                               rdfs:label "Ontologi Silsilah Dewa-Dewi Yunani"@id .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/greek-mythology-ontology#hasAncestor
+greek-mythology-ontology:hasAncestor rdf:type owl:ObjectProperty ;
+                                     owl:inverseOf greek-mythology-ontology:hasDescendant ;
+                                     rdf:type owl:TransitiveProperty ;
+                                     rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                     rdfs:range greek-mythology-ontology:MythicalBeing ;
+                                     rdfs:label "punya leluhur"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasAunt
+greek-mythology-ontology:hasAunt rdf:type owl:ObjectProperty ;
+                                 rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                 rdfs:range greek-mythology-ontology:FemaleBeing ;
+                                 owl:propertyChainAxiom ( greek-mythology-ontology:hasParent
+                                                          greek-mythology-ontology:hasSister
+                                                        ) ;
+                                 rdfs:label "punya bibi"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasBrother
+greek-mythology-ontology:hasBrother rdf:type owl:ObjectProperty ;
+                                    rdfs:subPropertyOf greek-mythology-ontology:hasSibling ;
+                                    rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                    rdfs:range greek-mythology-ontology:MaleBeing ;
+                                    rdfs:label "punya saudara laki-laki"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasBrotherInLaw
+greek-mythology-ontology:hasBrotherInLaw rdf:type owl:ObjectProperty ;
+                                         rdfs:subPropertyOf greek-mythology-ontology:hasSiblingInLaw ;
+                                         rdfs:range greek-mythology-ontology:MaleBeing ;
+                                         owl:propertyChainAxiom ( greek-mythology-ontology:hasSibling
+                                                                  greek-mythology-ontology:hasHusband
+                                                                ) ,
+                                                                ( greek-mythology-ontology:hasSpouse
+                                                                  greek-mythology-ontology:hasBrother
+                                                                ) ;
+                                         rdfs:label "punya ipar laki-laki"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasChild
+greek-mythology-ontology:hasChild rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf greek-mythology-ontology:hasDescendant ;
+                                  owl:inverseOf greek-mythology-ontology:hasParent ;
+                                  rdfs:label "punya anak"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasChildInLaw
+greek-mythology-ontology:hasChildInLaw rdf:type owl:ObjectProperty ;
+                                       owl:inverseOf greek-mythology-ontology:hasParentInLaw ;
+                                       rdfs:label "punya menantu"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasCousin
+greek-mythology-ontology:hasCousin rdf:type owl:ObjectProperty ,
+                                            owl:SymmetricProperty ,
+                                            owl:IrreflexiveProperty ;
+                                   rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                   rdfs:range greek-mythology-ontology:MythicalBeing ;
+                                   rdfs:label "punya sepupu"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasDaughter
+greek-mythology-ontology:hasDaughter rdf:type owl:ObjectProperty ;
+                                     rdfs:subPropertyOf greek-mythology-ontology:hasChild ;
+                                     rdfs:range greek-mythology-ontology:FemaleBeing ;
+                                     rdfs:label "punya anak perempuan"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasDaughterInLaw
+greek-mythology-ontology:hasDaughterInLaw rdf:type owl:ObjectProperty ;
+                                          rdfs:subPropertyOf greek-mythology-ontology:hasChildInLaw ;
+                                          rdfs:range greek-mythology-ontology:FemaleBeing ;
+                                          owl:propertyChainAxiom ( greek-mythology-ontology:hasChild
+                                                                   greek-mythology-ontology:hasWife
+                                                                 ) ;
+                                          rdfs:label "punya menantu perempuan"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasDescendant
+greek-mythology-ontology:hasDescendant rdf:type owl:ObjectProperty ;
+                                       rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                       rdfs:range greek-mythology-ontology:MythicalBeing ;
+                                       rdfs:label "punya keturunan"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasFather
+greek-mythology-ontology:hasFather rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf greek-mythology-ontology:hasParent ;
+                                   rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                   rdfs:range greek-mythology-ontology:MaleBeing ;
+                                   rdfs:label "punya ayah"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasFatherInLaw
+greek-mythology-ontology:hasFatherInLaw rdf:type owl:ObjectProperty ;
+                                        rdfs:subPropertyOf greek-mythology-ontology:hasParentInLaw ;
+                                        rdfs:range greek-mythology-ontology:MaleBeing ;
+                                        owl:propertyChainAxiom ( greek-mythology-ontology:hasSpouse
+                                                                 greek-mythology-ontology:hasFather
+                                                               ) ;
+                                        rdfs:label "punya ayah mertua"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasGender
+greek-mythology-ontology:hasGender rdf:type owl:ObjectProperty ,
+                                            owl:FunctionalProperty ;
+                                   rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                   rdfs:range greek-mythology-ontology:Gender ;
+                                   rdfs:label "punya gender"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasGrandchild
+greek-mythology-ontology:hasGrandchild rdf:type owl:ObjectProperty ;
+                                       rdfs:subPropertyOf greek-mythology-ontology:hasDescendant ;
+                                       owl:inverseOf greek-mythology-ontology:hasGrandparent ;
+                                       rdfs:label "punya cucu"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasGranddaughter
+greek-mythology-ontology:hasGranddaughter rdf:type owl:ObjectProperty ;
+                                          rdfs:subPropertyOf greek-mythology-ontology:hasGrandchild ;
+                                          rdfs:range greek-mythology-ontology:FemaleBeing ;
+                                          owl:propertyChainAxiom ( greek-mythology-ontology:hasChild
+                                                                   greek-mythology-ontology:hasDaughter
+                                                                 ) ;
+                                          rdfs:label "punya cucu perempuan"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasGrandfather
+greek-mythology-ontology:hasGrandfather rdf:type owl:ObjectProperty ;
+                                        rdfs:subPropertyOf greek-mythology-ontology:hasGrandparent ;
+                                        rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                        rdfs:range greek-mythology-ontology:MaleBeing ;
+                                        owl:propertyChainAxiom ( greek-mythology-ontology:hasParent
+                                                                 greek-mythology-ontology:hasFather
+                                                               ) ;
+                                        rdfs:label "punya kakek"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasGrandmother
+greek-mythology-ontology:hasGrandmother rdf:type owl:ObjectProperty ;
+                                        rdfs:subPropertyOf greek-mythology-ontology:hasGrandparent ;
+                                        rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                        rdfs:range greek-mythology-ontology:FemaleBeing ;
+                                        owl:propertyChainAxiom ( greek-mythology-ontology:hasParent
+                                                                 greek-mythology-ontology:hasMother
+                                                               ) ;
+                                        rdfs:label "punya nenek"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasGrandparent
+greek-mythology-ontology:hasGrandparent rdf:type owl:ObjectProperty ;
+                                        rdfs:subPropertyOf greek-mythology-ontology:hasAncestor ;
+                                        rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                        rdfs:range greek-mythology-ontology:MythicalBeing ;
+                                        owl:propertyChainAxiom ( greek-mythology-ontology:hasParent
+                                                                 greek-mythology-ontology:hasParent
+                                                               ) ;
+                                        rdfs:label "punya kakek/nenek"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasGrandson
+greek-mythology-ontology:hasGrandson rdf:type owl:ObjectProperty ;
+                                     rdfs:subPropertyOf greek-mythology-ontology:hasGrandchild ;
+                                     rdfs:range greek-mythology-ontology:MaleBeing ;
+                                     owl:propertyChainAxiom ( greek-mythology-ontology:hasChild
+                                                              greek-mythology-ontology:hasSon
+                                                            ) ;
+                                     rdfs:label "punya cucu laki-laki"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasHusband
+greek-mythology-ontology:hasHusband rdf:type owl:ObjectProperty ;
+                                    rdfs:subPropertyOf greek-mythology-ontology:hasSpouse ;
+                                    owl:inverseOf greek-mythology-ontology:hasWife ;
+                                    rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                    rdfs:range greek-mythology-ontology:MaleBeing ;
+                                    rdfs:label "punya suami"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasMother
+greek-mythology-ontology:hasMother rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf greek-mythology-ontology:hasParent ;
+                                   rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                   rdfs:range greek-mythology-ontology:FemaleBeing ;
+                                   rdfs:label "punya ibu"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasMotherInLaw
+greek-mythology-ontology:hasMotherInLaw rdf:type owl:ObjectProperty ;
+                                        rdfs:subPropertyOf greek-mythology-ontology:hasParentInLaw ;
+                                        rdfs:range greek-mythology-ontology:FemaleBeing ;
+                                        owl:propertyChainAxiom ( greek-mythology-ontology:hasSpouse
+                                                                 greek-mythology-ontology:hasMother
+                                                               ) ;
+                                        rdfs:label "punya ibu mertua"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasNephew
+greek-mythology-ontology:hasNephew rdf:type owl:ObjectProperty ;
+                                   rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                   rdfs:range greek-mythology-ontology:MaleBeing ;
+                                   owl:propertyChainAxiom ( greek-mythology-ontology:hasSibling
+                                                            greek-mythology-ontology:hasSon
+                                                          ) ;
+                                   rdfs:label "punya keponakan laki-laki"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasNiece
+greek-mythology-ontology:hasNiece rdf:type owl:ObjectProperty ;
+                                  rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                  rdfs:range greek-mythology-ontology:FemaleBeing ;
+                                  owl:propertyChainAxiom ( greek-mythology-ontology:hasSibling
+                                                           greek-mythology-ontology:hasDaughter
+                                                         ) ;
+                                  rdfs:label "punya keponakan perempuan"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasParent
+greek-mythology-ontology:hasParent rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf greek-mythology-ontology:hasAncestor ;
+                                   rdf:type owl:AsymmetricProperty ,
+                                            owl:IrreflexiveProperty ;
+                                   rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                   rdfs:range greek-mythology-ontology:MythicalBeing ;
+                                   rdfs:label "punya orang tua"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasParentInLaw
+greek-mythology-ontology:hasParentInLaw rdf:type owl:ObjectProperty ;
+                                        rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                        rdfs:range greek-mythology-ontology:MythicalBeing ;
+                                        owl:propertyChainAxiom ( greek-mythology-ontology:hasSpouse
+                                                                 greek-mythology-ontology:hasParent
+                                                               ) ;
+                                        rdfs:label "punya mertua"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasPartner
+greek-mythology-ontology:hasPartner rdf:type owl:ObjectProperty ,
+                                             owl:SymmetricProperty ;
+                                    rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                    rdfs:range greek-mythology-ontology:MythicalBeing ;
+                                    rdfs:label "punya pasangan"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasSibling
+greek-mythology-ontology:hasSibling rdf:type owl:ObjectProperty ,
+                                             owl:SymmetricProperty ;
+                                    rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                    rdfs:range greek-mythology-ontology:MythicalBeing ;
+                                    rdfs:label "punya saudara"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasSiblingInLaw
+greek-mythology-ontology:hasSiblingInLaw rdf:type owl:ObjectProperty ,
+                                                  owl:SymmetricProperty ;
+                                         rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                         rdfs:range greek-mythology-ontology:MythicalBeing ;
+                                         owl:propertyChainAxiom ( greek-mythology-ontology:hasSpouse
+                                                                  greek-mythology-ontology:hasSibling
+                                                                ) ;
+                                         rdfs:label "punya ipar"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasSister
+greek-mythology-ontology:hasSister rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf greek-mythology-ontology:hasSibling ;
+                                   rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                   rdfs:range greek-mythology-ontology:FemaleBeing ;
+                                   rdfs:label "punya saudara perempuan"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasSisterInLaw
+greek-mythology-ontology:hasSisterInLaw rdf:type owl:ObjectProperty ;
+                                        rdfs:subPropertyOf greek-mythology-ontology:hasSiblingInLaw ;
+                                        rdfs:range greek-mythology-ontology:FemaleBeing ;
+                                        owl:propertyChainAxiom ( greek-mythology-ontology:hasSibling
+                                                                 greek-mythology-ontology:hasWife
+                                                               ) ,
+                                                               ( greek-mythology-ontology:hasSpouse
+                                                                 greek-mythology-ontology:hasSister
+                                                               ) ;
+                                        rdfs:label "punya ipar perempuan"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasSon
+greek-mythology-ontology:hasSon rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf greek-mythology-ontology:hasChild ;
+                                rdfs:range greek-mythology-ontology:MaleBeing ;
+                                rdfs:label "punya anak laki-laki"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasSonInLaw
+greek-mythology-ontology:hasSonInLaw rdf:type owl:ObjectProperty ;
+                                     rdfs:subPropertyOf greek-mythology-ontology:hasChildInLaw ;
+                                     rdfs:range greek-mythology-ontology:MaleBeing ;
+                                     owl:propertyChainAxiom ( greek-mythology-ontology:hasChild
+                                                              greek-mythology-ontology:hasHusband
+                                                            ) ;
+                                     rdfs:label "punya menantu laki-laki"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasSpouse
+greek-mythology-ontology:hasSpouse rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf greek-mythology-ontology:hasPartner ;
+                                   rdf:type owl:SymmetricProperty ;
+                                   rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                   rdfs:range greek-mythology-ontology:MythicalBeing ;
+                                   rdfs:label "punya pasangan sah/pernikahan"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasUncle
+greek-mythology-ontology:hasUncle rdf:type owl:ObjectProperty ;
+                                  rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                  rdfs:range greek-mythology-ontology:MaleBeing ;
+                                  owl:propertyChainAxiom ( greek-mythology-ontology:hasParent
+                                                           greek-mythology-ontology:hasBrother
+                                                         ) ;
+                                  rdfs:label "punya paman"@id .
+
+
+###  http://example.org/greek-mythology-ontology#hasWife
+greek-mythology-ontology:hasWife rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf greek-mythology-ontology:hasSpouse ;
+                                 rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                 rdfs:range greek-mythology-ontology:FemaleBeing ;
+                                 rdfs:label "punya istri"@id .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://example.org/greek-mythology-ontology#hasDomain
+greek-mythology-ontology:hasDomain rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain greek-mythology-ontology:MythicalBeing ;
+                                   rdfs:range xsd:string ;
+                                   rdfs:label "punya ranah/personifikasi"@id .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/greek-mythology-ontology#ChildOfTitan
+greek-mythology-ontology:ChildOfTitan rdf:type owl:Class ;
+                                      owl:equivalentClass [ owl:intersectionOf ( greek-mythology-ontology:MythicalBeing
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty greek-mythology-ontology:hasParent ;
+                                                                                   owl:someValuesFrom greek-mythology-ontology:Titan
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ] ;
+                                      rdfs:label "Anak dari Titan"@id .
+
+
+###  http://example.org/greek-mythology-ontology#ChildOfZeus
+greek-mythology-ontology:ChildOfZeus rdf:type owl:Class ;
+                                     owl:equivalentClass [ owl:intersectionOf ( greek-mythology-ontology:MythicalBeing
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty greek-mythology-ontology:hasParent ;
+                                                                                  owl:hasValue greek-mythology-ontology:Zeus
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ] ;
+                                     rdfs:label "Anak Zeus"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Deity
+greek-mythology-ontology:Deity rdf:type owl:Class ;
+                               rdfs:subClassOf greek-mythology-ontology:MythicalBeing ;
+                               owl:disjointWith greek-mythology-ontology:Mortal ;
+                               rdfs:label "Dewa/Dewi"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Demigod
+greek-mythology-ontology:Demigod rdf:type owl:Class ;
+                                 owl:equivalentClass [ owl:intersectionOf ( greek-mythology-ontology:MythicalBeing
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty greek-mythology-ontology:hasParent ;
+                                                                              owl:someValuesFrom greek-mythology-ontology:Deity
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty greek-mythology-ontology:hasParent ;
+                                                                              owl:someValuesFrom greek-mythology-ontology:Mortal
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ] ;
+                                 rdfs:label "Setengah Dewa"@id .
+
+
+###  http://example.org/greek-mythology-ontology#DivineGroup
+greek-mythology-ontology:DivineGroup rdf:type owl:Class ;
+                                     rdfs:subClassOf greek-mythology-ontology:MythicalBeing ;
+                                     owl:disjointWith greek-mythology-ontology:FemaleBeing ,
+                                                      greek-mythology-ontology:MaleBeing ;
+                                     rdfs:label "Kelompok Ilahi"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Female
+greek-mythology-ontology:Female rdf:type owl:Class ;
+                                rdfs:subClassOf greek-mythology-ontology:Gender ;
+                                rdfs:label "Perempuan"@id .
+
+
+###  http://example.org/greek-mythology-ontology#FemaleBeing
+greek-mythology-ontology:FemaleBeing rdf:type owl:Class ;
+                                     owl:equivalentClass [ owl:intersectionOf ( greek-mythology-ontology:MythicalBeing
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty greek-mythology-ontology:hasGender ;
+                                                                                  owl:someValuesFrom greek-mythology-ontology:Female
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ] ;
+                                     rdfs:label "Makhluk Perempuan"@id .
+
+
+###  http://example.org/greek-mythology-ontology#FirstGenerationTitan
+greek-mythology-ontology:FirstGenerationTitan rdf:type owl:Class ;
+                                              rdfs:subClassOf greek-mythology-ontology:Titan ;
+                                              rdfs:comment "Dua belas Titan anak Uranus dan Gaia (kotak hijau pada bagan)."@id ;
+                                              rdfs:label "Titan Generasi Pertama"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Gender
+greek-mythology-ontology:Gender rdf:type owl:Class ;
+                                owl:equivalentClass [ rdf:type owl:Class ;
+                                                      owl:unionOf ( greek-mythology-ontology:Female
+                                                                    greek-mythology-ontology:Genderless
+                                                                    greek-mythology-ontology:Male
+                                                                  )
+                                                    ] ;
+                                owl:disjointWith greek-mythology-ontology:MythicalBeing ;
+                                rdfs:label "Gender"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Genderless
+greek-mythology-ontology:Genderless rdf:type owl:Class ;
+                                    rdfs:subClassOf greek-mythology-ontology:Gender ;
+                                    rdfs:label "Tanpa Gender"@id .
+
+
+###  http://example.org/greek-mythology-ontology#GenderlessBeing
+greek-mythology-ontology:GenderlessBeing rdf:type owl:Class ;
+                                         owl:equivalentClass [ owl:intersectionOf ( greek-mythology-ontology:MythicalBeing
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty greek-mythology-ontology:hasGender ;
+                                                                                      owl:someValuesFrom greek-mythology-ontology:Genderless
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ] ;
+                                         rdfs:label "Makhluk Tanpa Gender"@id .
+
+
+###  http://example.org/greek-mythology-ontology#God
+greek-mythology-ontology:God rdf:type owl:Class ;
+                             owl:equivalentClass [ owl:intersectionOf ( greek-mythology-ontology:Deity
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty greek-mythology-ontology:hasGender ;
+                                                                          owl:someValuesFrom greek-mythology-ontology:Male
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ] ;
+                             rdfs:label "Dewa"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Goddess
+greek-mythology-ontology:Goddess rdf:type owl:Class ;
+                                 owl:equivalentClass [ owl:intersectionOf ( greek-mythology-ontology:Deity
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty greek-mythology-ontology:hasGender ;
+                                                                              owl:someValuesFrom greek-mythology-ontology:Female
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ] ;
+                                 rdfs:label "Dewi"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Male
+greek-mythology-ontology:Male rdf:type owl:Class ;
+                              rdfs:subClassOf greek-mythology-ontology:Gender ;
+                              rdfs:label "Laki-laki"@id .
+
+
+###  http://example.org/greek-mythology-ontology#MaleBeing
+greek-mythology-ontology:MaleBeing rdf:type owl:Class ;
+                                   owl:equivalentClass [ owl:intersectionOf ( greek-mythology-ontology:MythicalBeing
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty greek-mythology-ontology:hasGender ;
+                                                                                owl:someValuesFrom greek-mythology-ontology:Male
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ] ;
+                                   rdfs:label "Makhluk Laki-laki"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Monster
+greek-mythology-ontology:Monster rdf:type owl:Class ;
+                                 rdfs:subClassOf greek-mythology-ontology:MythicalBeing ;
+                                 rdfs:label "Monster"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Mortal
+greek-mythology-ontology:Mortal rdf:type owl:Class ;
+                                rdfs:subClassOf greek-mythology-ontology:MythicalBeing ;
+                                rdfs:label "Manusia Fana"@id .
+
+
+###  http://example.org/greek-mythology-ontology#MythicalBeing
+greek-mythology-ontology:MythicalBeing rdf:type owl:Class ;
+                                       rdfs:label "Makhluk Mitologi"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Oceanid
+greek-mythology-ontology:Oceanid rdf:type owl:Class ;
+                                 rdfs:subClassOf greek-mythology-ontology:Deity ;
+                                 rdfs:comment "Anggota kelompok Oceanids pada bagan (Inachus, Melia, Clymene, Pleione)."@id ;
+                                 rdfs:label "Oceanid"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Olympian
+greek-mythology-ontology:Olympian rdf:type owl:Class ;
+                                  rdfs:subClassOf greek-mythology-ontology:Deity ;
+                                  rdfs:label "Olympian"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Pleiad
+greek-mythology-ontology:Pleiad rdf:type owl:Class ;
+                                rdfs:subClassOf greek-mythology-ontology:Deity ;
+                                rdfs:comment "Anggota kelompok Pleiades pada bagan (Maia, Dryope)."@id ;
+                                rdfs:label "Pleiad"@id .
+
+
+###  http://example.org/greek-mythology-ontology#PrimordialDeity
+greek-mythology-ontology:PrimordialDeity rdf:type owl:Class ;
+                                         rdfs:subClassOf greek-mythology-ontology:Deity ;
+                                         rdfs:label "Dewa Primordial"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Titan
+greek-mythology-ontology:Titan rdf:type owl:Class ;
+                               rdfs:subClassOf greek-mythology-ontology:Deity ;
+                               rdfs:label "Titan"@id .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.org/greek-mythology-ontology#Aether
+greek-mythology-ontology:Aether rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:PrimordialDeity ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Erebus ,
+                                                                   greek-mythology-ontology:Nyx ;
+                                greek-mythology-ontology:hasDomain "Heaven" .
+
+
+###  http://example.org/greek-mythology-ontology#Alcmene
+greek-mythology-ontology:Alcmene rdf:type owl:NamedIndividual ,
+                                          greek-mythology-ontology:Mortal ;
+                                 greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue .
+
+
+###  http://example.org/greek-mythology-ontology#Anteros
+greek-mythology-ontology:Anteros rdf:type owl:NamedIndividual ,
+                                          greek-mythology-ontology:Deity ;
+                                 greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                 greek-mythology-ontology:hasParent greek-mythology-ontology:Aphrodite ,
+                                                                    greek-mythology-ontology:Ares .
+
+
+###  http://example.org/greek-mythology-ontology#Apate
+greek-mythology-ontology:Apate rdf:type owl:NamedIndividual ,
+                                        greek-mythology-ontology:Deity ;
+                               greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                               greek-mythology-ontology:hasParent greek-mythology-ontology:Nyx ;
+                               greek-mythology-ontology:hasDomain "Deceit" .
+
+
+###  http://example.org/greek-mythology-ontology#Aphrodite
+greek-mythology-ontology:Aphrodite rdf:type owl:NamedIndividual ,
+                                            greek-mythology-ontology:Olympian ;
+                                   greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                   greek-mythology-ontology:hasParent greek-mythology-ontology:Dione ,
+                                                                      greek-mythology-ontology:Zeus ;
+                                   rdfs:comment "Catatan [2] pada bagan: versi anak Zeus dan Dione. Versi lahir dari Uranus adalah Aphrodite_Uranus."@id ;
+                                   rdfs:label "Aphrodite (anak Zeus dan Dione)"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Aphrodite_Uranus
+greek-mythology-ontology:Aphrodite_Uranus rdf:type owl:NamedIndividual ,
+                                                   greek-mythology-ontology:Olympian ;
+                                          greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                          greek-mythology-ontology:hasParent greek-mythology-ontology:Uranus ;
+                                          rdfs:comment "Catatan [2] pada bagan: versi Hesiod, Aphrodite lahir dari Uranus. Versi lain (anak Zeus dan Dione) adalah individu Aphrodite."@id ;
+                                          rdfs:label "Aphrodite (lahir dari Uranus)"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Apollo
+greek-mythology-ontology:Apollo rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:Olympian ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Leto ,
+                                                                   greek-mythology-ontology:Zeus .
+
+
+###  http://example.org/greek-mythology-ontology#Ares
+greek-mythology-ontology:Ares rdf:type owl:NamedIndividual ,
+                                       greek-mythology-ontology:Olympian ;
+                              greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                              greek-mythology-ontology:hasParent greek-mythology-ontology:Hera ,
+                                                                 greek-mythology-ontology:Zeus ;
+                              greek-mythology-ontology:hasPartner greek-mythology-ontology:Aphrodite .
+
+
+###  http://example.org/greek-mythology-ontology#Artemis
+greek-mythology-ontology:Artemis rdf:type owl:NamedIndividual ,
+                                          greek-mythology-ontology:Olympian ;
+                                 greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                 greek-mythology-ontology:hasParent greek-mythology-ontology:Leto ,
+                                                                    greek-mythology-ontology:Zeus .
+
+
+###  http://example.org/greek-mythology-ontology#Asteria
+greek-mythology-ontology:Asteria rdf:type owl:NamedIndividual ,
+                                          greek-mythology-ontology:Titan ;
+                                 greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                 greek-mythology-ontology:hasParent greek-mythology-ontology:Coeus ,
+                                                                    greek-mythology-ontology:Phoebe .
+
+
+###  http://example.org/greek-mythology-ontology#Athena
+greek-mythology-ontology:Athena rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:Olympian ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Zeus .
+
+
+###  http://example.org/greek-mythology-ontology#Atlas
+greek-mythology-ontology:Atlas rdf:type owl:NamedIndividual ,
+                                        greek-mythology-ontology:Titan ;
+                               greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                               greek-mythology-ontology:hasParent greek-mythology-ontology:Iapetus ;
+                               greek-mythology-ontology:hasSpouse greek-mythology-ontology:Pleione .
+
+
+###  http://example.org/greek-mythology-ontology#Chaos
+greek-mythology-ontology:Chaos rdf:type owl:NamedIndividual ,
+                                        greek-mythology-ontology:PrimordialDeity ;
+                               greek-mythology-ontology:hasGender greek-mythology-ontology:GenderlessValue ;
+                               greek-mythology-ontology:hasDomain "The Void" ;
+                               rdfs:comment "Bentuk netral dalam teks Yunani, dimodelkan tanpa gender."@id .
+
+
+###  http://example.org/greek-mythology-ontology#Clymene
+greek-mythology-ontology:Clymene rdf:type owl:NamedIndividual ,
+                                          greek-mythology-ontology:Oceanid ;
+                                 greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                 greek-mythology-ontology:hasParent greek-mythology-ontology:Oceanus ,
+                                                                    greek-mythology-ontology:Tethys ;
+                                 rdfs:comment "Anggota kelompok Oceanids pada bagan."@id .
+
+
+###  http://example.org/greek-mythology-ontology#Coeus
+greek-mythology-ontology:Coeus rdf:type owl:NamedIndividual ,
+                                        greek-mythology-ontology:FirstGenerationTitan ;
+                               greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                               greek-mythology-ontology:hasParent greek-mythology-ontology:Gaia ,
+                                                                  greek-mythology-ontology:Uranus ;
+                               greek-mythology-ontology:hasSpouse greek-mythology-ontology:Phoebe .
+
+
+###  http://example.org/greek-mythology-ontology#Crius
+greek-mythology-ontology:Crius rdf:type owl:NamedIndividual ,
+                                        greek-mythology-ontology:FirstGenerationTitan ;
+                               greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                               greek-mythology-ontology:hasParent greek-mythology-ontology:Gaia ,
+                                                                  greek-mythology-ontology:Uranus .
+
+
+###  http://example.org/greek-mythology-ontology#Cronus
+greek-mythology-ontology:Cronus rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:FirstGenerationTitan ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Gaia ,
+                                                                   greek-mythology-ontology:Uranus ;
+                                greek-mythology-ontology:hasSpouse greek-mythology-ontology:Rhea .
+
+
+###  http://example.org/greek-mythology-ontology#Cyclopes
+greek-mythology-ontology:Cyclopes rdf:type owl:NamedIndividual ,
+                                           greek-mythology-ontology:DivineGroup ,
+                                           greek-mythology-ontology:Monster ;
+                                  greek-mythology-ontology:hasParent greek-mythology-ontology:Gaia ,
+                                                                     greek-mythology-ontology:Uranus .
+
+
+###  http://example.org/greek-mythology-ontology#Deimos
+greek-mythology-ontology:Deimos rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:Deity ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Aphrodite ,
+                                                                   greek-mythology-ontology:Ares .
+
+
+###  http://example.org/greek-mythology-ontology#Demeter
+greek-mythology-ontology:Demeter rdf:type owl:NamedIndividual ,
+                                          greek-mythology-ontology:Olympian ;
+                                 greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                 greek-mythology-ontology:hasParent greek-mythology-ontology:Cronus ,
+                                                                    greek-mythology-ontology:Rhea .
+
+
+###  http://example.org/greek-mythology-ontology#Dione
+greek-mythology-ontology:Dione rdf:type owl:NamedIndividual ,
+                                        greek-mythology-ontology:Titan ;
+                               greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                               greek-mythology-ontology:hasParent greek-mythology-ontology:Epimetheus ;
+                               rdfs:comment "Mengikuti bagan; sumber lain menyebut Dione anak Uranus dan Gaia, atau salah satu Oceanid."@id .
+
+
+###  http://example.org/greek-mythology-ontology#Dionysus
+greek-mythology-ontology:Dionysus rdf:type owl:NamedIndividual ,
+                                           greek-mythology-ontology:Olympian ;
+                                  greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                  greek-mythology-ontology:hasParent greek-mythology-ontology:Semele ,
+                                                                     greek-mythology-ontology:Zeus .
+
+
+###  http://example.org/greek-mythology-ontology#Dryope
+greek-mythology-ontology:Dryope rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:Pleiad ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Atlas ,
+                                                                   greek-mythology-ontology:Pleione ;
+                                rdfs:comment "Anggota kelompok Pleiades pada bagan, sehingga dimodelkan sebagai anak Atlas dan Pleione."@id .
+
+
+###  http://example.org/greek-mythology-ontology#Echidna
+greek-mythology-ontology:Echidna rdf:type owl:NamedIndividual ,
+                                          greek-mythology-ontology:Monster ;
+                                 greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                 greek-mythology-ontology:hasParent greek-mythology-ontology:Gaia ,
+                                                                    greek-mythology-ontology:Uranus ;
+                                 rdfs:comment "Mengikuti bagan; sumber mitologi lain menyebut orang tua yang berbeda."@id .
+
+
+###  http://example.org/greek-mythology-ontology#Eileithyia
+greek-mythology-ontology:Eileithyia rdf:type owl:NamedIndividual ,
+                                             greek-mythology-ontology:Deity ;
+                                    greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                    greek-mythology-ontology:hasParent greek-mythology-ontology:Hera ,
+                                                                       greek-mythology-ontology:Zeus .
+
+
+###  http://example.org/greek-mythology-ontology#Enyo
+greek-mythology-ontology:Enyo rdf:type owl:NamedIndividual ,
+                                       greek-mythology-ontology:Deity ;
+                              greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                              greek-mythology-ontology:hasParent greek-mythology-ontology:Hera ,
+                                                                 greek-mythology-ontology:Zeus .
+
+
+###  http://example.org/greek-mythology-ontology#Eos
+greek-mythology-ontology:Eos rdf:type owl:NamedIndividual ,
+                                      greek-mythology-ontology:Titan ;
+                             greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                             greek-mythology-ontology:hasParent greek-mythology-ontology:Hyperion ,
+                                                                greek-mythology-ontology:Theia .
+
+
+###  http://example.org/greek-mythology-ontology#Epaphus
+greek-mythology-ontology:Epaphus rdf:type owl:NamedIndividual ;
+                                 greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                 greek-mythology-ontology:hasParent greek-mythology-ontology:Io ,
+                                                                    greek-mythology-ontology:Zeus .
+
+
+###  http://example.org/greek-mythology-ontology#Epimetheus
+greek-mythology-ontology:Epimetheus rdf:type owl:NamedIndividual ,
+                                             greek-mythology-ontology:Titan ;
+                                    greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                    greek-mythology-ontology:hasParent greek-mythology-ontology:Iapetus .
+
+
+###  http://example.org/greek-mythology-ontology#Erebus
+greek-mythology-ontology:Erebus rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:PrimordialDeity ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Chaos ;
+                                greek-mythology-ontology:hasPartner greek-mythology-ontology:Nyx ;
+                                greek-mythology-ontology:hasDomain "Darkness" .
+
+
+###  http://example.org/greek-mythology-ontology#Erinyes
+greek-mythology-ontology:Erinyes rdf:type owl:NamedIndividual ,
+                                          greek-mythology-ontology:DivineGroup ;
+                                 greek-mythology-ontology:hasParent greek-mythology-ontology:Uranus .
+
+
+###  http://example.org/greek-mythology-ontology#Eris
+greek-mythology-ontology:Eris rdf:type owl:NamedIndividual ,
+                                       greek-mythology-ontology:Deity ;
+                              greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                              greek-mythology-ontology:hasParent greek-mythology-ontology:Nyx ;
+                              greek-mythology-ontology:hasDomain "Strife" .
+
+
+###  http://example.org/greek-mythology-ontology#Eros_Primordial
+greek-mythology-ontology:Eros_Primordial rdf:type owl:NamedIndividual ,
+                                                  greek-mythology-ontology:PrimordialDeity ;
+                                         greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                         greek-mythology-ontology:hasParent greek-mythology-ontology:Chaos ;
+                                         greek-mythology-ontology:hasDomain "Desire" ;
+                                         rdfs:comment "Catatan [1] pada bagan: versi lain Eros adalah anak Aphrodite dan Ares (lihat Eros_Son)."@id ;
+                                         rdfs:label "Eros (primordial)"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Eros_Son
+greek-mythology-ontology:Eros_Son rdf:type owl:NamedIndividual ,
+                                           greek-mythology-ontology:Deity ;
+                                  greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                  greek-mythology-ontology:hasParent greek-mythology-ontology:Aphrodite ,
+                                                                     greek-mythology-ontology:Ares ;
+                                  rdfs:comment "Catatan [1] pada bagan: versi Eros anak Aphrodite dan Ares."@id ;
+                                  rdfs:label "Eros (anak Aphrodite dan Ares)"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Eunomia
+greek-mythology-ontology:Eunomia rdf:type owl:NamedIndividual ,
+                                          greek-mythology-ontology:Deity ;
+                                 greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                 greek-mythology-ontology:hasParent greek-mythology-ontology:Aphrodite ,
+                                                                    greek-mythology-ontology:Hermes .
+
+
+###  http://example.org/greek-mythology-ontology#FemaleValue
+greek-mythology-ontology:FemaleValue rdf:type owl:NamedIndividual ,
+                                              greek-mythology-ontology:Female ;
+                                     rdfs:label "perempuan"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Gaia
+greek-mythology-ontology:Gaia rdf:type owl:NamedIndividual ,
+                                       greek-mythology-ontology:PrimordialDeity ;
+                              greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                              greek-mythology-ontology:hasParent greek-mythology-ontology:Chaos ;
+                              greek-mythology-ontology:hasPartner greek-mythology-ontology:Tartarus ;
+                              greek-mythology-ontology:hasSpouse greek-mythology-ontology:Uranus ;
+                              greek-mythology-ontology:hasDomain "The Earth" .
+
+
+###  http://example.org/greek-mythology-ontology#GenderlessValue
+greek-mythology-ontology:GenderlessValue rdf:type owl:NamedIndividual ,
+                                                  greek-mythology-ontology:Genderless ;
+                                         rdfs:label "tanpa gender"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Geras
+greek-mythology-ontology:Geras rdf:type owl:NamedIndividual ,
+                                        greek-mythology-ontology:Deity ;
+                               greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                               greek-mythology-ontology:hasParent greek-mythology-ontology:Nyx ;
+                               greek-mythology-ontology:hasDomain "Aging" .
+
+
+###  http://example.org/greek-mythology-ontology#Gigantes
+greek-mythology-ontology:Gigantes rdf:type owl:NamedIndividual ,
+                                           greek-mythology-ontology:DivineGroup ,
+                                           greek-mythology-ontology:Monster ;
+                                  greek-mythology-ontology:hasParent greek-mythology-ontology:Uranus .
+
+
+###  http://example.org/greek-mythology-ontology#Hades
+greek-mythology-ontology:Hades rdf:type owl:NamedIndividual ,
+                                        greek-mythology-ontology:Deity ;
+                               greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                               greek-mythology-ontology:hasParent greek-mythology-ontology:Cronus ,
+                                                                  greek-mythology-ontology:Rhea ;
+                               rdfs:comment "Tidak dimasukkan ke Olympian karena berkuasa di dunia bawah."@id .
+
+
+###  http://example.org/greek-mythology-ontology#Harmonia
+greek-mythology-ontology:Harmonia rdf:type owl:NamedIndividual ,
+                                           greek-mythology-ontology:Deity ;
+                                  greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                  greek-mythology-ontology:hasParent greek-mythology-ontology:Aphrodite ,
+                                                                     greek-mythology-ontology:Ares .
+
+
+###  http://example.org/greek-mythology-ontology#Hebe
+greek-mythology-ontology:Hebe rdf:type owl:NamedIndividual ,
+                                       greek-mythology-ontology:Deity ;
+                              greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                              greek-mythology-ontology:hasParent greek-mythology-ontology:Hera ,
+                                                                 greek-mythology-ontology:Zeus .
+
+
+###  http://example.org/greek-mythology-ontology#Hecatonchires
+greek-mythology-ontology:Hecatonchires rdf:type owl:NamedIndividual ,
+                                                greek-mythology-ontology:DivineGroup ,
+                                                greek-mythology-ontology:Monster ;
+                                       greek-mythology-ontology:hasParent greek-mythology-ontology:Gaia ,
+                                                                          greek-mythology-ontology:Uranus .
+
+
+###  http://example.org/greek-mythology-ontology#Heliades
+greek-mythology-ontology:Heliades rdf:type owl:NamedIndividual ,
+                                           greek-mythology-ontology:DivineGroup ;
+                                  greek-mythology-ontology:hasParent greek-mythology-ontology:Clymene ,
+                                                                     greek-mythology-ontology:Helios .
+
+
+###  http://example.org/greek-mythology-ontology#Helios
+greek-mythology-ontology:Helios rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:Titan ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Hyperion ,
+                                                                   greek-mythology-ontology:Theia ;
+                                greek-mythology-ontology:hasPartner greek-mythology-ontology:Clymene .
+
+
+###  http://example.org/greek-mythology-ontology#Hemera
+greek-mythology-ontology:Hemera rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:PrimordialDeity ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Erebus ,
+                                                                   greek-mythology-ontology:Nyx ;
+                                greek-mythology-ontology:hasDomain "The Day" .
+
+
+###  http://example.org/greek-mythology-ontology#Hephaestus
+greek-mythology-ontology:Hephaestus rdf:type owl:NamedIndividual ,
+                                             greek-mythology-ontology:Olympian ;
+                                    greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                    greek-mythology-ontology:hasParent greek-mythology-ontology:Hera ,
+                                                                       greek-mythology-ontology:Zeus ;
+                                    rdfs:comment "Mengikuti bagan; versi Hesiod menyebut Hephaestus anak Hera saja."@id .
+
+
+###  http://example.org/greek-mythology-ontology#Hera
+greek-mythology-ontology:Hera rdf:type owl:NamedIndividual ,
+                                       greek-mythology-ontology:Olympian ;
+                              greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                              greek-mythology-ontology:hasParent greek-mythology-ontology:Cronus ,
+                                                                 greek-mythology-ontology:Rhea .
+
+
+###  http://example.org/greek-mythology-ontology#Heracles
+greek-mythology-ontology:Heracles rdf:type owl:NamedIndividual ;
+                                  greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                  greek-mythology-ontology:hasParent greek-mythology-ontology:Alcmene ,
+                                                                     greek-mythology-ontology:Zeus .
+
+
+###  http://example.org/greek-mythology-ontology#Hermaphroditus
+greek-mythology-ontology:Hermaphroditus rdf:type owl:NamedIndividual ,
+                                                 greek-mythology-ontology:Deity ;
+                                        greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                        greek-mythology-ontology:hasParent greek-mythology-ontology:Aphrodite ,
+                                                                           greek-mythology-ontology:Hermes ;
+                                        rdfs:comment "Dimodelkan laki-laki sesuai kelahirannya; dalam mitos kemudian menyatu dengan Salmacis."@id .
+
+
+###  http://example.org/greek-mythology-ontology#Hermes
+greek-mythology-ontology:Hermes rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:Olympian ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Maia ,
+                                                                   greek-mythology-ontology:Zeus ;
+                                greek-mythology-ontology:hasPartner greek-mythology-ontology:Aphrodite ,
+                                                                    greek-mythology-ontology:Dryope .
+
+
+###  http://example.org/greek-mythology-ontology#Hesperides
+greek-mythology-ontology:Hesperides rdf:type owl:NamedIndividual ,
+                                             greek-mythology-ontology:DivineGroup ;
+                                    greek-mythology-ontology:hasParent greek-mythology-ontology:Atlas ,
+                                                                       greek-mythology-ontology:Pleione ;
+                                    rdfs:comment "Mengikuti bagan; versi Hesiod menyebut Hesperides anak Nyx."@id .
+
+
+###  http://example.org/greek-mythology-ontology#Hestia
+greek-mythology-ontology:Hestia rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:Olympian ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Cronus ,
+                                                                   greek-mythology-ontology:Rhea .
+
+
+###  http://example.org/greek-mythology-ontology#Himeros
+greek-mythology-ontology:Himeros rdf:type owl:NamedIndividual ,
+                                          greek-mythology-ontology:Deity ;
+                                 greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                 greek-mythology-ontology:hasParent greek-mythology-ontology:Aphrodite ,
+                                                                    greek-mythology-ontology:Ares .
+
+
+###  http://example.org/greek-mythology-ontology#Hyades
+greek-mythology-ontology:Hyades rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:DivineGroup ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Atlas ,
+                                                                   greek-mythology-ontology:Pleione .
+
+
+###  http://example.org/greek-mythology-ontology#Hyperion
+greek-mythology-ontology:Hyperion rdf:type owl:NamedIndividual ,
+                                           greek-mythology-ontology:FirstGenerationTitan ;
+                                  greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                  greek-mythology-ontology:hasParent greek-mythology-ontology:Gaia ,
+                                                                     greek-mythology-ontology:Uranus ;
+                                  greek-mythology-ontology:hasSpouse greek-mythology-ontology:Theia .
+
+
+###  http://example.org/greek-mythology-ontology#Hypnos
+greek-mythology-ontology:Hypnos rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:Deity ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Nyx ;
+                                greek-mythology-ontology:hasDomain "Sleep" .
+
+
+###  http://example.org/greek-mythology-ontology#Iapetus
+greek-mythology-ontology:Iapetus rdf:type owl:NamedIndividual ,
+                                          greek-mythology-ontology:FirstGenerationTitan ;
+                                 greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                 greek-mythology-ontology:hasParent greek-mythology-ontology:Gaia ,
+                                                                    greek-mythology-ontology:Uranus .
+
+
+###  http://example.org/greek-mythology-ontology#Inachus
+greek-mythology-ontology:Inachus rdf:type owl:NamedIndividual ,
+                                          greek-mythology-ontology:Oceanid ;
+                                 greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                 greek-mythology-ontology:hasParent greek-mythology-ontology:Oceanus ,
+                                                                    greek-mythology-ontology:Tethys ;
+                                 greek-mythology-ontology:hasSpouse greek-mythology-ontology:Melia ;
+                                 rdfs:comment "Anggota kelompok Oceanids pada bagan."@id .
+
+
+###  http://example.org/greek-mythology-ontology#Io
+greek-mythology-ontology:Io rdf:type owl:NamedIndividual ,
+                                     greek-mythology-ontology:Mortal ;
+                            greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                            greek-mythology-ontology:hasParent greek-mythology-ontology:Inachus ,
+                                                               greek-mythology-ontology:Melia .
+
+
+###  http://example.org/greek-mythology-ontology#Keres
+greek-mythology-ontology:Keres rdf:type owl:NamedIndividual ,
+                                        greek-mythology-ontology:DivineGroup ;
+                               greek-mythology-ontology:hasParent greek-mythology-ontology:Nyx ;
+                               rdfs:comment "Pada bagan digabung dalam satu kotak 'Moirae & Keres'."@id .
+
+
+###  http://example.org/greek-mythology-ontology#Leto
+greek-mythology-ontology:Leto rdf:type owl:NamedIndividual ,
+                                       greek-mythology-ontology:Titan ;
+                              greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                              greek-mythology-ontology:hasParent greek-mythology-ontology:Coeus ,
+                                                                 greek-mythology-ontology:Phoebe .
+
+
+###  http://example.org/greek-mythology-ontology#Maia
+greek-mythology-ontology:Maia rdf:type owl:NamedIndividual ,
+                                       greek-mythology-ontology:Pleiad ;
+                              greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                              greek-mythology-ontology:hasParent greek-mythology-ontology:Atlas ,
+                                                                 greek-mythology-ontology:Pleione ;
+                              rdfs:comment "Anggota kelompok Pleiades pada bagan, sehingga dimodelkan sebagai anak Atlas dan Pleione."@id .
+
+
+###  http://example.org/greek-mythology-ontology#MaleValue
+greek-mythology-ontology:MaleValue rdf:type owl:NamedIndividual ,
+                                            greek-mythology-ontology:Male ;
+                                   rdfs:label "laki-laki"@id .
+
+
+###  http://example.org/greek-mythology-ontology#Melia
+greek-mythology-ontology:Melia rdf:type owl:NamedIndividual ,
+                                        greek-mythology-ontology:Oceanid ;
+                               greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                               greek-mythology-ontology:hasParent greek-mythology-ontology:Oceanus ,
+                                                                  greek-mythology-ontology:Tethys ;
+                               rdfs:comment "Anggota kelompok Oceanids pada bagan."@id .
+
+
+###  http://example.org/greek-mythology-ontology#Meliae
+greek-mythology-ontology:Meliae rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:DivineGroup ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Uranus .
+
+
+###  http://example.org/greek-mythology-ontology#Mnemosyne
+greek-mythology-ontology:Mnemosyne rdf:type owl:NamedIndividual ,
+                                            greek-mythology-ontology:FirstGenerationTitan ;
+                                   greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                   greek-mythology-ontology:hasParent greek-mythology-ontology:Gaia ,
+                                                                      greek-mythology-ontology:Uranus .
+
+
+###  http://example.org/greek-mythology-ontology#Moirae
+greek-mythology-ontology:Moirae rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:DivineGroup ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Nyx ;
+                                rdfs:comment "Pada bagan digabung dalam satu kotak 'Moirae & Keres'."@id .
+
+
+###  http://example.org/greek-mythology-ontology#Momus
+greek-mythology-ontology:Momus rdf:type owl:NamedIndividual ,
+                                        greek-mythology-ontology:Deity ;
+                               greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                               greek-mythology-ontology:hasParent greek-mythology-ontology:Nyx ;
+                               greek-mythology-ontology:hasDomain "Blame" .
+
+
+###  http://example.org/greek-mythology-ontology#Moros
+greek-mythology-ontology:Moros rdf:type owl:NamedIndividual ,
+                                        greek-mythology-ontology:Deity ;
+                               greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                               greek-mythology-ontology:hasParent greek-mythology-ontology:Nyx ;
+                               greek-mythology-ontology:hasDomain "Doom" .
+
+
+###  http://example.org/greek-mythology-ontology#Muses
+greek-mythology-ontology:Muses rdf:type owl:NamedIndividual ,
+                                        greek-mythology-ontology:DivineGroup ;
+                               greek-mythology-ontology:hasParent greek-mythology-ontology:Mnemosyne ,
+                                                                  greek-mythology-ontology:Zeus .
+
+
+###  http://example.org/greek-mythology-ontology#Nemesis
+greek-mythology-ontology:Nemesis rdf:type owl:NamedIndividual ,
+                                          greek-mythology-ontology:Deity ;
+                                 greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                 greek-mythology-ontology:hasParent greek-mythology-ontology:Nyx ;
+                                 greek-mythology-ontology:hasDomain "Retribution" .
+
+
+###  http://example.org/greek-mythology-ontology#Nyx
+greek-mythology-ontology:Nyx rdf:type owl:NamedIndividual ,
+                                      greek-mythology-ontology:PrimordialDeity ;
+                             greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                             greek-mythology-ontology:hasParent greek-mythology-ontology:Chaos ;
+                             greek-mythology-ontology:hasDomain "The Night" .
+
+
+###  http://example.org/greek-mythology-ontology#Oceanids
+greek-mythology-ontology:Oceanids rdf:type owl:NamedIndividual ,
+                                           greek-mythology-ontology:DivineGroup ;
+                                  greek-mythology-ontology:hasParent greek-mythology-ontology:Oceanus ,
+                                                                     greek-mythology-ontology:Tethys .
+
+
+###  http://example.org/greek-mythology-ontology#Oceanus
+greek-mythology-ontology:Oceanus rdf:type owl:NamedIndividual ,
+                                          greek-mythology-ontology:FirstGenerationTitan ;
+                                 greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                 greek-mythology-ontology:hasParent greek-mythology-ontology:Gaia ,
+                                                                    greek-mythology-ontology:Uranus ;
+                                 greek-mythology-ontology:hasSpouse greek-mythology-ontology:Tethys .
+
+
+###  http://example.org/greek-mythology-ontology#Oizys
+greek-mythology-ontology:Oizys rdf:type owl:NamedIndividual ,
+                                        greek-mythology-ontology:Deity ;
+                               greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                               greek-mythology-ontology:hasParent greek-mythology-ontology:Nyx ;
+                               greek-mythology-ontology:hasDomain "Distress" .
+
+
+###  http://example.org/greek-mythology-ontology#Oneiroi
+greek-mythology-ontology:Oneiroi rdf:type owl:NamedIndividual ,
+                                          greek-mythology-ontology:DivineGroup ;
+                                 greek-mythology-ontology:hasParent greek-mythology-ontology:Nyx ;
+                                 greek-mythology-ontology:hasDomain "Dreams" .
+
+
+###  http://example.org/greek-mythology-ontology#Ourea
+greek-mythology-ontology:Ourea rdf:type owl:NamedIndividual ,
+                                        greek-mythology-ontology:DivineGroup ,
+                                        greek-mythology-ontology:PrimordialDeity ;
+                               greek-mythology-ontology:hasParent greek-mythology-ontology:Gaia ;
+                               greek-mythology-ontology:hasDomain "Mountains" .
+
+
+###  http://example.org/greek-mythology-ontology#Pan
+greek-mythology-ontology:Pan rdf:type owl:NamedIndividual ,
+                                      greek-mythology-ontology:Deity ;
+                             greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                             greek-mythology-ontology:hasParent greek-mythology-ontology:Dryope ,
+                                                                greek-mythology-ontology:Hermes .
+
+
+###  http://example.org/greek-mythology-ontology#Peitho
+greek-mythology-ontology:Peitho rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:Deity ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Aphrodite ,
+                                                                   greek-mythology-ontology:Hermes .
+
+
+###  http://example.org/greek-mythology-ontology#Persephone
+greek-mythology-ontology:Persephone rdf:type owl:NamedIndividual ,
+                                             greek-mythology-ontology:Deity ;
+                                    greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                    greek-mythology-ontology:hasParent greek-mythology-ontology:Demeter ,
+                                                                       greek-mythology-ontology:Zeus .
+
+
+###  http://example.org/greek-mythology-ontology#Philotes
+greek-mythology-ontology:Philotes rdf:type owl:NamedIndividual ,
+                                           greek-mythology-ontology:Deity ;
+                                  greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                  greek-mythology-ontology:hasParent greek-mythology-ontology:Nyx ;
+                                  greek-mythology-ontology:hasDomain "Affection" .
+
+
+###  http://example.org/greek-mythology-ontology#Phobos
+greek-mythology-ontology:Phobos rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:Deity ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Aphrodite ,
+                                                                   greek-mythology-ontology:Ares .
+
+
+###  http://example.org/greek-mythology-ontology#Phoebe
+greek-mythology-ontology:Phoebe rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:FirstGenerationTitan ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Gaia ,
+                                                                   greek-mythology-ontology:Uranus .
+
+
+###  http://example.org/greek-mythology-ontology#Pleiades
+greek-mythology-ontology:Pleiades rdf:type owl:NamedIndividual ,
+                                           greek-mythology-ontology:DivineGroup ;
+                                  greek-mythology-ontology:hasParent greek-mythology-ontology:Atlas ,
+                                                                     greek-mythology-ontology:Pleione .
+
+
+###  http://example.org/greek-mythology-ontology#Pleione
+greek-mythology-ontology:Pleione rdf:type owl:NamedIndividual ,
+                                          greek-mythology-ontology:Oceanid ;
+                                 greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                 greek-mythology-ontology:hasParent greek-mythology-ontology:Oceanus ,
+                                                                    greek-mythology-ontology:Tethys ;
+                                 rdfs:comment "Anggota kelompok Oceanids pada bagan."@id .
+
+
+###  http://example.org/greek-mythology-ontology#Pontus
+greek-mythology-ontology:Pontus rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:PrimordialDeity ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Gaia ;
+                                greek-mythology-ontology:hasDomain "The Sea" .
+
+
+###  http://example.org/greek-mythology-ontology#Poseidon
+greek-mythology-ontology:Poseidon rdf:type owl:NamedIndividual ,
+                                           greek-mythology-ontology:Olympian ;
+                                  greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                  greek-mythology-ontology:hasParent greek-mythology-ontology:Cronus ,
+                                                                     greek-mythology-ontology:Rhea .
+
+
+###  http://example.org/greek-mythology-ontology#Prometheus
+greek-mythology-ontology:Prometheus rdf:type owl:NamedIndividual ,
+                                             greek-mythology-ontology:Titan ;
+                                    greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                    greek-mythology-ontology:hasParent greek-mythology-ontology:Iapetus .
+
+
+###  http://example.org/greek-mythology-ontology#Rhea
+greek-mythology-ontology:Rhea rdf:type owl:NamedIndividual ,
+                                       greek-mythology-ontology:FirstGenerationTitan ;
+                              greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                              greek-mythology-ontology:hasParent greek-mythology-ontology:Gaia ,
+                                                                 greek-mythology-ontology:Uranus .
+
+
+###  http://example.org/greek-mythology-ontology#Rhode
+greek-mythology-ontology:Rhode rdf:type owl:NamedIndividual ,
+                                        greek-mythology-ontology:Deity ;
+                               greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                               greek-mythology-ontology:hasParent greek-mythology-ontology:Aphrodite ,
+                                                                  greek-mythology-ontology:Hermes .
+
+
+###  http://example.org/greek-mythology-ontology#Selene
+greek-mythology-ontology:Selene rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:Titan ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Hyperion ,
+                                                                   greek-mythology-ontology:Theia .
+
+
+###  http://example.org/greek-mythology-ontology#Semele
+greek-mythology-ontology:Semele rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:Mortal ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue .
+
+
+###  http://example.org/greek-mythology-ontology#Tartarus
+greek-mythology-ontology:Tartarus rdf:type owl:NamedIndividual ,
+                                           greek-mythology-ontology:PrimordialDeity ;
+                                  greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                  greek-mythology-ontology:hasParent greek-mythology-ontology:Chaos ;
+                                  greek-mythology-ontology:hasDomain "The Abyss" .
+
+
+###  http://example.org/greek-mythology-ontology#Tethys
+greek-mythology-ontology:Tethys rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:FirstGenerationTitan ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Gaia ,
+                                                                   greek-mythology-ontology:Uranus .
+
+
+###  http://example.org/greek-mythology-ontology#Thanatos
+greek-mythology-ontology:Thanatos rdf:type owl:NamedIndividual ,
+                                           greek-mythology-ontology:Deity ;
+                                  greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                  greek-mythology-ontology:hasParent greek-mythology-ontology:Nyx ;
+                                  greek-mythology-ontology:hasDomain "Death" .
+
+
+###  http://example.org/greek-mythology-ontology#Theia
+greek-mythology-ontology:Theia rdf:type owl:NamedIndividual ,
+                                        greek-mythology-ontology:FirstGenerationTitan ;
+                               greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                               greek-mythology-ontology:hasParent greek-mythology-ontology:Gaia ,
+                                                                  greek-mythology-ontology:Uranus .
+
+
+###  http://example.org/greek-mythology-ontology#Themis
+greek-mythology-ontology:Themis rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:FirstGenerationTitan ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Gaia ,
+                                                                   greek-mythology-ontology:Uranus .
+
+
+###  http://example.org/greek-mythology-ontology#Tyche
+greek-mythology-ontology:Tyche rdf:type owl:NamedIndividual ,
+                                        greek-mythology-ontology:Deity ;
+                               greek-mythology-ontology:hasGender greek-mythology-ontology:FemaleValue ;
+                               greek-mythology-ontology:hasParent greek-mythology-ontology:Aphrodite ,
+                                                                  greek-mythology-ontology:Hermes .
+
+
+###  http://example.org/greek-mythology-ontology#Typhon
+greek-mythology-ontology:Typhon rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:Monster ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Gaia ,
+                                                                   greek-mythology-ontology:Tartarus ;
+                                greek-mythology-ontology:hasDomain "The Storms" .
+
+
+###  http://example.org/greek-mythology-ontology#Uranus
+greek-mythology-ontology:Uranus rdf:type owl:NamedIndividual ,
+                                         greek-mythology-ontology:PrimordialDeity ;
+                                greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                                greek-mythology-ontology:hasParent greek-mythology-ontology:Gaia ;
+                                greek-mythology-ontology:hasDomain "The Sky" .
+
+
+###  http://example.org/greek-mythology-ontology#Zeus
+greek-mythology-ontology:Zeus rdf:type owl:NamedIndividual ,
+                                       greek-mythology-ontology:Olympian ;
+                              greek-mythology-ontology:hasGender greek-mythology-ontology:MaleValue ;
+                              greek-mythology-ontology:hasParent greek-mythology-ontology:Cronus ,
+                                                                 greek-mythology-ontology:Rhea ;
+                              greek-mythology-ontology:hasPartner greek-mythology-ontology:Alcmene ,
+                                                                  greek-mythology-ontology:Demeter ,
+                                                                  greek-mythology-ontology:Dione ,
+                                                                  greek-mythology-ontology:Io ,
+                                                                  greek-mythology-ontology:Leto ,
+                                                                  greek-mythology-ontology:Maia ,
+                                                                  greek-mythology-ontology:Mnemosyne ,
+                                                                  greek-mythology-ontology:Semele ;
+                              greek-mythology-ontology:hasSpouse greek-mythology-ontology:Hera .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( greek-mythology-ontology:Female
+                greek-mythology-ontology:Genderless
+                greek-mythology-ontology:Male
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( greek-mythology-ontology:Olympian
+                greek-mythology-ontology:PrimordialDeity
+                greek-mythology-ontology:Titan
+              )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( greek-mythology-ontology:Aether
+                        greek-mythology-ontology:Alcmene
+                        greek-mythology-ontology:Anteros
+                        greek-mythology-ontology:Apate
+                        greek-mythology-ontology:Aphrodite
+                        greek-mythology-ontology:Aphrodite_Uranus
+                        greek-mythology-ontology:Apollo
+                        greek-mythology-ontology:Ares
+                        greek-mythology-ontology:Artemis
+                        greek-mythology-ontology:Asteria
+                        greek-mythology-ontology:Athena
+                        greek-mythology-ontology:Atlas
+                        greek-mythology-ontology:Chaos
+                        greek-mythology-ontology:Clymene
+                        greek-mythology-ontology:Coeus
+                        greek-mythology-ontology:Crius
+                        greek-mythology-ontology:Cronus
+                        greek-mythology-ontology:Cyclopes
+                        greek-mythology-ontology:Deimos
+                        greek-mythology-ontology:Demeter
+                        greek-mythology-ontology:Dione
+                        greek-mythology-ontology:Dionysus
+                        greek-mythology-ontology:Dryope
+                        greek-mythology-ontology:Echidna
+                        greek-mythology-ontology:Eileithyia
+                        greek-mythology-ontology:Enyo
+                        greek-mythology-ontology:Eos
+                        greek-mythology-ontology:Epaphus
+                        greek-mythology-ontology:Epimetheus
+                        greek-mythology-ontology:Erebus
+                        greek-mythology-ontology:Erinyes
+                        greek-mythology-ontology:Eris
+                        greek-mythology-ontology:Eros_Primordial
+                        greek-mythology-ontology:Eros_Son
+                        greek-mythology-ontology:Eunomia
+                        greek-mythology-ontology:FemaleValue
+                        greek-mythology-ontology:Gaia
+                        greek-mythology-ontology:GenderlessValue
+                        greek-mythology-ontology:Geras
+                        greek-mythology-ontology:Gigantes
+                        greek-mythology-ontology:Hades
+                        greek-mythology-ontology:Harmonia
+                        greek-mythology-ontology:Hebe
+                        greek-mythology-ontology:Hecatonchires
+                        greek-mythology-ontology:Heliades
+                        greek-mythology-ontology:Helios
+                        greek-mythology-ontology:Hemera
+                        greek-mythology-ontology:Hephaestus
+                        greek-mythology-ontology:Hera
+                        greek-mythology-ontology:Heracles
+                        greek-mythology-ontology:Hermaphroditus
+                        greek-mythology-ontology:Hermes
+                        greek-mythology-ontology:Hesperides
+                        greek-mythology-ontology:Hestia
+                        greek-mythology-ontology:Himeros
+                        greek-mythology-ontology:Hyades
+                        greek-mythology-ontology:Hyperion
+                        greek-mythology-ontology:Hypnos
+                        greek-mythology-ontology:Iapetus
+                        greek-mythology-ontology:Inachus
+                        greek-mythology-ontology:Io
+                        greek-mythology-ontology:Keres
+                        greek-mythology-ontology:Leto
+                        greek-mythology-ontology:Maia
+                        greek-mythology-ontology:MaleValue
+                        greek-mythology-ontology:Melia
+                        greek-mythology-ontology:Meliae
+                        greek-mythology-ontology:Mnemosyne
+                        greek-mythology-ontology:Moirae
+                        greek-mythology-ontology:Momus
+                        greek-mythology-ontology:Moros
+                        greek-mythology-ontology:Muses
+                        greek-mythology-ontology:Nemesis
+                        greek-mythology-ontology:Nyx
+                        greek-mythology-ontology:Oceanids
+                        greek-mythology-ontology:Oceanus
+                        greek-mythology-ontology:Oizys
+                        greek-mythology-ontology:Oneiroi
+                        greek-mythology-ontology:Ourea
+                        greek-mythology-ontology:Pan
+                        greek-mythology-ontology:Peitho
+                        greek-mythology-ontology:Persephone
+                        greek-mythology-ontology:Philotes
+                        greek-mythology-ontology:Phobos
+                        greek-mythology-ontology:Phoebe
+                        greek-mythology-ontology:Pleiades
+                        greek-mythology-ontology:Pleione
+                        greek-mythology-ontology:Pontus
+                        greek-mythology-ontology:Poseidon
+                        greek-mythology-ontology:Prometheus
+                        greek-mythology-ontology:Rhea
+                        greek-mythology-ontology:Rhode
+                        greek-mythology-ontology:Selene
+                        greek-mythology-ontology:Semele
+                        greek-mythology-ontology:Tartarus
+                        greek-mythology-ontology:Tethys
+                        greek-mythology-ontology:Thanatos
+                        greek-mythology-ontology:Theia
+                        greek-mythology-ontology:Themis
+                        greek-mythology-ontology:Tyche
+                        greek-mythology-ontology:Typhon
+                        greek-mythology-ontology:Uranus
+                        greek-mythology-ontology:Zeus
+                      )
+] .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+greek-mythology-ontology:x rdf:type swrl:Variable .
+
+greek-mythology-ontology:y rdf:type swrl:Variable .
+
+greek-mythology-ontology:a rdf:type swrl:Variable .
+
+greek-mythology-ontology:b rdf:type swrl:Variable .
+
+greek-mythology-ontology:p rdf:type swrl:Variable .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "Rule4" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasChild ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:y
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:ClassAtom ;
+                                      swrl:classPredicate greek-mythology-ontology:FemaleBeing ;
+                                      swrl:argument1 greek-mythology-ontology:y
+                                    ] ;
+                          rdf:rest rdf:nil
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasDaughter ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:y
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "Rule2" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasParent ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:y
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:ClassAtom ;
+                                      swrl:classPredicate greek-mythology-ontology:FemaleBeing ;
+                                      swrl:argument1 greek-mythology-ontology:y
+                                    ] ;
+                          rdf:rest rdf:nil
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasMother ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:y
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "Rule7" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasSibling ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:y
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:ClassAtom ;
+                                      swrl:classPredicate greek-mythology-ontology:FemaleBeing ;
+                                      swrl:argument1 greek-mythology-ontology:y
+                                    ] ;
+                          rdf:rest rdf:nil
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasSister ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:y
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "Rule9" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasSpouse ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:y
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:ClassAtom ;
+                                      swrl:classPredicate greek-mythology-ontology:FemaleBeing ;
+                                      swrl:argument1 greek-mythology-ontology:y
+                                    ] ;
+                          rdf:rest rdf:nil
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasWife ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:y
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "Rule3" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasChild ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:y
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:ClassAtom ;
+                                      swrl:classPredicate greek-mythology-ontology:MaleBeing ;
+                                      swrl:argument1 greek-mythology-ontology:y
+                                    ] ;
+                          rdf:rest rdf:nil
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasSon ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:y
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "Rule1" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasParent ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:y
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:ClassAtom ;
+                                      swrl:classPredicate greek-mythology-ontology:MaleBeing ;
+                                      swrl:argument1 greek-mythology-ontology:y
+                                    ] ;
+                          rdf:rest rdf:nil
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasFather ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:y
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "Rule6" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasSibling ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:y
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:ClassAtom ;
+                                      swrl:classPredicate greek-mythology-ontology:MaleBeing ;
+                                      swrl:argument1 greek-mythology-ontology:y
+                                    ] ;
+                          rdf:rest rdf:nil
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasBrother ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:y
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "Rule8" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasSpouse ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:y
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:ClassAtom ;
+                                      swrl:classPredicate greek-mythology-ontology:MaleBeing ;
+                                      swrl:argument1 greek-mythology-ontology:y
+                                    ] ;
+                          rdf:rest rdf:nil
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasHusband ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:y
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "Rule10" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasParent ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:a
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate greek-mythology-ontology:hasSibling ;
+                                      swrl:argument1 greek-mythology-ontology:a ;
+                                      swrl:argument2 greek-mythology-ontology:b
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                 swrl:propertyPredicate greek-mythology-ontology:hasChild ;
+                                                 swrl:argument1 greek-mythology-ontology:b ;
+                                                 swrl:argument2 greek-mythology-ontology:y
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:DifferentIndividualsAtom ;
+                                                            swrl:argument1 greek-mythology-ontology:x ;
+                                                            swrl:argument2 greek-mythology-ontology:y
+                                                          ] ;
+                                                rdf:rest rdf:nil
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasCousin ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:y
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "Rule5" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasParent ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:p
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate greek-mythology-ontology:hasParent ;
+                                      swrl:argument1 greek-mythology-ontology:y ;
+                                      swrl:argument2 greek-mythology-ontology:p
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:DifferentIndividualsAtom ;
+                                                 swrl:argument1 greek-mythology-ontology:x ;
+                                                 swrl:argument2 greek-mythology-ontology:y
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate greek-mythology-ontology:hasSibling ;
+                           swrl:argument1 greek-mythology-ontology:x ;
+                           swrl:argument2 greek-mythology-ontology:y
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
